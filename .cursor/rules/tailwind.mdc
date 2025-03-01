@@ -1,0 +1,8 @@
+---
+description: Tailwind 4
+globs: 
+alwaysApply: false
+---
+
+# Your rule content
+- Use tailwind 4 directives

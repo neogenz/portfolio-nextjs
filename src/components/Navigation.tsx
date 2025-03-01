@@ -82,7 +82,7 @@ const Navigation = () => {
       <header 
         className={`fixed w-full top-0 z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'py-4 bg-white/95 dark:bg-maxime-dark-bg/95 backdrop-blur-sm shadow-sm' 
+            ? 'py-4 bg-white/95 dark:bg-maxime-dark-bg/95 backdrop-blur-xs shadow-xs' 
             : 'py-6 bg-transparent'
         }`}
       >

@@ -80,7 +80,7 @@ const Contact = () => {
           </div>
           
           <div className="reveal" style={{ animationDelay: '0.2s' }}>
-            <form onSubmit={handleSubmit} className="bg-maxime-tertiary dark:bg-zinc-800 p-8 rounded-lg shadow-sm">
+            <form onSubmit={handleSubmit} className="bg-maxime-tertiary dark:bg-zinc-800 p-8 rounded-lg shadow-xs">
               <div className="mb-6">
                 <label htmlFor="name" className="text-sm text-maxime-secondary/70 dark:text-zinc-400 mb-2 block">Nom</label>
                 <input
@@ -90,7 +90,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-maxime-tertiary dark:bg-zinc-800 border-b border-maxime-secondary/20 dark:border-zinc-700 focus:border-maxime-primary dark:focus:border-zinc-500 py-2 text-maxime-primary dark:text-white placeholder:text-maxime-secondary/40 dark:placeholder:text-zinc-500 outline-none transition-colors"
+                  className="w-full bg-maxime-tertiary dark:bg-zinc-800 border-b border-maxime-secondary/20 dark:border-zinc-700 focus:border-maxime-primary dark:focus:border-zinc-500 py-2 text-maxime-primary dark:text-white placeholder:text-maxime-secondary/40 dark:placeholder:text-zinc-500 outline-hidden transition-colors"
                   placeholder="Votre nom"
                 />
               </div>
@@ -104,7 +104,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full bg-maxime-tertiary dark:bg-zinc-800 border-b border-maxime-secondary/20 dark:border-zinc-700 focus:border-maxime-primary dark:focus:border-zinc-500 py-2 text-maxime-primary dark:text-white placeholder:text-maxime-secondary/40 dark:placeholder:text-zinc-500 outline-none transition-colors"
+                  className="w-full bg-maxime-tertiary dark:bg-zinc-800 border-b border-maxime-secondary/20 dark:border-zinc-700 focus:border-maxime-primary dark:focus:border-zinc-500 py-2 text-maxime-primary dark:text-white placeholder:text-maxime-secondary/40 dark:placeholder:text-zinc-500 outline-hidden transition-colors"
                   placeholder="Votre email"
                 />
               </div>
@@ -118,7 +118,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full bg-maxime-tertiary dark:bg-zinc-800 border-b border-maxime-secondary/20 dark:border-zinc-700 focus:border-maxime-primary dark:focus:border-zinc-500 py-2 text-maxime-primary dark:text-white placeholder:text-maxime-secondary/40 dark:placeholder:text-zinc-500 outline-none resize-none transition-colors"
+                  className="w-full bg-maxime-tertiary dark:bg-zinc-800 border-b border-maxime-secondary/20 dark:border-zinc-700 focus:border-maxime-primary dark:focus:border-zinc-500 py-2 text-maxime-primary dark:text-white placeholder:text-maxime-secondary/40 dark:placeholder:text-zinc-500 outline-hidden resize-none transition-colors"
                   placeholder="Votre message"
                 ></textarea>
               </div>

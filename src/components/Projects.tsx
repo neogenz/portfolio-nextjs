@@ -280,7 +280,7 @@ const Projects = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 reveal" style={{ animationDelay: '0.6s' }}>
           {projects.slice(0, 3).map((project, index) => (
             <div key={project.id} className="group relative overflow-hidden rounded-lg">
-              <div className="aspect-[4/3] overflow-hidden bg-maxime-white dark:bg-maxime-dark-bg rounded-lg">
+              <div className="aspect-4/3 overflow-hidden bg-maxime-white dark:bg-maxime-dark-bg rounded-lg">
                 <img 
                   src={project.image} 
                   alt={project.title} 
