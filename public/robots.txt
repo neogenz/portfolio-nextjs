@@ -1,0 +1,14 @@
+# robots.txt pour maximedesogus.com
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://maximedesogus.com/sitemap.xml
+
+# Optimisations pour Googlebot
+User-agent: Googlebot
+Allow: /
+User-agent: Googlebot-Image
+Allow: /images/
+User-agent: Googlebot-Mobile
+Allow: / 
