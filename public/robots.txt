@@ -1,9 +1,9 @@
-# robots.txt pour maximedesogus.com
+# robots.txt pour maximedesogus.ch
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://maximedesogus.com/sitemap.xml
+Sitemap: https://maximedesogus.ch/sitemap.xml
 
 # Optimisations pour Googlebot
 User-agent: Googlebot
@@ -11,4 +11,19 @@ Allow: /
 User-agent: Googlebot-Image
 Allow: /images/
 User-agent: Googlebot-Mobile
-Allow: / 
+Allow: /
+
+# Optimisations pour les crawlers mobiles
+User-agent: Bingbot
+Allow: /
+User-agent: Slurp
+Allow: /
+User-agent: DuckDuckBot
+Allow: /
+User-agent: Baiduspider
+Allow: /
+User-agent: YandexBot
+Allow: /
+
+# Taux de crawl
+Crawl-delay: 1 
