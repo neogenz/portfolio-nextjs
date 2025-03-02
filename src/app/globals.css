@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 @import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
@@ -19,13 +17,13 @@
   --font-sans: Inter, sans-serif;
   --font-serif: Georgia, serif;
 
-  /* Définition globale des line-heights */
-  --line-height-none: 1;
-  --line-height-tight: 1.1;
-  --line-height-snug: 1.25;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.625;
-  --line-height-loose: 2;
+  /* Définition des line-heights pour correspondre aux utilitaires natifs de Tailwind */
+  --line-height-none: 1;        /* leading-none */
+  --line-height-tight: 1.1;     /* leading-tight */
+  --line-height-snug: 1.25;     /* leading-snug */
+  --line-height-normal: 1.5;    /* leading-normal */
+  --line-height-relaxed: 1.625; /* leading-relaxed */
+  --line-height-loose: 2;       /* leading-loose */
   
   /* Définition spécifique pour les gros titres */
   --line-height-headings: 1.1;
@@ -259,31 +257,6 @@
   }
 }
 
-/* Classes utilitaires pour les line-heights */
-@utility leading-none {
-  line-height: var(--line-height-none);
-}
-
-@utility leading-tight {
-  line-height: var(--line-height-tight);
-}
-
-@utility leading-snug {
-  line-height: var(--line-height-snug);
-}
-
-@utility leading-normal {
-  line-height: var(--line-height-normal);
-}
-
-@utility leading-relaxed {
-  line-height: var(--line-height-relaxed);
-}
-
-@utility leading-loose {
-  line-height: var(--line-height-loose);
-}
-
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
@@ -499,10 +472,6 @@
     padding-top: 8rem;
     padding-bottom: 8rem;
   }
-}
-
-@utility writing-mode-vertical {
-  writing-mode: vertical-rl;
 }
 
 @layer base {

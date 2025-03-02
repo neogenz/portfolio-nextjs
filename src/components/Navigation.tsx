@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ArrowUp, Moon, Sun, ArrowUpRight } from 'lucide-react';
-import Link from 'next/link';
-import CVExport from './CVExport';
+import { ArrowUp, ArrowUpRight, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import CVExport from './CVExport';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
