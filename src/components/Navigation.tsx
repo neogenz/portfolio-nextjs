@@ -4,24 +4,19 @@ import { useState, useEffect } from 'react';
 import { ArrowUp, Moon, Sun, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import CVExport from './CVExport';
+import { useTheme } from 'next-themes';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isWideScreen, setIsWideScreen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    // Check if user prefers dark mode
-    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const savedTheme = localStorage.getItem('theme');
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
-      setIsDarkMode(true);
-      document.documentElement.classList.add('dark');
-    }
+    setMounted(true);
     
     const handleScroll = () => {
       const currentPosition = window.scrollY;
@@ -50,14 +45,7 @@ const Navigation = () => {
   }, []);
 
   const toggleTheme = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    }
-    setIsDarkMode(!isDarkMode);
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
   const scrollToTop = () => {
@@ -77,12 +65,17 @@ const Navigation = () => {
     document.body.style.overflow = 'auto';
   };
 
+  // Éviter le rendu non correspondant
+  if (!mounted) return null;
+
+  const isDarkMode = theme === 'dark';
+
   return (
     <>
       <header 
         className={`fixed w-full top-0 z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'py-4 bg-white/95 dark:bg-maxime-dark-bg/95 backdrop-blur-xs shadow-xs' 
+            ? 'py-4 bg-white/95 dark:bg-maxime-dark-bg/95 backdrop-blur-sm shadow-sm' 
             : 'py-6 bg-transparent'
         }`}
       >

@@ -82,7 +82,7 @@ const Hero = () => {
           <div className={`flex items-start space-x-12 mb-16 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div>
               <h3 className="text-3xl md:text-4xl font-light mb-1">+8</h3>
-              <p className="text-sm text-maxime-secondary dark:text-maxime-white/60">Années d'expérience</p>
+              <p className="text-sm text-maxime-secondary dark:text-maxime-white/60">Années d&apos;expérience</p>
             </div>
             <div>
               <h3 className="text-3xl md:text-4xl font-light mb-1">+20</h3>
@@ -122,8 +122,8 @@ const Hero = () => {
         
         <div className="hidden lg:block lg:col-span-5 relative">
           <div className={`relative h-full flex items-center justify-center transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
-            <div className="w-full max-w-[600px] xl:max-w-[750px] 2xl:max-w-[850px] aspect-3/4 overflow-hidden relative">
-              <div className="absolute inset-0 bg-linear-to-b from-maxime-tertiary/80 to-transparent dark:from-maxime-dark-bg/80 mix-blend-multiply z-10"></div>
+            <div className="w-full max-w-[600px] xl:max-w-[750px] 2xl:max-w-[850px] aspect-[3/4] overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-maxime-tertiary/80 to-transparent dark:from-maxime-dark-bg/80 mix-blend-multiply z-10"></div>
               <OptimizedImage 
                 src="/images/optimized/maxime.webp"
                 alt="Maxime De Sogus"
@@ -140,11 +140,11 @@ const Hero = () => {
       {/* Scroll indicator - ajusté pour une meilleure visibilité */}
       <button 
         onClick={scrollToAbout}
-        className={`absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-1200 flex flex-col items-center z-20 bg-white/40 dark:bg-maxime-dark-bg/40 backdrop-blur-xs rounded-md px-3 py-1 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        className={`absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-1200 flex flex-col items-center z-20 bg-white/40 dark:bg-maxime-dark-bg/40 backdrop-blur-sm rounded-md px-3 py-1 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         aria-label="Défiler vers la section À propos"
       >
         <span className="text-xs tracking-widest uppercase mb-1 text-maxime-primary dark:text-maxime-white font-medium">Défiler</span>
-        <ArrowDown className="h-4 w-4 animate-bounce-small" />
+        <ArrowDown className="h-4 w-4 animate-bounce" />
       </button>
     </section>
   );

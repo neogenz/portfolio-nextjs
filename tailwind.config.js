@@ -8,11 +8,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'maxime-primary': '#0D0D0D',
-        'maxime-secondary': '#767676',
-        'maxime-tertiary': '#F0F0F0',
+        'maxime-primary': '#222222',
+        'maxime-secondary': '#7B7B7B',
+        'maxime-tertiary': '#F8F8F8',
         'maxime-white': '#FFFFFF',
-        'maxime-dark-bg': '#121212',
+        'maxime-dark-bg': '#222222',
+        'maxime-dark-card': '#7B7B7B'
       },
       aspectRatio: {
         '3/4': '3 / 4',
@@ -20,6 +21,9 @@ module.exports = {
       screens: {
         'xs': '375px',
         'xr': '414px',
+      },
+      backgroundImage: {
+        'hero-pattern': "url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=2000&q=80')"
       },
     },
   },
