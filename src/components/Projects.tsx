@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
+import OptimizedImage from './ui/OptimizedImage';
 
 // Project data based on the detailed information
 const projects = [
@@ -281,11 +282,14 @@ const Projects = () => {
           {projects.slice(0, 3).map((project, index) => (
             <div key={project.id} className="group relative overflow-hidden rounded-lg">
               <div className="aspect-4/3 overflow-hidden bg-maxime-white dark:bg-maxime-dark-bg rounded-lg">
-                <img 
+                <OptimizedImage 
                   src={project.image} 
                   alt={project.title} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-lg"
-                  loading="lazy"
+                  sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
+                  width={600}
+                  height={450}
+                  quality={75}
                 />
               </div>
               

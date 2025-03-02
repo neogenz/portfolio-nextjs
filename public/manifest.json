@@ -1,0 +1,56 @@
+{
+  "name": "Portfolio de Maxime De Sogus",
+  "short_name": "Portfolio Maxime",
+  "description": "Portfolio de Maxime De Sogus - Développeur Fullstack, expert Angular et développeur frontend",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "orientation": "portrait",
+  "dir": "ltr",
+  "lang": "fr-CH",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "À propos",
+      "url": "/#about",
+      "description": "En savoir plus sur Maxime De Sogus"
+    },
+    {
+      "name": "Projets",
+      "url": "/#projects",
+      "description": "Découvrir les projets réalisés par Maxime De Sogus"
+    },
+    {
+      "name": "Contact",
+      "url": "/#contact",
+      "description": "Contacter Maxime De Sogus"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/icons/screenshot-1.png",
+      "sizes": "1080x1920",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["portfolio", "développement", "web", "mobile", "tech"],
+  "prefer_related_applications": false
+} 
