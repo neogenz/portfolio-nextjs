@@ -67,7 +67,7 @@ const projects = [
       'Achat et gestion de titres de transport',
       'Optimisation pour performances proches des applications natives'
     ],
-    image: 'https://images.unsplash.com/photo-1621955964441-c173e01c6b4a',
+    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9',
     url: 'openit.ch/mobile',
     link: '#',
     skills: ['Angular', 'Ionic', 'Capacitor', 'NX', 'RxJS', 'Mobile', 'Swift', 'Java', 'NgRx', 'Leaflet']
