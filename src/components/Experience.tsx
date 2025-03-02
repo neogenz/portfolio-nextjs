@@ -181,11 +181,11 @@ const Experience = () => {
                     <div key={category} className="reveal" style={{ animationDelay: `${0.1 * categoryIndex}s` }}>
                       <div className="flex flex-col">
                         <h4 className="text-lg font-light text-maxime-primary dark:text-maxime-white mb-4">{category}</h4>
-                        <div className="flex flex-wrap lg:flex-col gap-2">
+                        <div className="flex flex-wrap gap-2">
                           {technologies.map((tech, techIndex) => (
                             <span
                               key={`${category}-${techIndex}`}
-                              className="text-sm px-3 py-1.5 bg-maxime-white dark:bg-maxime-dark-bg text-maxime-secondary dark:text-maxime-white/70 rounded-full transition-all duration-300 hover:bg-maxime-primary hover:text-maxime-white dark:hover:bg-maxime-primary whitespace-nowrap"
+                              className="text-sm px-4 py-2 bg-maxime-tertiary dark:bg-maxime-dark-card text-maxime-primary dark:text-maxime-white/70 rounded-full whitespace-nowrap"
                             >
                               {tech}
                             </span>
@@ -207,7 +207,7 @@ const Experience = () => {
                         {technologies.map((tech, techIndex) => (
                           <span
                             key={`${category}-${techIndex}`}
-                            className="text-sm px-3 py-1.5 bg-maxime-white dark:bg-maxime-dark-bg text-maxime-secondary dark:text-maxime-white/70 rounded-full transition-all duration-300 hover:bg-maxime-primary hover:text-maxime-white dark:hover:bg-maxime-primary whitespace-nowrap"
+                            className="text-sm px-4 py-2 bg-maxime-tertiary dark:bg-maxime-dark-card text-maxime-primary dark:text-maxime-white/70 rounded-full whitespace-nowrap"
                           >
                             {tech}
                           </span>
