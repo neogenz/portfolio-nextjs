@@ -67,7 +67,7 @@ const Contact = () => {
             
             <div className="mt-4">
               <p className="mb-2 text-maxime-secondary/60 dark:text-maxime-white/60">Localisation :</p>
-              <p className="text-lg text-maxime-primary dark:text-maxime-white">Route Cantonale 158, Vétroz, Valais, Suisse</p>
+              <p className="text-lg text-maxime-primary dark:text-maxime-white">Vétroz, Valais, Suisse</p>
             </div>
             
             <div className="mt-6">

@@ -6,7 +6,7 @@ export const experienceData = [
   {
     id: 1,
     title: "Senior Full Stack Developer",
-    company: "Moviplus OpenIT SA",
+    company: "OpenIT SA",
     period: "Octobre 2018 - Présent",
     location: "Lausanne, Suisse",
     description: [

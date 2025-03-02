@@ -9,7 +9,7 @@ import { saveAs } from 'file-saver';
 const personalInfo = {
   name: "Maxime De Sogus",
   title: "Développeur fullstack Angular & NestJS",
-  address: "Route Cantonale 158, Vétroz, Valais, Suisse",
+  address: "Vétroz, Valais, Suisse",
   phone: "+41 76 498 76 31",
   email: "maxime.desogus@gmail.com",
   linkedin: "linkedin.com/in/maximedesogus"
