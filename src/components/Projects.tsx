@@ -248,17 +248,6 @@ const Projects = () => {
                         ))}
                       </ul>
                       
-                      <div className="flex items-center gap-4 mb-6">
-                        <a 
-                          href={project.link}
-                          className="text-sm text-maxime-primary dark:text-maxime-white underline-offset-4 hover:underline flex items-center gap-1"
-                          onMouseEnter={() => setHoveredProject(project.id)}
-                          onMouseLeave={() => setHoveredProject(null)}
-                        >
-                          {project.url} <ExternalLink className="w-3 h-3" />
-                        </a>
-                      </div>
-                      
                       <div className="flex flex-wrap gap-2">
                         {project.skills.map((skill, skillIndex) => (
                           <span 
@@ -309,9 +298,6 @@ const Projects = () => {
             chaque projet a contribué à renforcer mon expertise et ma passion pour l'ingénierie logicielle.
             Je suis constamment à la recherche de nouveaux défis techniques pour continuer à évoluer.
           </p>
-          <a href="#contact" className="bg-maxime-primary dark:bg-maxime-white w-14 h-14 rounded-full flex items-center justify-center">
-            <ArrowUpRight className="w-6 h-6 text-maxime-white dark:text-maxime-primary" />
-          </a>
         </div>
       </div>
     </section>
