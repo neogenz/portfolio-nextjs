@@ -1,8 +1,11 @@
 ---
-description: Tailwind 4
-globs: 
+description: Tailwind 4 description
+globs: *.tsx
 alwaysApply: false
 ---
 
 # Your rule content
 - Use tailwind 4 directives
+Pour les projets Tailwind v4, gardez à l'esprit que:
+- Pour les dégradés, utilisez les noms de couleurs définis dans votre thème plutôt que d'essayer d'utiliser les variables CSS directement.
+- Si vous avez besoin d'une couleur personnalisée, définissez-la dans votre thème Tailwind et utilisez-la comme n'importe quelle autre couleur.

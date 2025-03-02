@@ -14,20 +14,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
   // Assurer que le composant est rendu uniquement côté client pour éviter les erreurs d'hydratation
   const [mounted, setMounted] = useState(false);
   
-  // Effet pour marquer le montage et appliquer les styles après que le composant soit monté côté client
+  // Effet pour marquer le montage - pas de manipulation directe des classes DOM avec Tailwind v4
   useEffect(() => {
     setMounted(true);
-    // Appliquer les classes bg après le montage côté client
-    document.body.classList.add('bg-maxime-white');
-    
-    // Vérifier les préférences du thème sombre 
-    const isDarkMode = localStorage.getItem('theme') === 'dark' || 
-      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      document.body.classList.add('dark:bg-maxime-dark-bg');
-    }
   }, []);
   
   // Supprime/cache le contenu jusqu'à ce que le client soit prêt
@@ -41,7 +30,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider attribute="class" enableSystem={false} defaultTheme="light">
+      <ThemeProvider attribute="class" enableSystem={true} defaultTheme="system">
         <TooltipProvider>
           {children}
           <Toaster />

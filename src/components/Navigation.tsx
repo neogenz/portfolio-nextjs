@@ -164,15 +164,15 @@ const Navigation = () => {
         </nav>
       </div>
 
-      {/* Scroll to top button */}
-      <button 
-        onClick={scrollToTop} 
-        className={`fixed bottom-8 right-8 w-12 h-12 bg-maxime-primary dark:bg-maxime-white dark:text-maxime-primary text-maxime-white rounded-full flex items-center justify-center transition-all duration-300 shadow-md z-50 ${
-          showScrollTop ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+      {/* Bouton de retour en haut */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 z-40 p-3 rounded-full shadow-lg bg-maxime-tertiary dark:bg-maxime-dark-card transition-all duration-300 hover:scale-110 flex items-center justify-center ${
+          showScrollTop ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
         }`}
         aria-label="Retour en haut"
       >
-        <ArrowUp className="h-5 w-5" />
+        <ArrowUp className="w-5 h-5 text-maxime-primary dark:text-maxime-white" />
       </button>
     </>
   );
