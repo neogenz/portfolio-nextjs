@@ -19,6 +19,17 @@
   --font-sans: Inter, sans-serif;
   --font-serif: Georgia, serif;
 
+  /* Définition globale des line-heights */
+  --line-height-none: 1;
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  /* Définition spécifique pour les gros titres */
+  --line-height-headings: 1.1;
+
   --color-maxime-primary: #222222;
   --color-maxime-secondary: #7b7b7b;
   --color-maxime-tertiary: #f8f8f8;
@@ -27,6 +38,7 @@
   --color-maxime-dark-card: #7b7b7b;
   --color-gray-200: #e5e7eb;
   --color-gray-400: #9ca3af;
+  --color-gray-100: #f3f4f6;
 
   --background-image-hero-pattern: url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=2000&q=80');
 
@@ -228,6 +240,50 @@
   }
 }
 
+/* Styles globaux pour les line-heights */
+@layer base {
+  h1 {
+    line-height: var(--line-height-headings);
+  }
+  
+  h2 {
+    line-height: var(--line-height-tight);
+  }
+  
+  h3, h4, h5, h6 {
+    line-height: var(--line-height-snug);
+  }
+  
+  p, li, blockquote {
+    line-height: var(--line-height-normal);
+  }
+}
+
+/* Classes utilitaires pour les line-heights */
+@utility leading-none {
+  line-height: var(--line-height-none);
+}
+
+@utility leading-tight {
+  line-height: var(--line-height-tight);
+}
+
+@utility leading-snug {
+  line-height: var(--line-height-snug);
+}
+
+@utility leading-normal {
+  line-height: var(--line-height-normal);
+}
+
+@utility leading-relaxed {
+  line-height: var(--line-height-relaxed);
+}
+
+@utility leading-loose {
+  line-height: var(--line-height-loose);
+}
+
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
@@ -290,18 +346,163 @@
 }
 
 @utility container-padding {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   
   @media (min-width: 640px) {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
   
   @media (min-width: 1024px) {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
   }
+}
+
+/* Nouveaux utilitaires convertis depuis l'ancien fichier index.css */
+@utility button-primary {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background-color: var(--color-maxime-primary);
+  color: white;
+  font-weight: 500;
+  transition-property: all;
+  transition-duration: 300ms;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+  
+  .dark & {
+    background-color: var(--color-maxime-white);
+    color: var(--color-maxime-primary);
+  }
+}
+
+@utility button-secondary {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background-color: transparent;
+  color: var(--color-maxime-primary);
+  border-width: 1px;
+  border-color: color-mix(in srgb, var(--color-maxime-primary) 40%, transparent);
+  transition-property: all;
+  transition-duration: 300ms;
+  
+  &:hover {
+    background-color: color-mix(in srgb, var(--color-maxime-primary) 5%, transparent);
+  }
+  
+  .dark & {
+    color: var(--color-maxime-white);
+    border-color: color-mix(in srgb, var(--color-maxime-white) 40%, transparent);
+    
+    &:hover {
+      background-color: color-mix(in srgb, var(--color-maxime-white) 10%, transparent);
+    }
+  }
+}
+
+@utility input-field {
+  width: 100%;
+  border-bottom-width: 1px;
+  border-color: color-mix(in srgb, var(--color-maxime-primary) 20%, transparent);
+  background-color: transparent;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  color: var(--color-maxime-primary);
+  
+  &::placeholder {
+    color: color-mix(in srgb, var(--color-maxime-primary) 40%, transparent);
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: var(--color-maxime-primary);
+  }
+  
+  .dark & {
+    color: var(--color-maxime-white);
+    border-color: color-mix(in srgb, var(--color-maxime-white) 20%, transparent);
+    
+    &::placeholder {
+      color: color-mix(in srgb, var(--color-maxime-white) 40%, transparent);
+    }
+    
+    &:focus {
+      border-color: var(--color-maxime-white);
+    }
+  }
+}
+
+@utility reveal {
+  opacity: 0;
+}
+
+@utility reveal-active {
+  animation: var(--animate-fade-in-up);
+}
+
+@utility link-hover {
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0.125rem;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-maxime-primary);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s;
+  }
+  
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+  .dark &::after {
+    background-color: var(--color-maxime-white);
+  }
+}
+
+@utility nav-item {
+  position: relative;
+  transition-property: color;
+  transition-duration: 300ms;
+  
+  &:hover {
+    color: var(--color-maxime-primary);
+  }
+  
+  .dark &:hover {
+    color: var(--color-maxime-white);
+  }
+}
+
+@utility section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  
+  @media (min-width: 768px) {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+@utility writing-mode-vertical {
+  writing-mode: vertical-rl;
 }
 
 @layer base {
@@ -326,6 +527,16 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
+    
+    /* Variables sidebar ajoutées */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -348,15 +559,97 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+    
+    /* Variables sidebar ajoutées */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   body {
     font-family: 'Inter', sans-serif;
     color: hsl(var(--foreground));
     background: hsl(var(--background));
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   html {
     scroll-behavior: smooth;
   }
+  
+  /* Styles pour la barre de défilement */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--color-gray-100);
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background-color: var(--color-maxime-dark-card);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: color-mix(in srgb, var(--color-maxime-primary) 20%, transparent);
+    border-radius: 0.375rem;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background-color: color-mix(in srgb, var(--color-maxime-white) 20%, transparent);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in srgb, var(--color-maxime-primary) 30%, transparent);
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in srgb, var(--color-maxime-white) 30%, transparent);
+  }
+}
+
+/* Optimisation des polices avec font-display: swap pour éviter le FOUT */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format('woff2');
 }

@@ -66,7 +66,7 @@ const Hero = () => {
   return (
     <section className="relative h-screen flex items-center overflow-hidden bg-maxime-white text-maxime-primary dark:bg-maxime-dark-bg dark:text-maxime-white">
       {/* Vertical text - adaptatif selon la taille d'écran */}
-      <div className="absolute right-2 xr:left-6 xr:right-auto top-6 bottom-0 flex flex-col justify-between py-10 text-xs text-maxime-secondary dark:text-maxime-white/60 tracking-widest uppercase writing-mode-vertical transform rotate-180">
+      <div className="absolute right-2 xr:left-6 xr:right-auto top-16 bottom-0 flex flex-col justify-between text-xs text-maxime-secondary dark:text-maxime-white/60 tracking-widest uppercase [writing-mode:vertical-rl] transform rotate-180">
         <div className="transform rotate-180">Expert Angular</div>
         <div className="transform rotate-180">Portfolio</div>
       </div>
@@ -78,7 +78,7 @@ const Hero = () => {
         style={{ willChange: 'transform, opacity' }}
       >
         <div className="col-span-12 lg:col-span-7 flex flex-col justify-center">
-          {/* Stats - Utilisation de flex et gap plutôt que space-x */}
+          {/* Stats */}
           <div className={`flex items-start gap-12 mb-16 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div>
               <h3 className="text-3xl md:text-4xl font-light mb-1">+8</h3>
@@ -92,10 +92,10 @@ const Hero = () => {
           
           {/* Main heading */}
           <div className={`mb-8 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-7xl md:text-8xl xl:text-9xl font-light mb-2 leading-tight tracking-tight">
+            <h1 className="text-7xl md:text-8xl xl:text-9xl font-light mb-2 tracking-tight">
               Maxime
             </h1>
-            <h1 className="text-7xl md:text-8xl xl:text-9xl font-light leading-tight tracking-tight text-maxime-secondary">
+            <h1 className="text-7xl md:text-8xl xl:text-9xl font-light tracking-tight text-maxime-secondary">
               De Sogus
             </h1>
           </div>
@@ -109,27 +109,20 @@ const Hero = () => {
             </p>
           </div>
           
-          {/* CTA Button - Mise à jour des transitions et effets de survol */}
+          {/* CTA Button */}
           <div className={`mt-8 transition-all duration-1000 delay-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <a 
               href="#projects" 
-              className="px-8 py-3 border border-maxime-primary dark:border-maxime-white inline-block transition duration-300 
-                outline-none bg-transparent text-maxime-primary dark:text-maxime-white
-                hover:bg-maxime-primary hover:text-maxime-white 
-                dark:hover:bg-maxime-white dark:hover:text-maxime-primary
-                focus-visible:ring-2 focus-visible:ring-maxime-primary dark:focus-visible:ring-maxime-white
-                focus-visible:ring-offset-2"
+              className="px-8 py-3 border border-maxime-primary dark:border-maxime-white inline-block hover:bg-maxime-primary hover:text-maxime-white dark:hover:bg-maxime-white dark:hover:text-maxime-primary transition duration-300 outline-none focus-visible:ring-2 focus-visible:ring-maxime-primary dark:focus-visible:ring-maxime-white focus-visible:ring-offset-2"
             >
               Voir mes projets
             </a>
           </div>
         </div>
         
-        {/* Section de l'image - optimisée pour Tailwind v4 */}
         <div className="hidden lg:block lg:col-span-5 relative">
           <div className={`relative h-full flex items-center justify-center transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
-            <div className="w-full max-w-[600px] xl:max-w-[750px] 2xl:max-w-[850px] aspect-[3/4] overflow-hidden relative max-h-[85vh] my-auto mx-auto">
-              {/* Gradient - Mis à jour pour v4 */}
+            <div className="w-full max-w-[600px] xl:max-w-[750px] 2xl:max-w-[850px] aspect-[3/4] overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-b from-maxime-tertiary/80 to-transparent dark:from-maxime-dark-bg/80 mix-blend-multiply z-10"></div>
               <OptimizedImage 
                 src="/images/optimized/maxime.webp"
@@ -137,14 +130,14 @@ const Hero = () => {
                 width={1143}
                 height={1432}
                 priority={true}
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-top"
               />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator - Optimisé pour v4 */}
+      {/* Scroll indicator - ajusté pour une meilleure visibilité */}
       <button 
         onClick={scrollToAbout}
         className={`absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 transition-all duration-1000 delay-1200 
