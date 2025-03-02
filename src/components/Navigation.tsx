@@ -1,27 +1,21 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ArrowUp, Moon, Sun, ArrowUpRight } from 'lucide-react';
-import Link from 'next/link';
+import { ArrowUp, ArrowUpRight, Moon, Sun } from 'lucide-react';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 import CVExport from './CVExport';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isWideScreen, setIsWideScreen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    // Check if user prefers dark mode
-    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const savedTheme = localStorage.getItem('theme');
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
-      setIsDarkMode(true);
-      document.documentElement.classList.add('dark');
-    }
+    setMounted(true);
     
     const handleScroll = () => {
       const currentPosition = window.scrollY;
@@ -50,14 +44,7 @@ const Navigation = () => {
   }, []);
 
   const toggleTheme = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    }
-    setIsDarkMode(!isDarkMode);
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
   const scrollToTop = () => {
@@ -76,6 +63,11 @@ const Navigation = () => {
     setMobileMenuOpen(false);
     document.body.style.overflow = 'auto';
   };
+
+  // Éviter le rendu non correspondant
+  if (!mounted) return null;
+
+  const isDarkMode = theme === 'dark';
 
   return (
     <>
@@ -171,15 +163,15 @@ const Navigation = () => {
         </nav>
       </div>
 
-      {/* Scroll to top button */}
-      <button 
-        onClick={scrollToTop} 
-        className={`fixed bottom-8 right-8 w-12 h-12 bg-maxime-primary dark:bg-maxime-white dark:text-maxime-primary text-maxime-white rounded-full flex items-center justify-center transition-all duration-300 shadow-md z-50 ${
-          showScrollTop ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+      {/* Bouton de retour en haut */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 z-40 p-3 rounded-full shadow-lg bg-maxime-tertiary dark:bg-maxime-dark-card transition-all duration-300 hover:scale-110 flex items-center justify-center ${
+          showScrollTop ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
         }`}
         aria-label="Retour en haut"
       >
-        <ArrowUp className="h-5 w-5" />
+        <ArrowUp className="w-5 h-5 text-maxime-primary dark:text-maxime-white" />
       </button>
     </>
   );

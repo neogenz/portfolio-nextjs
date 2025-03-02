@@ -9,7 +9,7 @@ const projects = [
     id: 1,
     title: 'Système d\'Aide à l\'Exploitation (SAE)',
     subtitle: 'Application d\'Administration Multi-Client',
-    client: 'Moviplus OpenIT SA',
+    client: 'OpenIT SA',
     category: 'Application Web',
     description: 'Interface de gestion en temps réel du réseau de transport. Solution multi-client avec navigation spécifique, écrans et fonctionnalités partagées ou spécifiques selon les clients, construite autour d\'un noyau commun. Objectif principal: Offrir un suivi en temps réel pour améliorer la gestion opérationnelle.',
     details: [
@@ -24,7 +24,7 @@ const projects = [
       'Utilisation avancée des fonctionnalités d\'Angular (Signals, Resources, lazy loading, standalone components)'
     ],
     image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f',
-    url: 'moviplus.ch/sae',
+    url: 'openit.ch/sae',
     link: '#',
     skills: ['Angular 19', 'RxJS', 'Signals', 'TailwindCSS', 'REST API', 'CI/CD', 'Jest', 'Playwright', 'Sentry']
   },
@@ -32,7 +32,7 @@ const projects = [
     id: 2,
     title: 'Plateforme de Gestion des Objets Trouvés',
     subtitle: 'Automatisation de recherche',
-    client: 'Moviplus OpenIT SA',
+    client: 'OpenIT SA',
     category: 'Fullstack',
     description: 'Automatisation de la recherche et récupération d\'objets perdus. Développement Fullstack Angular / NestJS / Prisma / MongoDB. Objectif: Réduire le coût de gestion des objets trouvés et augmenter le taux de récupération.',
     details: [
@@ -44,7 +44,7 @@ const projects = [
       'Optimisation de la récupération des objets grâce à une interface utilisateur intuitive'
     ],
     image: 'https://images.unsplash.com/photo-1541726260-e6b6a6a08b27',
-    url: 'lost.moviplus.ch',
+    url: 'lost.openit.ch',
     link: '#',
     skills: ['Angular', 'NestJS', 'Prisma', 'MongoDB', 'IA', 'RxJS', 'Python Flask', 'HuggingFace', 'GPT']
   },
@@ -52,7 +52,7 @@ const projects = [
     id: 3,
     title: 'Application Mobile Multi-Clients',
     subtitle: 'Transports Publics',
-    client: 'Moviplus OpenIT SA',
+    client: 'OpenIT SA',
     category: 'Application Mobile',
     description: 'Information voyageur et gestion de titres de transport. Architecture monorepo NX avec Angular / Ionic / Capacitor. Objectif: Fournir une application performante pour les usagers des transports publics.',
     details: [
@@ -67,7 +67,7 @@ const projects = [
       'Optimisation pour performances proches des applications natives'
     ],
     image: 'https://images.unsplash.com/photo-1621955964441-c173e01c6b4a',
-    url: 'moviplus.ch/mobile',
+    url: 'openit.ch/mobile',
     link: '#',
     skills: ['Angular', 'Ionic', 'Capacitor', 'NX', 'RxJS', 'Mobile', 'Swift', 'Java', 'NgRx', 'Leaflet']
   },
@@ -75,7 +75,7 @@ const projects = [
     id: 4,
     title: 'Système de Vente et Gestion',
     subtitle: 'Titres de Transport',
-    client: 'Moviplus OpenIT SA',
+    client: 'OpenIT SA',
     category: 'Backend',
     description: 'Solution de vente multi-clients avec APIs REST & GraphQL. Backend NestJS & MongoDB. Objectif: Offrir une expérience utilisateur fluide et une gestion optimisée des transactions.',
     details: [
@@ -87,7 +87,7 @@ const projects = [
       'Tests unitaires & intégration (Jest, TSMockito)'
     ],
     image: 'https://images.unsplash.com/photo-1545987796-200677ee1011',
-    url: 'api.moviplus.ch',
+    url: 'api.openit.ch',
     link: '#',
     skills: ['NestJS', 'MongoDB', 'GraphQL', 'REST API', 'RxJS', 'Jest', 'TSMockito', 'Batch Processing']
   },
@@ -95,7 +95,7 @@ const projects = [
     id: 5,
     title: 'Système de Comptage Passagers',
     subtitle: 'Répartition des Revenus',
-    client: 'Moviplus OpenIT SA',
+    client: 'OpenIT SA',
     category: 'Fullstack',
     description: 'Suivi des passagers et gestion des recettes pour opérateurs de transport. Frontend Angular & Backend Java Spring Boot. Objectif: Optimisation financière et meilleure répartition des revenus entre opérateurs.',
     details: [
@@ -105,7 +105,7 @@ const projects = [
       'Automatisation des calculs via architecture scalable'
     ],
     image: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e',
-    url: 'count.moviplus.ch',
+    url: 'count.openit.ch',
     link: '#',
     skills: ['Angular', 'Java Spring', 'RxJS', 'Géolocalisation', 'Automatisation']
   },
@@ -113,7 +113,7 @@ const projects = [
     id: 6,
     title: 'Applications Opérationnelles',
     subtitle: 'Informations Voyageurs',
-    client: 'Moviplus OpenIT SA',
+    client: 'OpenIT SA',
     category: 'Multi-Platformes',
     description: 'Communication en temps réel avec les usagers des transports publics. Objectif: Améliorer l\'efficacité du service de transport et la qualité des informations.',
     details: [
@@ -125,7 +125,7 @@ const projects = [
       'Suivi GPS des bus en temps réel'
     ],
     image: 'https://images.unsplash.com/photo-1532939163844-547f958e91b4',
-    url: 'tracking.moviplus.ch',
+    url: 'tracking.openit.ch',
     link: '#',
     skills: ['Angular', 'Ionic', 'Electron', 'Windows', 'GPS', 'Capacitor', 'Temps réel']
   },
@@ -133,7 +133,7 @@ const projects = [
     id: 7,
     title: 'POC Backend de Vente',
     subtitle: 'Titres de Transport .NET',
-    client: 'Moviplus OpenIT SA',
+    client: 'OpenIT SA',
     category: 'Fullstack',
     description: 'Système de vente centralisé pour titres de transport. Objectif: Tester la faisabilité d\'un système de vente centralisé avec .NET.',
     details: [
@@ -143,7 +143,7 @@ const projects = [
       'Architecture orientée services pour une scalabilité optimale'
     ],
     image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4',
-    url: 'poc.moviplus.ch',
+    url: 'poc.openit.ch',
     link: '#',
     skills: ['.NET', 'EntityFramework', 'PostgreSQL', 'Angular', 'Swagger', 'REST API']
   }
@@ -280,7 +280,7 @@ const Projects = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 reveal" style={{ animationDelay: '0.6s' }}>
           {projects.slice(0, 3).map((project, index) => (
             <div key={project.id} className="group relative overflow-hidden rounded-lg">
-              <div className="aspect-[4/3] overflow-hidden bg-maxime-white dark:bg-maxime-dark-bg rounded-lg">
+              <div className="aspect-4/3 overflow-hidden bg-maxime-white dark:bg-maxime-dark-bg rounded-lg">
                 <img 
                   src={project.image} 
                   alt={project.title} 

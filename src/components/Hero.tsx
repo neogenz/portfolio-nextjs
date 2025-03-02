@@ -27,7 +27,7 @@ const Hero = () => {
   ];
   
   // Utiliser notre hook personnalisé au lieu de la logique interne
-  const { text: typewriterText, isDeleting } = useTypewriter({
+  const { text: typewriterText } = useTypewriter({
     texts: textArray,
     typingSpeed: 100,
     deletingSpeed: 50,
@@ -66,7 +66,7 @@ const Hero = () => {
   return (
     <section className="relative h-screen flex items-center overflow-hidden bg-maxime-white text-maxime-primary dark:bg-maxime-dark-bg dark:text-maxime-white">
       {/* Vertical text - adaptatif selon la taille d'écran */}
-      <div className="absolute right-2 xr:left-6 xr:right-auto top-6 bottom-0 flex flex-col justify-between py-10 text-xs text-maxime-secondary dark:text-maxime-white/60 tracking-widest uppercase writing-mode-vertical transform rotate-180">
+      <div className="absolute right-2 xr:left-6 xr:right-auto top-16 bottom-0 flex flex-col justify-between text-xs text-maxime-secondary dark:text-maxime-white/60 tracking-widest uppercase [writing-mode:vertical-rl] transform rotate-180">
         <div className="transform rotate-180">Expert Angular</div>
         <div className="transform rotate-180">Portfolio</div>
       </div>
@@ -79,10 +79,10 @@ const Hero = () => {
       >
         <div className="col-span-12 lg:col-span-7 flex flex-col justify-center">
           {/* Stats */}
-          <div className={`flex items-start space-x-12 mb-16 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+          <div className={`flex items-start gap-12 mb-16 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div>
               <h3 className="text-3xl md:text-4xl font-light mb-1">+8</h3>
-              <p className="text-sm text-maxime-secondary dark:text-maxime-white/60">Années d'expérience</p>
+              <p className="text-sm text-maxime-secondary dark:text-maxime-white/60">Années d&apos;expérience</p>
             </div>
             <div>
               <h3 className="text-3xl md:text-4xl font-light mb-1">+20</h3>
@@ -92,10 +92,10 @@ const Hero = () => {
           
           {/* Main heading */}
           <div className={`mb-8 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-7xl md:text-8xl xl:text-9xl font-light mb-2 leading-tight tracking-tight">
+            <h1 className="text-7xl md:text-8xl xl:text-9xl font-light mb-2 tracking-tight">
               Maxime
             </h1>
-            <h1 className="text-7xl md:text-8xl xl:text-9xl font-light leading-tight tracking-tight text-maxime-secondary">
+            <h1 className="text-7xl md:text-8xl xl:text-9xl font-light tracking-tight text-maxime-secondary">
               De Sogus
             </h1>
           </div>
@@ -113,7 +113,7 @@ const Hero = () => {
           <div className={`mt-8 transition-all duration-1000 delay-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <a 
               href="#projects" 
-              className="px-8 py-3 border border-maxime-primary dark:border-maxime-white inline-block hover:bg-maxime-primary hover:text-maxime-white dark:hover:bg-maxime-white dark:hover:text-maxime-primary transition-colors duration-300"
+              className="px-8 py-3 border border-maxime-primary dark:border-maxime-white inline-block hover:bg-maxime-primary hover:text-maxime-white dark:hover:bg-maxime-white dark:hover:text-maxime-primary transition duration-300 outline-none focus-visible:ring-2 focus-visible:ring-maxime-primary dark:focus-visible:ring-maxime-white focus-visible:ring-offset-2"
             >
               Voir mes projets
             </a>
@@ -130,7 +130,7 @@ const Hero = () => {
                 width={1143}
                 height={1432}
                 priority={true}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top"
               />
             </div>
           </div>
@@ -140,11 +140,15 @@ const Hero = () => {
       {/* Scroll indicator - ajusté pour une meilleure visibilité */}
       <button 
         onClick={scrollToAbout}
-        className={`absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-1200 flex flex-col items-center z-20 bg-white/40 dark:bg-maxime-dark-bg/40 backdrop-blur-sm rounded-md px-3 py-1 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        className={`absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 transition-all duration-1000 delay-1200 
+          flex flex-col items-center z-20 
+          bg-white/40 dark:bg-maxime-dark-bg/40 backdrop-blur-sm rounded-md px-3 py-1
+          hover:bg-white/60 dark:hover:bg-maxime-dark-bg/60
+          ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         aria-label="Défiler vers la section À propos"
       >
         <span className="text-xs tracking-widest uppercase mb-1 text-maxime-primary dark:text-maxime-white font-medium">Défiler</span>
-        <ArrowDown className="h-4 w-4 animate-bounce-small" />
+        <ArrowDown className="h-4 w-4 animate-bounce" />
       </button>
     </section>
   );

@@ -25,7 +25,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-maxime-tertiary data-[state=open]:bg-maxime-tertiary dark:focus:bg-maxime-dark-card dark:data-[state=open]:bg-maxime-dark-card",
+      "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-hidden focus:bg-maxime-tertiary data-[state=open]:bg-maxime-tertiary dark:focus:bg-maxime-dark-card dark:data-[state=open]:bg-maxime-dark-card",
       inset && "pl-8",
       className
     )}
@@ -81,7 +81,7 @@ const DropdownMenuItem = React.forwardRef<
   <DropdownMenuPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-maxime-tertiary focus:text-maxime-primary data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-maxime-dark-card dark:focus:text-maxime-white",
+      "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-hidden transition-colors focus:bg-maxime-tertiary focus:text-maxime-primary data-disabled:pointer-events-none data-disabled:opacity-50 dark:focus:bg-maxime-dark-card dark:focus:text-maxime-white",
       inset && "pl-8",
       className
     )}
@@ -97,7 +97,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
   <DropdownMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-maxime-tertiary focus:text-maxime-primary data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-maxime-dark-card dark:focus:text-maxime-white",
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-hidden transition-colors focus:bg-maxime-tertiary focus:text-maxime-primary data-disabled:pointer-events-none data-disabled:opacity-50 dark:focus:bg-maxime-dark-card dark:focus:text-maxime-white",
       className
     )}
     checked={checked}
@@ -121,7 +121,7 @@ const DropdownMenuRadioItem = React.forwardRef<
   <DropdownMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-maxime-tertiary focus:text-maxime-primary data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-maxime-dark-card dark:focus:text-maxime-white",
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-hidden transition-colors focus:bg-maxime-tertiary focus:text-maxime-primary data-disabled:pointer-events-none data-disabled:opacity-50 dark:focus:bg-maxime-dark-card dark:focus:text-maxime-white",
       className
     )}
     {...props}
