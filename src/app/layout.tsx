@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import ResourcePreload from "@/components/ResourcePreload";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -64,6 +65,7 @@ export default function RootLayout({
         {/* DNS Prefetch pour les domaines tiers */}
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <GoogleAnalytics />
       </head>
       <body className="overflow-x-hidden">
         <Providers>
