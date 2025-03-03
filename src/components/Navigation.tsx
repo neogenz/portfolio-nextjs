@@ -2,61 +2,80 @@
 
 import { ArrowUp, ArrowUpRight, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import CVExport from './CVExport';
 
-const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showScrollTop, setShowScrollTop] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
+// Hook personnalisé pour gérer le scroll et les dimensions
+const useScrollAndResize = () => {
+  const [scrollState, setScrollState] = useState({
+    isScrolled: false,
+    showScrollTop: false,
+    scrollProgress: 0
+  });
   const [isWideScreen, setIsWideScreen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    setMounted(true);
+  // Fonction pour gérer le scroll
+  const handleScroll = useCallback(() => {
+    const currentPosition = window.scrollY;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollHeight > 0 ? (currentPosition / scrollHeight) * 100 : 0;
     
-    const handleScroll = () => {
-      const currentPosition = window.scrollY;
-      setIsScrolled(currentPosition > 50);
-      setShowScrollTop(currentPosition > 300);
-      
-      // Calculate scroll progress
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = scrollHeight > 0 ? (currentPosition / scrollHeight) * 100 : 0;
-      setScrollProgress(progress);
-    };
-
-    const handleResize = () => {
-      setIsWideScreen(window.innerWidth > 1350);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleResize);
-    // Initial check
-    handleResize();
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
-    };
+    setScrollState({
+      isScrolled: currentPosition > 50,
+      showScrollTop: currentPosition > 300,
+      scrollProgress: progress
+    });
   }, []);
 
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
+  // Fonction pour gérer le redimensionnement
+  const handleResize = useCallback(() => {
+    setIsWideScreen(window.innerWidth > 1350);
+  }, []);
 
+  // Configurer les écouteurs d'événements
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Initialisation
+      handleScroll();
+      handleResize();
+      
+      // Ajouter les écouteurs
+      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleResize);
+      
+      // Nettoyage
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+  }, [handleScroll, handleResize]);
+
+  return { ...scrollState, isWideScreen };
+};
+
+const Navigation = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const { isScrolled, showScrollTop, scrollProgress, isWideScreen } = useScrollAndResize();
+
+  // Monter le composant
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Fonctions de navigation simplifiées
+  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+  
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-    document.body.style.overflow = mobileMenuOpen ? 'auto' : 'hidden';
+    const newState = !mobileMenuOpen;
+    setMobileMenuOpen(newState);
+    document.body.style.overflow = newState ? 'hidden' : 'auto';
   };
 
   const closeMobileMenu = () => {
@@ -69,6 +88,17 @@ const Navigation = () => {
 
   const isDarkMode = theme === 'dark';
 
+  // Styles communs extraits en constantes
+  const linkStyles = "text-sm text-maxime-primary dark:text-maxime-white hover:opacity-70 transition-opacity duration-300";
+  const mobileLinkStyles = "text-maxime-primary dark:text-maxime-white hover:opacity-70 transition-opacity duration-300";
+
+  const navLinks = [
+    { href: "#about", label: "À propos" },
+    { href: "#experience", label: "Expérience" },
+    { href: "#projects", label: "Projets" },
+    { href: "#contact", label: "Contact" }
+  ];
+
   return (
     <>
       <header 
@@ -79,7 +109,8 @@ const Navigation = () => {
         }`}
       >
         {/* Scroll Progress Bar */}
-        <div className={`absolute bottom-0 left-0 h-0.5 bg-maxime-primary dark:bg-maxime-white transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-0'}`} 
+        <div 
+          className={`absolute bottom-0 left-0 h-0.5 bg-maxime-primary dark:bg-maxime-white transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-0'}`} 
           style={{ width: `${scrollProgress}%` }}
         ></div>
         
@@ -89,13 +120,14 @@ const Navigation = () => {
             🚀
           </a>
 
-          {/* Desktop Navigation - Adaptatif selon la taille d'écran */}
+          {/* Desktop Navigation */}
           <div className={`hidden lg:flex items-center ${isWideScreen ? 'absolute left-1/2 transform -translate-x-1/2' : 'mx-auto'}`}>
             <nav className="flex items-center space-x-6 lg:space-x-8">
-              <a href="#about" className="text-sm text-maxime-primary dark:text-maxime-white hover:opacity-70 transition-opacity duration-300">À propos</a>
-              <a href="#experience" className="text-sm text-maxime-primary dark:text-maxime-white hover:opacity-70 transition-opacity duration-300">Expérience</a>
-              <a href="#projects" className="text-sm text-maxime-primary dark:text-maxime-white hover:opacity-70 transition-opacity duration-300">Projets</a>
-              <a href="#contact" className="text-sm text-maxime-primary dark:text-maxime-white hover:opacity-70 transition-opacity duration-300">Contact</a>
+              {navLinks.map(link => (
+                <a key={link.href} href={link.href} className={linkStyles}>
+                  {link.label}
+                </a>
+              ))}
             </nav>
           </div>
 
@@ -151,10 +183,16 @@ const Navigation = () => {
         }`}
       >
         <nav className="flex flex-col items-center space-y-8 text-2xl">
-          <a href="#about" className="text-maxime-primary dark:text-maxime-white hover:opacity-70 transition-opacity duration-300" onClick={closeMobileMenu}>À propos</a>
-          <a href="#experience" className="text-maxime-primary dark:text-maxime-white hover:opacity-70 transition-opacity duration-300" onClick={closeMobileMenu}>Expérience</a>
-          <a href="#projects" className="text-maxime-primary dark:text-maxime-white hover:opacity-70 transition-opacity duration-300" onClick={closeMobileMenu}>Projets</a>
-          <a href="#contact" className="text-maxime-primary dark:text-maxime-white hover:opacity-70 transition-opacity duration-300" onClick={closeMobileMenu}>Contact</a>
+          {navLinks.map(link => (
+            <a 
+              key={link.href} 
+              href={link.href} 
+              className={mobileLinkStyles} 
+              onClick={closeMobileMenu}
+            >
+              {link.label}
+            </a>
+          ))}
           
           {/* CV Export in Mobile Menu */}
           <div className="mt-4">

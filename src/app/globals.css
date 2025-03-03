@@ -549,6 +549,10 @@
 
   html {
     scroll-behavior: smooth;
+    /* Forcer l'affichage de la scrollbar pour éviter le décalage au chargement */
+    overflow-y: scroll;
+    /* Technique pour éviter le saut lors du chargement en réservant l'espace de la scrollbar */
+    scrollbar-gutter: stable;
   }
   
   /* Styles pour la barre de défilement */
