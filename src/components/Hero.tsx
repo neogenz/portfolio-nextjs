@@ -74,6 +74,7 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen flex items-center overflow-hidden bg-maxime-white text-maxime-primary dark:bg-maxime-dark-bg dark:text-maxime-white">
+
       {/* Styles spécifiques pour les écrans de faible hauteur */}
       <style jsx>{`
         @media (max-height: 650px) {
@@ -85,6 +86,7 @@ const Hero = () => {
           }
         }
       `}</style>
+
       
       {/* Vertical text */}
       <div className="absolute right-2 xr:left-6 xr:right-auto top-16 bottom-0 flex flex-col justify-between text-xs text-maxime-secondary dark:text-maxime-white/60 tracking-widest uppercase [writing-mode:vertical-rl] transform rotate-180 max-h-[500px] landscape:max-md:hidden">
@@ -95,29 +97,29 @@ const Hero = () => {
       {/* Main content */}
       <div 
         ref={heroRef}
-        className="container-padding mx-auto opacity-0 translate-y-4 transition-all duration-700 relative z-10 grid grid-cols-12 gap-8 md:gap-6 lg:gap-8"
+        className="container-padding mx-auto opacity-0 translate-y-4 transition-all duration-700 relative z-10 grid grid-cols-12 gap-4 md:gap-6 lg:gap-8"
         style={{ willChange: 'transform, opacity' }}
       >
         {/* Left column - Text content */}
-        <div className="col-span-12 lg:gap-8 gap-8 lg:col-span-7 2xl:col-span-7 flex flex-col justify-center pr-0 lg:pr-0">
+        <div className="col-span-12 lg:col-span-7 2xl:col-span-7 flex flex-col justify-center pr-0 lg:pr-0">
           {/* Stats */}
-          <div className={`stats-container flex items-start gap-12 sm:gap-8 md:gap-10 lg:gap-12 mb-6 sm:mb-7 md:mb-8 lg:mb-10 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+          <div className={`stats-container flex items-start gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-6 sm:mb-7 md:mb-8 lg:mb-10 max-h-[650px]:mb-2 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div>
-              <h3 className="text-3xl sm:text-3xl md:text-3xl lg:text-4xl h-[650px]:text-2xl font-light mb-1">+8</h3>
-              <p className="text-sm sm:text-sm h-[650px]:text-xs text-maxime-secondary dark:text-maxime-white/60">Années d&apos;expérience</p>
+              <h3 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl max-h-[650px]:text-2xl font-light mb-0">+8</h3>
+              <p className="text-sm sm:text-sm max-h-[650px]:text-xs text-maxime-secondary dark:text-maxime-white/60">Années d&apos;expérience</p>
             </div>
             <div>
-              <h3 className="text-3xl sm:text-3xl md:text-3xl lg:text-4xl h-[650px]:text-2xl font-light mb-1">+20</h3>
-              <p className="text-sm sm:text-sm h-[650px]:text-xs text-maxime-secondary dark:text-maxime-white/60">Projets réalisés</p>
+              <h3 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl max-h-[650px]:text-2xl font-light mb-0">+20</h3>
+              <p className="text-sm sm:text-sm max-h-[650px]:text-xs text-maxime-secondary dark:text-maxime-white/60">Projets réalisés</p>
             </div>
           </div>
           
           {/* Name heading */}
           <div className={`name-heading mb-5 sm:mb-6 md:mb-7 landscape:max-sm:mb-3 landscape:sm:mb-4 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-7xl md:text-8xl xl:text-9xl max-h-screen-[650px]:text-6xl font-light mb-0 tracking-tight">
+            <h1 className="text-7xl md:text-8xl xl:text-9xl max-h-[650px]:text-[4.5rem] font-light mb-0 tracking-tight">
               Maxime
             </h1>
-            <h1 className="text-7xl md:text-8xl xl:text-9xl max-h-screen-[650px]:text-6xl font-light tracking-tight text-maxime-secondary whitespace-nowrap">
+            <h1 className="text-7xl md:text-8xl xl:text-9xl max-h-[650px]:text-[4.5rem] font-light tracking-tight text-maxime-secondary whitespace-nowrap">
               De Sogus
             </h1>
           </div>
