@@ -23,7 +23,7 @@ const Hero = () => {
     "Développeur backend 🔐",
     "Intégrateur d'API 🔄",
     "Évangéliste Craft 🔥",
-    "Enthouiaste & curieux 🧐",
+    "Enthousiaste & curieux 🧐",
     "Toujours en train de créer 🔄",
     "Très sociable 🤝"
   ];
@@ -41,14 +41,12 @@ const Hero = () => {
     const heroElement = heroRef.current;
     if (!heroElement) return;
     
-    // Animation initiale
+    // Animation initiale - déclenchée une seule fois
     setTimeout(() => {
       setIsLoaded(true);
       heroElement.classList.add('opacity-100');
       heroElement.classList.remove('translate-y-4');
     }, 100);
-    
-    // Effet de parallax supprimé pour améliorer les performances et l'accessibilité
   }, []);
 
   // Animation de l'image
@@ -128,7 +126,7 @@ const Hero = () => {
           <div className={`mt-5 landscape:max-md:mt-3 portrait:xs:mt-4 transition-all duration-1000 delay-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <a 
               href="#projects" 
-              className="px-8 py-3 landscape:max-md:px-6 landscape:max-md:py-2 landscape:max-md:text-sm border border-maxime-primary dark:border-maxime-white inline-block hover:bg-maxime-primary hover:text-maxime-white dark:hover:bg-maxime-white dark:hover:text-maxime-primary transition duration-300 outline-none focus-visible:ring-2 focus-visible:ring-maxime-primary dark:focus-visible:ring-maxime-white focus-visible:ring-offset-2"
+              className="px-8 py-3 landscape:max-md:px-6 landscape:max-md:py-2 landscape:max-md:text-sm cursor-pointer border border-maxime-primary dark:border-maxime-white inline-block hover:bg-maxime-primary hover:text-maxime-white dark:hover:bg-maxime-white dark:hover:text-maxime-primary transition duration-300 outline-none focus-visible:ring-2 focus-visible:ring-maxime-primary dark:focus-visible:ring-maxime-white focus-visible:ring-offset-2"
             >
               Voir mes projets
             </a>
@@ -146,8 +144,8 @@ const Hero = () => {
               WebkitBackfaceVisibility: 'hidden',
             }}
           >
-            {/* Overlay gradient - utilisant des noms de couleurs définis dans le thème comme recommandé par Tailwind v4 */}
-            <div className="absolute inset-0 bg-gradient-to-b from-maxime-tertiary/80 to-transparent dark:from-maxime-dark-bg/80 mix-blend-multiply z-10"></div>
+            {/* Overlay gradient - optimisé pour Tailwind v4 avec tous les niveaux de dégradé explicites */}
+            <div className="absolute inset-0 bg-gradient-to-b from-maxime-tertiary/80 via-maxime-tertiary/40 to-transparent dark:from-maxime-dark-bg/80 dark:via-maxime-dark-bg/40 dark:to-transparent mix-blend-multiply z-10"></div>
             
             {/* Profile image */}
             <OptimizedImage 
@@ -175,7 +173,7 @@ const Hero = () => {
       <button 
         onClick={scrollToAbout}
         className={`absolute bottom-6 sm:bottom-10 landscape:max-md:bottom-2 left-1/2 -translate-x-1/2 transition-all duration-1000 delay-1200 
-          flex flex-col items-center z-20 
+          flex flex-col items-center z-20 cursor-pointer
           bg-white/40 dark:bg-maxime-dark-bg/40 backdrop-blur-sm rounded-md px-3 py-1 landscape:max-md:py-0.5
           hover:bg-white/60 dark:hover:bg-maxime-dark-bg/60
           ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
