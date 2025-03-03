@@ -63,18 +63,17 @@ const Navigation = () => {
   // Monter le composant
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  // Fonctions de navigation simplifiées
-  const toggleTheme = () => {
-    // Basculer entre les trois modes possibles: system → light → dark → system
-    if (theme === 'system') {
-      setTheme('light');
-    } else if (theme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('system');
+    
+    // Si initialement en system, définir une valeur explicite
+    if (mounted && theme === 'system') {
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(systemPrefersDark ? 'dark' : 'light');
     }
+  }, [mounted, theme, setTheme]);
+
+  // Fonction de basculement de thème simplifiée (uniquement light/dark)
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
   };
   
   const scrollToTop = () => {
@@ -95,7 +94,7 @@ const Navigation = () => {
   // Éviter le rendu non correspondant
   if (!mounted) return null;
 
-  const isDarkMode = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const isDarkMode = theme === 'dark';
 
   // Styles communs extraits en constantes
   const linkStyles = "text-sm text-maxime-primary dark:text-maxime-white hover:opacity-70 transition-opacity duration-300";
@@ -155,7 +154,7 @@ const Navigation = () => {
             <button 
               onClick={toggleTheme} 
               className="p-2 rounded-full hover:bg-maxime-tertiary dark:hover:bg-maxime-dark-card/50 transition-colors duration-300"
-              aria-label="Changer le thème"
+              aria-label={isDarkMode ? "Passer en mode clair" : "Passer en mode sombre"}
             >
               {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
