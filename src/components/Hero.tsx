@@ -7,7 +7,9 @@ import useTypewriter from '../hooks/useTypewriter';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showImage, setShowImage] = useState(false);
   
   // Séquence des textes à afficher
   const textArray = [
@@ -26,7 +28,7 @@ const Hero = () => {
     "Très sociable 🤝"
   ];
   
-  // Utiliser notre hook personnalisé au lieu de la logique interne
+  // Hook pour l'effet machine à écrire
   const { text: typewriterText } = useTypewriter({
     texts: textArray,
     typingSpeed: 100,
@@ -34,26 +36,40 @@ const Hero = () => {
     pauseDelay: 1250
   });
 
+  // Initialisation et effet de scroll
   useEffect(() => {
     const heroElement = heroRef.current;
-    
     if (!heroElement) return;
     
+    // Animation initiale
     setTimeout(() => {
       setIsLoaded(true);
       heroElement.classList.add('opacity-100');
       heroElement.classList.remove('translate-y-4');
     }, 100);
 
+    // Parallax au scroll
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
       if (heroElement) {
-        heroElement.style.transform = `translateY(${scrollTop * 0.1}px)`;
+        heroElement.style.transform = `translateY(${window.scrollY * 0.1}px)`;
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Animation de l'image (optimisée pour Safari)
+  useEffect(() => {
+    // Forcer le calcul des dimensions avant l'animation
+    const imageContainer = imageRef.current;
+    if (imageContainer) {
+      void imageContainer.offsetHeight;
+    }
+    
+    // Délai avant de révéler l'image
+    const timer = setTimeout(() => setShowImage(true), 800);
+    return () => clearTimeout(timer);
   }, []);
 
   const scrollToAbout = () => {
@@ -65,7 +81,7 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen flex items-center overflow-hidden bg-maxime-white text-maxime-primary dark:bg-maxime-dark-bg dark:text-maxime-white">
-      {/* Vertical text - adaptatif selon la taille d'écran */}
+      {/* Vertical text */}
       <div className="absolute right-2 xr:left-6 xr:right-auto top-16 bottom-0 flex flex-col justify-between text-xs text-maxime-secondary dark:text-maxime-white/60 tracking-widest uppercase [writing-mode:vertical-rl] transform rotate-180">
         <div className="transform rotate-180">Expert Angular</div>
         <div className="transform rotate-180">Portfolio</div>
@@ -77,6 +93,7 @@ const Hero = () => {
         className="container-padding mx-auto opacity-0 translate-y-4 transition-all duration-700 relative z-10 grid grid-cols-12 gap-8"
         style={{ willChange: 'transform, opacity' }}
       >
+        {/* Left column - Text content */}
         <div className="col-span-12 lg:col-span-7 flex flex-col justify-center">
           {/* Stats */}
           <div className={`flex items-start gap-12 mb-16 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
@@ -90,7 +107,7 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Main heading */}
+          {/* Name heading */}
           <div className={`mb-8 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h1 className="text-7xl md:text-8xl xl:text-9xl font-light mb-2 tracking-tight">
               Maxime
@@ -100,6 +117,7 @@ const Hero = () => {
             </h1>
           </div>
           
+          {/* Typewriter text */}
           <div className={`transition-all duration-1000 delay-800 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <p className="text-xl md:text-2xl mb-12 border-l-2 border-maxime-secondary pl-6 py-1">
               — <span className="relative">
@@ -120,28 +138,47 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="hidden lg:block lg:col-span-5 relative">
-          <div className={`relative h-full flex items-center justify-center transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
-            <div className="w-full max-w-[600px] xl:max-w-[750px] 2xl:max-w-[850px] aspect-[3/4] overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-b from-maxime-tertiary/80 to-transparent dark:from-maxime-dark-bg/80 mix-blend-multiply z-10"></div>
-              <OptimizedImage 
-                src="/images/optimized/maxime.webp"
-                alt="Maxime De Sogus"
-                width={1143}
-                height={1432}
-                priority={true}
-                className="w-full h-full object-cover object-top"
-                placeholder="blur"
-                blurDataURL="data:image/webp;base64,UklGRhYBAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSE4AAAARL0AmYJrNQpJsux//938UEVEDHpKcTaoK3AP2oLqqBdgD5gEAAMxujQc8GjyYcQCjvv/Mf87VZWC5/r9B1G4eIDOHiP4PAFZQOCBMAAAAcAIAnQEqEAAQAAJAOCWwAnS6MEQn56eg/+FiA/AD3zK3w1X6YMKWV37N42XyctFbbZpIoM+6ufZPGbIYTgA3pHnnXWfbvH8yDZOJF7OvLGzfFxZ8Wj9oiUV1GupuJQFxE3PdmQU8P2Xg10cUjUvxkuimqgAALOqGIOEvKJQX7+GdYIyqDAAA"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 750px"
-                quality={90}
-              />
-            </div>
+        {/* Right column - Image (Safari-optimized) */}
+        <div className="hidden lg:block lg:col-span-5 relative flex items-center justify-center">
+          <div 
+            ref={imageRef}
+            className="relative w-full xl:w-[600px] 2xl:w-[700px] aspect-[3/4] overflow-hidden"
+            style={{ 
+              opacity: showImage ? 1 : 0,
+              transition: 'opacity 800ms ease',
+              height: 'auto',
+              maxHeight: '90vh',
+              // Fix pour Safari
+              backfaceVisibility: 'hidden',
+              WebkitBackfaceVisibility: 'hidden',
+            }}
+          >
+            {/* Overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-b from-maxime-tertiary/80 to-transparent dark:from-maxime-dark-bg/80 mix-blend-multiply z-10"></div>
+            
+            {/* Profile image */}
+            <OptimizedImage 
+              src="/images/optimized/maxime.webp"
+              alt="Maxime De Sogus"
+              width={1143}
+              height={1432}
+              priority={true}
+              className="w-full h-full object-cover object-top"
+              placeholder="blur"
+              blurDataURL="data:image/webp;base64,UklGRhYBAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSE4AAAARL0AmYJrNQpJsux//938UEVEDHpKcTaoK3AP2oLqqBdgD5gEAAMxujQc8GjyYcQCjvv/Mf87VZWC5/r9B1G4eIDOHiP4PAFZQOCBMAAAAcAIAnQEqEAAQAAJAOCWwAnS6MEQn56eg/+FiA/AD3zK3w1X6YMKWV37N42XyctFbbZpIoM+6ufZPGbIYTgA3pHnnXWfbvH8yDZOJF7OvLGzfFxZ8Wj9oiUV1GupuJQFxE3PdmQU8P2Xg10cUjUvxkuimqgAALOqGIOEvKJQX7+GdYIyqDAAA"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
+              quality={90}
+              style={{ 
+                // Fix pour Safari
+                transform: 'none',
+                WebkitTransform: 'none'
+              }}
+            />
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator - ajusté pour une meilleure visibilité */}
+      {/* Scroll indicator */}
       <button 
         onClick={scrollToAbout}
         className={`absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 transition-all duration-1000 delay-1200 
