@@ -108,11 +108,11 @@ const Hero = () => {
           </div>
           
           {/* Name heading */}
-          <div className={`mb-8 landscape:max-md:mb-3 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-7xl md:text-8xl xl:text-9xl landscape:max-md:text-6xl font-light mb-2 landscape:max-md:mb-0 tracking-tight">
+          <div className={`mb-8 landscape:mb-3 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h1 className="text-7xl md:text-8xl xl:text-9xl landscape:text-5xl md:landscape:text-6xl lg:landscape:text-7xl font-light mb-2 landscape:mb-0 tracking-tight">
               Maxime
             </h1>
-            <h1 className="text-7xl md:text-8xl xl:text-9xl landscape:max-md:text-6xl font-light tracking-tight text-maxime-secondary whitespace-nowrap">
+            <h1 className="text-7xl md:text-8xl xl:text-9xl landscape:text-5xl md:landscape:text-6xl lg:landscape:text-7xl font-light tracking-tight text-maxime-secondary whitespace-nowrap">
               De Sogus
             </h1>
           </div>

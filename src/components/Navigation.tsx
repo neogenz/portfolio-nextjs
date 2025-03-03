@@ -66,7 +66,16 @@ const Navigation = () => {
   }, []);
 
   // Fonctions de navigation simplifiées
-  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+  const toggleTheme = () => {
+    // Basculer entre les trois modes possibles: system → light → dark → system
+    if (theme === 'system') {
+      setTheme('light');
+    } else if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('system');
+    }
+  };
   
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -86,7 +95,7 @@ const Navigation = () => {
   // Éviter le rendu non correspondant
   if (!mounted) return null;
 
-  const isDarkMode = theme === 'dark';
+  const isDarkMode = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
   // Styles communs extraits en constantes
   const linkStyles = "text-sm text-maxime-primary dark:text-maxime-white hover:opacity-70 transition-opacity duration-300";
@@ -142,6 +151,7 @@ const Navigation = () => {
               <CVExport />
             </div>
 
+            {/* Theme Toggle Button */}
             <button 
               onClick={toggleTheme} 
               className="p-2 rounded-full hover:bg-maxime-tertiary dark:hover:bg-maxime-dark-card/50 transition-colors duration-300"
