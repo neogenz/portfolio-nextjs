@@ -131,6 +131,10 @@ const Hero = () => {
                 height={1432}
                 priority={true}
                 className="w-full h-full object-cover object-top"
+                placeholder="blur"
+                blurDataURL="data:image/webp;base64,UklGRhYBAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSE4AAAARL0AmYJrNQpJsux//938UEVEDHpKcTaoK3AP2oLqqBdgD5gEAAMxujQc8GjyYcQCjvv/Mf87VZWC5/r9B1G4eIDOHiP4PAFZQOCBMAAAAcAIAnQEqEAAQAAJAOCWwAnS6MEQn56eg/+FiA/AD3zK3w1X6YMKWV37N42XyctFbbZpIoM+6ufZPGbIYTgA3pHnnXWfbvH8yDZOJF7OvLGzfFxZ8Wj9oiUV1GupuJQFxE3PdmQU8P2Xg10cUjUvxkuimqgAALOqGIOEvKJQX7+GdYIyqDAAA"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 750px"
+                quality={90}
               />
             </div>
           </div>

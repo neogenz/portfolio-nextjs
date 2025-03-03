@@ -2,7 +2,7 @@
 
 // Importation des bibliothèques nécessaires pour générer des documents
 import { jsPDF } from 'jspdf';
-import { Document, Packer, Paragraph, TextRun, HeadingLevel, BorderStyle, Table, TableRow, TableCell } from 'docx';
+import { Document, Packer, Paragraph, TextRun, HeadingLevel, BorderStyle } from 'docx';
 import { saveAs } from 'file-saver';
 
 // Données personnelles
@@ -130,15 +130,54 @@ export async function generatePDF(): Promise<Blob> {
   // Ajouter un grand rectangle de titre en haut - augmenter la hauteur de 45 à 60 pour englober toutes les coordonnées
   addBackgroundRect(0, 0, 210, 60, colors.tertiary);
   
+  // Fonction pour précharger une image et la convertir en base64
+  const loadImage = (src: string): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      // Assurer que le chemin est absolu pour le navigateur
+      const absolutePath = src.startsWith('/') ? src : `/${src}`;
+      
+      // Créer une URL complète avec l'origine du site
+      const fullUrl = typeof window !== 'undefined' 
+        ? `${window.location.origin}${absolutePath}` 
+        : absolutePath;
+      
+      const img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(img, 0, 0);
+          resolve(canvas.toDataURL('image/jpeg')); // Convertir en base64
+        } else {
+          reject(new Error('Could not get context'));
+        }
+      };
+      img.onerror = () => {
+        console.error(`Failed to load image: ${fullUrl}`);
+        reject(new Error(`Failed to load image: ${fullUrl}`));
+      };
+      img.src = fullUrl;
+    });
+  };
+  
   try {
-    // Charger l'image depuis le dossier public (même que celle du Hero)
-    const imgData = "/maxime.jpg"; // Chemin relatif de l'image
-    
+    // Essayer de précharger l'image WebP avec le chemin complet
+    const imgData = await loadImage('/images/optimized/maxime.webp');
     // Ajouter l'image de profil (en haut à droite)
-    doc.addImage(imgData, 'JPEG', 150, 5, 30, 38); // Largeur réduite pour éviter la déformation
+    doc.addImage(imgData, 'JPEG', 150, 5, 30, 38);
   } catch (error) {
-    console.error("Erreur lors du chargement de l'image :", error);
-    // Continuer sans image si elle ne peut pas être chargée
+    console.error("Erreur lors du chargement de l'image WebP :", error);
+    try {
+      // Essayer avec une image alternative dans le même dossier
+      const fallbackImgData = await loadImage('/images/optimized/maxime-lg.webp');
+      doc.addImage(fallbackImgData, 'JPEG', 150, 5, 30, 38);
+    } catch (fallbackError) {
+      console.error("Impossible de charger l'image de secours :", fallbackError);
+      // Continuer sans image si elle ne peut pas être chargée
+    }
   }
   
   // Nom et titre en plus grand en haut, style en-tête du site
@@ -281,8 +320,7 @@ export async function generatePDF(): Promise<Blob> {
   // Formation
   // Calculer la hauteur totale nécessaire pour la section Formation
   const formationHeight = 15; // Hauteur du titre de section
-  const totalEducationHeight = education.length * 20; // Estimation de la hauteur pour chaque élément d'éducation
-  const totalFormationHeight = formationHeight + totalEducationHeight;
+  // Estimation non utilisée, on la supprime
   
   // Si on est déjà bas dans la page ou s'il n'y a pas assez de place pour le titre ET au moins le premier élément
   if (yPos > 200 || (yPos + formationHeight + 20) > NEW_PAGE_THRESHOLD) {
