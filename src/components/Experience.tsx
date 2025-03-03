@@ -1,6 +1,8 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { DownloadIcon } from 'lucide-react';
+import { generateAndDownloadCV } from '@/services/CVGenerator';
 
 export const experienceData = [
   {
@@ -103,6 +105,23 @@ const techCategoriesDisplay = {
 };
 
 const Experience = () => {
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleDownloadPDF = async () => {
+    if (isDownloading) return;
+    
+    setIsDownloading(true);
+    try {
+      // Utiliser la fonction existante pour générer et télécharger le CV au format PDF
+      await generateAndDownloadCV('pdf');
+    } catch (error) {
+      console.error('Erreur lors du téléchargement du CV:', error);
+      alert('Une erreur est survenue lors de la génération du CV');
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
   return (
     <section id="experience" className="section-padding bg-maxime-white dark:bg-maxime-dark-bg">
       <div className="container-padding mx-auto">
@@ -220,9 +239,23 @@ const Experience = () => {
           </div>
 
           <div className="mt-12 text-center reveal">
-            <a href="/resume.pdf" className="button-secondary inline-flex items-center" target="_blank" rel="noopener noreferrer">
-              Voir CV Complet <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
+            <button 
+              className="button-secondary inline-flex items-center"
+              onClick={handleDownloadPDF}
+              disabled={isDownloading}
+            >
+              {isDownloading ? (
+                <>
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-t-transparent mr-2"></div>
+                  <span>Génération...</span>
+                </>
+              ) : (
+                <>
+                  <span>Télécharger CV</span>
+                  <DownloadIcon className="ml-2 h-4 w-4" />
+                </>
+              )}
+            </button>
           </div>
         </div>
       </div>
