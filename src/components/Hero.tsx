@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowDown } from 'lucide-react';
 import OptimizedImage from './ui/OptimizedImage';
 import useTypewriter from '../hooks/useTypewriter';
+import Link from 'next/link';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -124,12 +125,12 @@ const Hero = () => {
           
           {/* CTA Button */}
           <div className={`mt-5 landscape:max-md:mt-3 portrait:xs:mt-4 transition-all duration-1000 delay-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <a 
+          <Link 
               href="#projects" 
               className="px-8 py-3 landscape:max-md:px-6 landscape:max-md:py-2 landscape:max-md:text-sm cursor-pointer border border-maxime-primary dark:border-maxime-white inline-block hover:bg-maxime-primary hover:text-maxime-white dark:hover:bg-maxime-white dark:hover:text-maxime-primary transition duration-300 outline-none focus-visible:ring-2 focus-visible:ring-maxime-primary dark:focus-visible:ring-maxime-white focus-visible:ring-offset-2"
             >
               Voir mes projets
-            </a>
+            </Link>
           </div>
         </div>
         
