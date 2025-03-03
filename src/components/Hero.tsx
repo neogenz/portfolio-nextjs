@@ -82,7 +82,7 @@ const Hero = () => {
   return (
     <section className="relative h-screen flex items-center overflow-hidden bg-maxime-white text-maxime-primary dark:bg-maxime-dark-bg dark:text-maxime-white">
       {/* Vertical text */}
-      <div className="hidden landscape:md:block absolute right-2 xr:left-6 xr:right-auto top-16 bottom-0 flex flex-col justify-between text-xs text-maxime-secondary dark:text-maxime-white/60 tracking-widest uppercase [writing-mode:vertical-rl] transform rotate-180">
+      <div className="absolute right-2 xr:left-6 xr:right-auto top-16 bottom-0 flex flex-col justify-between text-xs text-maxime-secondary dark:text-maxime-white/60 tracking-widest uppercase [writing-mode:vertical-rl] transform rotate-180 max-h-[500px] landscape:max-md:hidden">
         <div className="transform rotate-180">Expert Angular</div>
         <div className="transform rotate-180">Portfolio</div>
       </div>
@@ -90,36 +90,36 @@ const Hero = () => {
       {/* Main content */}
       <div 
         ref={heroRef}
-        className="px-5 sm:px-8 md:px-12 lg:px-16 xl:container-padding mx-auto opacity-0 translate-y-4 transition-all duration-700 relative z-10 grid grid-cols-12 gap-6 md:gap-8 landscape:gap-4"
+        className="px-5 sm:px-8 md:px-12 lg:px-16 xl:container-padding mx-auto opacity-0 translate-y-4 transition-all duration-700 relative z-10 grid grid-cols-12 gap-6 md:gap-10 lg:gap-16 landscape:max-md:gap-4"
         style={{ willChange: 'transform, opacity' }}
       >
         {/* Left column - Text content */}
         <div className="col-span-12 lg:col-span-6 2xl:col-span-7 flex flex-col justify-center pr-0 lg:pr-6">
           {/* Stats */}
-          <div className={`flex items-start gap-12 md:gap-16 mb-12 md:mb-16 landscape:mb-3 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+          <div className={`flex items-start gap-12 md:gap-16 mb-12 md:mb-16 landscape:max-md:mb-3 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div>
-              <h3 className="text-3xl md:text-4xl landscape:text-2xl font-light mb-1 landscape:mb-0">+8</h3>
-              <p className="text-sm landscape:text-xs text-maxime-secondary dark:text-maxime-white/60">Années d&apos;expérience</p>
+              <h3 className="text-3xl md:text-4xl landscape:max-md:text-2xl font-light mb-1 landscape:max-md:mb-0">+8</h3>
+              <p className="text-sm landscape:max-md:text-xs text-maxime-secondary dark:text-maxime-white/60">Années d&apos;expérience</p>
             </div>
             <div>
-              <h3 className="text-3xl md:text-4xl landscape:text-2xl font-light mb-1 landscape:mb-0">+20</h3>
-              <p className="text-sm landscape:text-xs text-maxime-secondary dark:text-maxime-white/60">Projets réalisés</p>
+              <h3 className="text-3xl md:text-4xl landscape:max-md:text-2xl font-light mb-1 landscape:max-md:mb-0">+20</h3>
+              <p className="text-sm landscape:max-md:text-xs text-maxime-secondary dark:text-maxime-white/60">Projets réalisés</p>
             </div>
           </div>
           
           {/* Name heading */}
-          <div className={`mb-8 landscape:mb-3 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-7xl md:text-8xl xl:text-9xl landscape:text-6xl font-light mb-2 landscape:mb-0 tracking-tight">
+          <div className={`mb-8 landscape:max-md:mb-3 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h1 className="text-7xl md:text-8xl xl:text-9xl landscape:max-md:text-6xl font-light mb-2 landscape:max-md:mb-0 tracking-tight">
               Maxime
             </h1>
-            <h1 className="text-7xl md:text-8xl xl:text-9xl landscape:text-6xl font-light tracking-tight text-maxime-secondary whitespace-nowrap">
+            <h1 className="text-7xl md:text-8xl xl:text-9xl landscape:max-md:text-6xl font-light tracking-tight text-maxime-secondary whitespace-nowrap">
               De Sogus
             </h1>
           </div>
           
           {/* Typewriter text */}
           <div className={`transition-all duration-1000 delay-800 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="text-xl md:text-2xl landscape:text-lg mb-12 landscape:mb-3 border-l-2 border-maxime-secondary pl-6 py-1">
+            <p className="text-xl md:text-2xl landscape:max-md:text-lg mb-12 landscape:max-md:mb-3 border-l-2 border-maxime-secondary pl-6 py-1">
               — <span className="relative">
                   {typewriterText}
                   <span className="absolute right-0 border-r-2 border-maxime-primary dark:border-maxime-white h-full animate-pulse"></span>
@@ -128,10 +128,10 @@ const Hero = () => {
           </div>
           
           {/* CTA Button */}
-          <div className={`mt-8 landscape:mt-3 transition-all duration-1000 delay-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`mt-8 landscape:max-md:mt-3 transition-all duration-1000 delay-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <a 
               href="#projects" 
-              className="px-8 py-3 landscape:px-6 landscape:py-2 landscape:text-sm border border-maxime-primary dark:border-maxime-white inline-block hover:bg-maxime-primary hover:text-maxime-white dark:hover:bg-maxime-white dark:hover:text-maxime-primary transition duration-300 outline-none focus-visible:ring-2 focus-visible:ring-maxime-primary dark:focus-visible:ring-maxime-white focus-visible:ring-offset-2"
+              className="px-8 py-3 landscape:max-md:px-6 landscape:max-md:py-2 landscape:max-md:text-sm border border-maxime-primary dark:border-maxime-white inline-block hover:bg-maxime-primary hover:text-maxime-white dark:hover:bg-maxime-white dark:hover:text-maxime-primary transition duration-300 outline-none focus-visible:ring-2 focus-visible:ring-maxime-primary dark:focus-visible:ring-maxime-white focus-visible:ring-offset-2"
             >
               Voir mes projets
             </a>
@@ -139,15 +139,15 @@ const Hero = () => {
         </div>
         
         {/* Right column - Image (Safari-optimized) */}
-        <div className="hidden lg:block lg:col-span-6 2xl:col-span-5 relative flex items-center justify-center w-full">
+        <div className="hidden lg:flex lg:col-span-6 2xl:col-span-5 relative flex items-center justify-center w-full">
           <div 
             ref={imageRef}
-            className="relative mx-auto w-[85%] lg:w-[80%] xl:w-[450px] 2xl:w-[520px] landscape:w-[380px] aspect-[3/4] overflow-hidden" 
+            className="relative lg:flex lg:items-center lg:justify-center mx-auto w-[85%] lg:w-[80%] xl:w-[450px] 2xl:w-[520px] landscape:max-md:w-[380px] aspect-[3/4] overflow-hidden" 
             style={{ 
               opacity: showImage ? 1 : 0,
               transition: 'opacity 800ms ease',
               height: 'auto',
-              maxHeight: 'landscape:50vh 70vh',
+              maxHeight: '70vh',
               // Fix pour Safari
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden',
@@ -183,15 +183,15 @@ const Hero = () => {
       {/* Scroll indicator */}
       <button 
         onClick={scrollToAbout}
-        className={`absolute bottom-6 sm:bottom-10 landscape:bottom-2 left-1/2 -translate-x-1/2 transition-all duration-1000 delay-1200 
+        className={`absolute bottom-6 sm:bottom-10 landscape:max-md:bottom-2 left-1/2 -translate-x-1/2 transition-all duration-1000 delay-1200 
           flex flex-col items-center z-20 
-          bg-white/40 dark:bg-maxime-dark-bg/40 backdrop-blur-sm rounded-md px-3 py-1 landscape:py-0.5
+          bg-white/40 dark:bg-maxime-dark-bg/40 backdrop-blur-sm rounded-md px-3 py-1 landscape:max-md:py-0.5
           hover:bg-white/60 dark:hover:bg-maxime-dark-bg/60
           ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         aria-label="Défiler vers la section À propos"
       >
-        <span className="text-xs tracking-widest uppercase mb-1 landscape:mb-0 text-maxime-primary dark:text-maxime-white font-medium">Défiler</span>
-        <ArrowDown className="h-4 w-4 landscape:h-3 landscape:w-3 animate-bounce" />
+        <span className="text-xs tracking-widest uppercase mb-1 landscape:max-md:mb-0 text-maxime-primary dark:text-maxime-white font-medium">Défiler</span>
+        <ArrowDown className="h-4 w-4 landscape:max-md:h-3 landscape:max-md:w-3 animate-bounce" />
       </button>
     </section>
   );
