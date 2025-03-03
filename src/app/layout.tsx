@@ -23,25 +23,25 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Portfolio - Maxime De Sogus",
+  title: "Maxime De Sogus - Portfolio",
   description: "Portfolio de Maxime De Sogus - Développeur Fullstack, expert Angular et développeur frontend avec plus de 8 ans d'expérience.",
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: "Portfolio - Maxime De Sogus",
+    title: "Maxime De Sogus - Portfolio",
   },
   openGraph: {
     type: 'website',
     locale: 'fr_CH',
-    url: 'https://maximedesogus.ch',
-    title: 'Portfolio - Maxime De Sogus',
+    url: 'https://www.maximedesogus.ch',
+    title: 'Maxime De Sogus - Portfolio',
     description: 'Portfolio de Maxime De Sogus - Développeur Fullstack, expert Angular et développeur frontend avec plus de 8 ans d\'expérience.',
     siteName: 'Portfolio de Maxime De Sogus',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Portfolio - Maxime De Sogus',
+    title: 'Maxime De Sogus - Portfolio',
     description: 'Portfolio de Maxime De Sogus - Développeur Fullstack, expert Angular et développeur frontend',
   },
   formatDetection: {
@@ -65,12 +65,12 @@ export default function RootLayout({
         {/* DNS Prefetch pour les domaines tiers */}
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
-        <GoogleAnalytics />
       </head>
       <body className="overflow-x-hidden">
         <Providers>
           {children}
         </Providers>
+        <GoogleAnalytics />
       </body>
     </html>
   );

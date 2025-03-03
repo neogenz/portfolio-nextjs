@@ -26,4 +26,7 @@ User-agent: YandexBot
 Allow: /
 
 # Taux de crawl
-Crawl-delay: 1 
+Crawl-delay: 1
+
+# Assurer que le Host Directive est spécifié (optionnel mais recommandé)
+Host: maximedesogus.ch 
