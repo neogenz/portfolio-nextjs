@@ -90,13 +90,13 @@ const Hero = () => {
       {/* Main content */}
       <div 
         ref={heroRef}
-        className="container-padding mx-auto opacity-0 translate-y-4 transition-all duration-700 relative z-10 grid grid-cols-12 gap-8"
+        className="px-5 sm:px-8 md:px-12 lg:px-16 xl:container-padding mx-auto opacity-0 translate-y-4 transition-all duration-700 relative z-10 grid grid-cols-12 gap-6 md:gap-10 lg:gap-16"
         style={{ willChange: 'transform, opacity' }}
       >
         {/* Left column - Text content */}
-        <div className="col-span-12 lg:col-span-7 flex flex-col justify-center">
+        <div className="col-span-12 lg:col-span-6 2xl:col-span-7 flex flex-col justify-center pr-0 lg:pr-6">
           {/* Stats */}
-          <div className={`flex items-start gap-12 mb-16 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+          <div className={`flex items-start gap-12 md:gap-16 mb-12 md:mb-16 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div>
               <h3 className="text-3xl md:text-4xl font-light mb-1">+8</h3>
               <p className="text-sm text-maxime-secondary dark:text-maxime-white/60">Années d&apos;expérience</p>
@@ -139,15 +139,15 @@ const Hero = () => {
         </div>
         
         {/* Right column - Image (Safari-optimized) */}
-        <div className="hidden lg:block lg:col-span-5 relative flex items-center justify-center">
+        <div className="hidden lg:block lg:col-span-6 2xl:col-span-5 relative flex items-center justify-center w-full">
           <div 
             ref={imageRef}
-            className="relative w-full xl:w-[600px] 2xl:w-[700px] aspect-[3/4] overflow-hidden"
+            className="relative mx-auto w-[85%] lg:w-[80%] xl:w-[450px] 2xl:w-[520px] aspect-[3/4] overflow-hidden" 
             style={{ 
               opacity: showImage ? 1 : 0,
               transition: 'opacity 800ms ease',
               height: 'auto',
-              maxHeight: '90vh',
+              maxHeight: '70vh',
               // Fix pour Safari
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden',
@@ -163,15 +163,17 @@ const Hero = () => {
               width={1143}
               height={1432}
               priority={true}
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-cover object-center"
               placeholder="blur"
               blurDataURL="data:image/webp;base64,UklGRhYBAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSE4AAAARL0AmYJrNQpJsux//938UEVEDHpKcTaoK3AP2oLqqBdgD5gEAAMxujQc8GjyYcQCjvv/Mf87VZWC5/r9B1G4eIDOHiP4PAFZQOCBMAAAAcAIAnQEqEAAQAAJAOCWwAnS6MEQn56eg/+FiA/AD3zK3w1X6YMKWV37N42XyctFbbZpIoM+6ufZPGbIYTgA3pHnnXWfbvH8yDZOJF7OvLGzfFxZ8Wj9oiUV1GupuJQFxE3PdmQU8P2Xg10cUjUvxkuimqgAALOqGIOEvKJQX7+GdYIyqDAAA"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 450px"
               quality={90}
               style={{ 
                 // Fix pour Safari
                 transform: 'none',
-                WebkitTransform: 'none'
+                WebkitTransform: 'none',
+                // Ajustement pour éviter le débordement
+                objectPosition: '50% 15%'
               }}
             />
           </div>
