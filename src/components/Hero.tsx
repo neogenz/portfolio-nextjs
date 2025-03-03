@@ -36,7 +36,7 @@ const Hero = () => {
     pauseDelay: 1250
   });
 
-  // Initialisation et effet de scroll
+  // Initialisation et animation d'entrée
   useEffect(() => {
     const heroElement = heroRef.current;
     if (!heroElement) return;
@@ -47,19 +47,11 @@ const Hero = () => {
       heroElement.classList.add('opacity-100');
       heroElement.classList.remove('translate-y-4');
     }, 100);
-
-    // Parallax au scroll
-    const handleScroll = () => {
-      if (heroElement) {
-        heroElement.style.transform = `translateY(${window.scrollY * 0.1}px)`;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    // Effet de parallax supprimé pour améliorer les performances et l'accessibilité
   }, []);
 
-  // Animation de l'image (simplifiée)
+  // Animation de l'image
   useEffect(() => {
     const timer = setTimeout(() => setShowImage(true), 800);
     return () => clearTimeout(timer);
@@ -96,7 +88,7 @@ const Hero = () => {
       {/* Main content */}
       <div 
         ref={heroRef}
-        className="container-padding mx-auto opacity-0 translate-y-4 transition-all duration-700 relative z-10 grid grid-cols-12 gap-4 md:gap-6 lg:gap-8 will-change-transform will-change-opacity"
+        className="container-padding mx-auto opacity-0 translate-y-4 transition-all duration-700 relative z-10 grid grid-cols-12 gap-4 md:gap-6 lg:gap-8"
       >
         {/* Left column - Text content */}
         <div className="col-span-12 lg:col-span-7 2xl:col-span-7 flex flex-col justify-center">
