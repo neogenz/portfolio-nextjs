@@ -1,9 +1,17 @@
 'use client';
 
-import { ArrowUp, ArrowUpRight, Moon, Sun } from 'lucide-react';
+import { ArrowUp, ArrowUpRight, Moon, Sun, ArrowLeft } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState, useCallback } from 'react';
+import Link from 'next/link';
 import CVExport from './CVExport';
+
+// Type pour les liens de navigation
+interface NavLink {
+  href: string;
+  label: string;
+  isExternal?: boolean;
+}
 
 // Hook personnalisé pour gérer le scroll et les dimensions
 const useScrollAndResize = () => {
@@ -59,6 +67,8 @@ const Navigation = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const { isScrolled, showScrollTop, scrollProgress, isWideScreen } = useScrollAndResize();
+  // Détermine si nous sommes sur une page de blog
+  const [isOnBlogPage, setIsOnBlogPage] = useState(false);
 
   // Monter le composant
   useEffect(() => {
@@ -69,6 +79,10 @@ const Navigation = () => {
       const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       setTheme(systemPrefersDark ? 'dark' : 'light');
     }
+
+    // Vérifier si nous sommes sur une page de blog
+    const path = window.location.pathname;
+    setIsOnBlogPage(path.startsWith('/blog'));
   }, [mounted, theme, setTheme]);
 
   // Fonction de basculement de thème simplifiée (uniquement light/dark)
@@ -104,9 +118,29 @@ const Navigation = () => {
     { href: "#about", label: "À propos" },
     { href: "#experience", label: "Expérience" },
     { href: "#projects", label: "Projets" },
-    { href: "/blog", label: "Blog", isExternal: true },
     { href: "#contact", label: "Contact" }
   ];
+
+  // Fonction de gestion des clics sur les liens de navigation
+  const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, link: NavLink) => {
+    // Si c'est un lien externe ou si nous sommes sur une page de blog et que le lien n'est pas "/blog"
+    if (link.isExternal || (isOnBlogPage && link.href !== "/blog")) {
+      // Si nous sommes sur une page de blog et que le lien pointe vers la page principale
+      if (isOnBlogPage && link.href.startsWith('#')) {
+        // Pas besoin d'empêcher le comportement par défaut car Link s'en charge
+        return;
+      }
+      // Sinon, laissez le comportement par défaut (navigation normale)
+      return;
+    }
+    
+    // Pour les liens internes sur la page principale
+    e.preventDefault();
+    const element = document.querySelector(link.href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <>
@@ -125,31 +159,42 @@ const Navigation = () => {
         
         <div className="container-padding mx-auto flex justify-between items-center relative">
           {/* Logo */}
-          <a href="#" className="text-2xl relative z-10 -mt-1">
-            🚀
-          </a>
+          <div className="flex items-center gap-2">
+            {isOnBlogPage && (
+              <Link 
+                href="/"
+                className="flex items-center text-sm text-maxime-primary dark:text-maxime-white hover:opacity-70 transition-opacity duration-300 mr-4"
+                aria-label="Retour au portfolio"
+              >
+                <ArrowLeft className="w-4 h-4 mr-1" />
+                <span className="hidden sm:inline">Portfolio</span>
+              </Link>
+            )}
+            {isOnBlogPage ? (
+              <Link href="/" className="text-2xl relative z-10 -mt-1">
+                🚀
+              </Link>
+            ) : (
+              <a href="#" className="text-2xl relative z-10 -mt-1">
+                🚀
+              </a>
+            )}
+          </div>
 
           {/* Desktop Navigation */}
           <div className={`hidden lg:flex items-center ${isWideScreen ? 'absolute left-1/2 transform -translate-x-1/2' : 'mx-auto'}`}>
             <nav className="flex items-center space-x-6 lg:space-x-8">
               {navLinks.map(link => (
-                <a 
+                <Link 
                   key={link.href} 
-                  href={link.href} 
-                  className={linkStyles}
-                  target={link.isExternal ? "_self" : undefined}
-                  onClick={link.isExternal ? undefined : (e) => {
-                    if (!link.isExternal) {
-                      e.preventDefault();
-                      const element = document.querySelector(link.href);
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }
-                  }}
+                  href={isOnBlogPage && link.href.startsWith('#') ? '/' + link.href : link.href} 
+                  className={`${linkStyles} ${
+                    isOnBlogPage && link.href === '/blog' ? 'font-medium text-maxime-primary/90 dark:text-maxime-white/90 border-b border-maxime-primary/30 dark:border-maxime-white/30 pb-0.5' : ''
+                  }`}
+                  onClick={(e) => handleNavLinkClick(e, link)}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -159,6 +204,14 @@ const Navigation = () => {
             <a href="#contact" className="hidden lg:flex items-center gap-1 text-sm text-maxime-primary dark:text-maxime-white border-b border-maxime-primary/20 dark:border-maxime-white/20 pb-1 hover:border-maxime-primary dark:hover:border-maxime-white transition-all duration-300">
               Prendre rendez-vous <ArrowUpRight className="w-3 h-3" />
             </a>
+            
+            {/* Blog Button */}
+            <Link 
+              href="/blog" 
+              className="hidden lg:flex items-center space-x-2 px-4 py-2 rounded-md bg-maxime-tertiary dark:bg-maxime-dark-card text-maxime-primary dark:text-maxime-white transition-colors hover:bg-maxime-tertiary/70 dark:hover:bg-maxime-dark-card/70"
+            >
+              Blog
+            </Link>
             
             {/* CV Export Button */}
             <div className="hidden lg:block">
@@ -207,26 +260,41 @@ const Navigation = () => {
         }`}
       >
         <nav className="flex flex-col items-center space-y-8 text-2xl">
+          {isOnBlogPage && (
+            <Link 
+              href="/"
+              className={`${mobileLinkStyles} text-xl md:text-2xl py-2 flex items-center`}
+              onClick={closeMobileMenu}
+            >
+              <ArrowLeft className="w-5 h-5 mr-2" />
+              Retour au portfolio
+            </Link>
+          )}
           {navLinks.map(link => (
-            <a 
+            <Link 
               key={link.href} 
-              href={link.href}
-              className={`${mobileLinkStyles} text-xl md:text-2xl py-2`}
-              target={link.isExternal ? "_self" : undefined}
+              href={isOnBlogPage && link.href.startsWith('#') ? '/' + link.href : link.href}
+              className={`${mobileLinkStyles} text-xl md:text-2xl py-2 ${
+                isOnBlogPage && link.href === '/blog' ? 'font-medium text-maxime-primary/90 dark:text-maxime-white/90' : ''
+              }`}
               onClick={(e) => {
-                if (!link.isExternal) {
-                  e.preventDefault();
-                  const element = document.querySelector(link.href);
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }
+                const result = handleNavLinkClick(e, link);
                 closeMobileMenu();
+                return result;
               }}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
+          
+          {/* Blog Button in Mobile Menu */}
+          <Link 
+            href="/blog"
+            className="text-maxime-primary bg-maxime-tertiary hover:bg-maxime-tertiary/80 dark:bg-maxime-dark-card dark:hover:bg-maxime-dark-card/90 px-6 py-2 rounded-md transition-all duration-300 text-base"
+            onClick={closeMobileMenu}
+          >
+            Blog
+          </Link>
           
           {/* CV Export in Mobile Menu */}
           <div className="mt-4">

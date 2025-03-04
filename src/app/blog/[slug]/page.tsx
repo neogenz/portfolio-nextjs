@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, notFound } from 'next/navigation';
-import Navigation from '@/components/Navigation';
+import BlogNavigation from '@/components/BlogNavigation';
 import Footer from '@/components/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
 import BlogTitle from '@/components/BlogTitle';
@@ -51,15 +51,15 @@ export default function BlogPost() {
   if (isLoading) {
     return (
       <SmoothScroll>
-        <div className="relative min-h-screen flex flex-col">
-          <Navigation />
+        <div className="relative min-h-screen flex flex-col bg-maxime-white dark:bg-maxime-dark-bg">
+          <BlogNavigation />
           <main className="pt-24 md:pt-32 flex-grow px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto w-full py-8">
-              <div className="h-8 w-1/2 bg-gray-200 dark:bg-maxime-dark-accent rounded animate-pulse mb-4"></div>
-              <div className="h-4 w-1/4 bg-gray-200 dark:bg-maxime-dark-accent rounded animate-pulse mb-8"></div>
-              <div className="h-64 w-full bg-gray-200 dark:bg-maxime-dark-accent rounded animate-pulse mb-8"></div>
+              <div className="h-8 w-1/2 bg-maxime-tertiary dark:bg-maxime-dark-card/40 rounded animate-pulse mb-4"></div>
+              <div className="h-4 w-1/4 bg-maxime-tertiary dark:bg-maxime-dark-card/40 rounded animate-pulse mb-8"></div>
+              <div className="h-64 w-full bg-maxime-tertiary dark:bg-maxime-dark-card/40 rounded animate-pulse mb-8"></div>
               {[1, 2, 3, 4, 5].map(i => (
-                <div key={i} className="h-4 w-full bg-gray-200 dark:bg-maxime-dark-accent rounded animate-pulse mb-3"></div>
+                <div key={i} className="h-4 w-full bg-maxime-tertiary dark:bg-maxime-dark-card/40 rounded animate-pulse mb-3"></div>
               ))}
             </div>
           </main>
@@ -73,15 +73,15 @@ export default function BlogPost() {
 
   return (
     <SmoothScroll>
-      <div className="relative min-h-screen flex flex-col">
-        <Navigation />
+      <div className="relative min-h-screen flex flex-col bg-maxime-white dark:bg-maxime-dark-bg">
+        <BlogNavigation />
         <main className="pt-24 md:pt-32 flex-grow px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto py-8 md:py-12">
             <article>
               <div className="mb-12">
                 <Link 
                   href="/blog" 
-                  className="inline-flex items-center text-maxime-primary hover:opacity-80 transition-opacity duration-300 mb-8"
+                  className="inline-flex items-center text-maxime-primary hover:opacity-80 transition-opacity duration-300 mb-8 dark:text-maxime-white"
                 >
                   <ArrowLeft className="mr-2 w-4 h-4" /> Retour aux articles
                 </Link>
@@ -92,7 +92,7 @@ export default function BlogPost() {
                   textAlign="left"
                 />
                 
-                <div className="flex flex-wrap items-center gap-4 text-sm text-maxime-gray dark:text-maxime-light-gray">
+                <div className="flex flex-wrap items-center gap-4 text-sm text-maxime-secondary dark:text-maxime-white/60">
                   <div className="flex items-center">
                     <Calendar className="w-4 h-4 mr-1" />
                     <span>{formatDate(post.date)}</span>
@@ -118,7 +118,7 @@ export default function BlogPost() {
                 {post.categories.map((category, index) => (
                   <div 
                     key={index} 
-                    className="flex items-center text-xs px-3 py-1 bg-maxime-primary/10 dark:bg-maxime-primary/20 text-maxime-primary rounded-full"
+                    className="flex items-center text-xs px-3 py-1 bg-maxime-tertiary dark:bg-maxime-dark-card/30 text-maxime-primary dark:text-maxime-white rounded-full"
                   >
                     <Tag className="w-3 h-3 mr-1" />
                     {category}
@@ -127,7 +127,7 @@ export default function BlogPost() {
               </div>
               
               <div 
-                className="prose prose-lg dark:prose-invert prose-headings:text-maxime-primary dark:prose-headings:text-maxime-white prose-a:text-maxime-primary hover:prose-a:opacity-80 max-w-none prose-img:rounded-lg prose-p:text-maxime-gray dark:prose-p:text-maxime-light-gray prose-strong:text-maxime-primary dark:prose-strong:text-maxime-white mb-16"
+                className="prose prose-lg dark:prose-invert prose-headings:text-maxime-primary dark:prose-headings:text-maxime-white prose-a:text-maxime-primary hover:prose-a:opacity-80 max-w-none prose-img:rounded-lg prose-p:text-maxime-secondary dark:prose-p:text-maxime-white/80 prose-strong:text-maxime-primary dark:prose-strong:text-maxime-white mb-16"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </article>
