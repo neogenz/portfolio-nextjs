@@ -104,6 +104,7 @@ const Navigation = () => {
     { href: "#about", label: "À propos" },
     { href: "#experience", label: "Expérience" },
     { href: "#projects", label: "Projets" },
+    { href: "/blog", label: "Blog", isExternal: true },
     { href: "#contact", label: "Contact" }
   ];
 
@@ -132,7 +133,21 @@ const Navigation = () => {
           <div className={`hidden lg:flex items-center ${isWideScreen ? 'absolute left-1/2 transform -translate-x-1/2' : 'mx-auto'}`}>
             <nav className="flex items-center space-x-6 lg:space-x-8">
               {navLinks.map(link => (
-                <a key={link.href} href={link.href} className={linkStyles}>
+                <a 
+                  key={link.href} 
+                  href={link.href} 
+                  className={linkStyles}
+                  target={link.isExternal ? "_self" : undefined}
+                  onClick={link.isExternal ? undefined : (e) => {
+                    if (!link.isExternal) {
+                      e.preventDefault();
+                      const element = document.querySelector(link.href);
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }
+                  }}
+                >
                   {link.label}
                 </a>
               ))}
@@ -195,9 +210,19 @@ const Navigation = () => {
           {navLinks.map(link => (
             <a 
               key={link.href} 
-              href={link.href} 
-              className={mobileLinkStyles} 
-              onClick={closeMobileMenu}
+              href={link.href}
+              className={`${mobileLinkStyles} text-xl md:text-2xl py-2`}
+              target={link.isExternal ? "_self" : undefined}
+              onClick={(e) => {
+                if (!link.isExternal) {
+                  e.preventDefault();
+                  const element = document.querySelector(link.href);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }
+                closeMobileMenu();
+              }}
             >
               {link.label}
             </a>
