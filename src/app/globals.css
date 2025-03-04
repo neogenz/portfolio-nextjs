@@ -48,193 +48,74 @@
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-fade-in: fade-in 0.5s ease-out forwards;
   --animate-fade-in-up: fade-in-up 0.5s ease-out forwards;
-  --animate-fade-in-right: fade-in-right 0.5s ease-out forwards;
-  --animate-slide-in-bottom: slide-in-bottom 0.5s cubic-bezier(0.25, 1, 0.5, 1)
-    forwards;
-  --animate-slide-in-top: slide-in-top 0.5s cubic-bezier(0.25, 1, 0.5, 1)
-    forwards;
-  --animate-text-reveal: text-reveal 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)
-    forwards;
-  --animate-scale-up: scale-up 0.5s ease-out forwards;
-  --animate-bounce-small: bounce-small 1.5s ease-in-out infinite;
   --animate-char-reveal: char-reveal 0.7s cubic-bezier(0.215, 0.61, 0.355, 1)
     forwards;
-  --animate-float-particle: float-particle 15s ease-in-out infinite;
-  --animate-text-slide-up: text-slide-up 0.8s
-    cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
-  --animate-pulse-slow: pulse-slow 6s ease-in-out infinite;
-  --animate-scroll-dot: scroll-dot 1.5s ease-in-out infinite;
-  --animate-bounce-delayed: bounce-delayed 2s infinite 1s;
+}
 
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
+/* Classe utilitaire pour éviter le glitch des scrollbars */
+.no-scrollbar-shift {
+  scrollbar-gutter: stable;
+}
+
+/* Classe pour fixer la position des menus déroulants sans affecter le flux de la page */
+.fixed-position {
+  max-height: calc(100vh - 10px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Empêcher le déplacement du contenu lors de l'apparition d'une scrollbar */
+body {
+  width: 100%;
+  overflow-x: hidden;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+  
+@keyframes accordion-down {
+  from {
+    height: 0;
   }
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
+  to {
+    height: var(--radix-accordion-content-height);
   }
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
+}
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
   }
-  @keyframes fade-in-up {
-    0% {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  to {
+    height: 0;
   }
-  @keyframes fade-in-right {
-    0% {
-      opacity: 0;
-      transform: translateX(-10px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
   }
-  @keyframes slide-in-bottom {
-    0% {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  100% {
+    opacity: 1;
   }
-  @keyframes slide-in-top {
-    0% {
-      transform: translateY(-20px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+}
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  @keyframes text-reveal {
-    0% {
-      transform: translateY(40%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  @keyframes scale-up {
-    0% {
-      transform: scale(0.97);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
+}
+@keyframes char-reveal {
+  0% {
+    transform: translateY(40px) translateX(10px) rotate(10deg);
+    opacity: 0;
+    filter: blur(10px);
   }
-  @keyframes bounce-small {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-3px);
-    }
-  }
-  @keyframes char-reveal {
-    0% {
-      transform: translateY(40px) translateX(10px) rotate(10deg);
-      opacity: 0;
-      filter: blur(10px);
-    }
-    100% {
-      transform: translateY(0) translateX(0) rotate(0);
-      opacity: 1;
-      filter: blur(0);
-    }
-  }
-  @keyframes float-particle {
-    0%,
-    100% {
-      transform: translateY(0) translateX(0);
-    }
-    25% {
-      transform: translateY(-20px) translateX(10px);
-    }
-    50% {
-      transform: translateY(0) translateX(20px);
-    }
-    75% {
-      transform: translateY(20px) translateX(10px);
-    }
-  }
-  @keyframes text-slide-up {
-    0% {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  @keyframes pulse-slow {
-    0%,
-    100% {
-      transform: scale(1);
-      opacity: 0.3;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 0.5;
-    }
-  }
-  @keyframes scroll-dot {
-    0% {
-      transform: translateY(0);
-      opacity: 0.7;
-    }
-    50% {
-      transform: translateY(6px);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 0.7;
-    }
-  }
-  @keyframes bounce-delayed {
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-      transform: translateY(0);
-    }
-    40% {
-      transform: translateY(-5px);
-    }
-    60% {
-      transform: translateY(-2px);
-    }
+  100% {
+    transform: translateY(0) translateX(0) rotate(0);
+    opacity: 1;
+    filter: blur(0);
   }
 }
 
@@ -551,8 +432,15 @@
     scroll-behavior: smooth;
     /* Forcer l'affichage de la scrollbar pour éviter le décalage au chargement */
     overflow-y: scroll;
+    overflow-x: hidden;
     /* Technique pour éviter le saut lors du chargement en réservant l'espace de la scrollbar */
     scrollbar-gutter: stable;
+    /* Affiner l'apparence de la scrollbar */
+    scrollbar-width: thin;
+    /* Éviter les décalages de contenu */
+    width: 100%;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
   }
   
   /* Styles pour la barre de défilement */
