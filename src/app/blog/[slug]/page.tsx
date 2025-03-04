@@ -6,8 +6,9 @@ import BlogNavigation from '@/components/BlogNavigation';
 import Footer from '@/components/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
 import BlogTitle from '@/components/BlogTitle';
+import CategoryTag from '@/components/CategoryTag';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Clock, Tag } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 import { getBlogPostBySlug, formatDate } from '@/lib/blog';
 import type { BlogPost } from '@/lib/blog';
 import Image from 'next/image';
@@ -119,13 +120,11 @@ export default function BlogPost() {
               
               <div className="flex flex-wrap gap-2 mb-10">
                 {post.categories.map((category, index) => (
-                  <div 
+                  <CategoryTag 
                     key={index} 
-                    className="flex items-center text-xs px-3 py-1 bg-maxime-tertiary dark:bg-maxime-dark-card/30 text-maxime-primary dark:text-maxime-white rounded-full"
-                  >
-                    <Tag className="w-3 h-3 mr-1" />
-                    {category}
-                  </div>
+                    category={category}
+                    showIcon
+                  />
                 ))}
               </div>
               

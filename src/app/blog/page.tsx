@@ -5,7 +5,9 @@ import BlogNavigation from '@/components/BlogNavigation';
 import Footer from '@/components/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
 import BlogTitle from '@/components/BlogTitle';
+import CategoryTag from '@/components/CategoryTag';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { getAllBlogPosts, formatDate } from '@/lib/blog';
 import type { BlogPost } from '@/lib/blog';
@@ -67,10 +69,12 @@ export default function Blog() {
                   >
                     <div className="h-48 bg-maxime-tertiary/50 dark:bg-maxime-dark-card/60 relative overflow-hidden">
                       {post.image ? (
-                        <img 
+                        <Image 
                           src={post.image} 
                           alt={post.title} 
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-maxime-tertiary/80 to-maxime-tertiary dark:from-maxime-dark-bg dark:to-maxime-dark-card"></div>
@@ -79,12 +83,10 @@ export default function Blog() {
                     <div className="p-6 flex flex-col h-full">
                       <div className="mb-3 flex flex-wrap gap-2">
                         {post.categories.map((category, index) => (
-                          <span 
+                          <CategoryTag 
                             key={index} 
-                            className="text-xs px-2 py-1 bg-maxime-primary/20 dark:bg-maxime-primary/30 text-maxime-primary dark:text-maxime-white rounded-full"
-                          >
-                            {category}
-                          </span>
+                            category={category}
+                          />
                         ))}
                       </div>
                       <h3 className="text-xl font-bold mb-3 text-maxime-primary dark:text-maxime-white group-hover:text-maxime-primary/80 dark:group-hover:text-maxime-white/80 transition-colors duration-300">
