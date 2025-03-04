@@ -73,7 +73,7 @@ const Contact = () => {
             <div className="mt-6">
               <p className="mb-2 text-maxime-secondary/60 dark:text-maxime-white/60">Me suivre :</p>
               <div className="flex space-x-4">
-                <a href="https://www.linkedin.com/in/maxime-desogus" target="_blank" rel="noopener noreferrer" 
+                <a href="https://www.linkedin.com/in/maxime-de-sogus" target="_blank" rel="noopener noreferrer" 
                    className="text-maxime-primary dark:text-maxime-white hover:text-maxime-primary/80 dark:hover:text-maxime-white/70 transition-colors">LinkedIn</a>
               </div>
             </div>
@@ -123,7 +123,7 @@ const Contact = () => {
                 ></textarea>
               </div>
               
-              <button type="submit" className="px-6 py-3 bg-maxime-primary dark:bg-white text-white dark:text-zinc-900 hover:bg-maxime-primary/90 dark:hover:bg-white/90 inline-flex items-center gap-2 transition-all duration-300">
+              <button type="submit" className="cursor-pointer px-6 py-3 bg-maxime-primary dark:bg-white text-white dark:text-zinc-900 hover:bg-maxime-primary/90 dark:hover:bg-white/90 inline-flex items-center gap-2 transition-all duration-300">
                 Envoyer le message <ArrowRight className="h-4 w-4" />
               </button>
             </form>

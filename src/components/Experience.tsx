@@ -240,7 +240,7 @@ const Experience = () => {
 
           <div className="mt-12 text-center reveal">
             <button 
-              className="button-secondary inline-flex items-center"
+              className="cursor-pointer button-secondary inline-flex items-center"
               onClick={handleDownloadPDF}
               disabled={isDownloading}
             >

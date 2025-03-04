@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 // Project data based on the detailed information
 const projects = [
   {
     id: 1,
+    role: 'Lead technique & Architecte',
     title: 'Système d\'Aide à l\'Exploitation (SAE)',
     subtitle: 'Application d\'Administration Multi-Client',
     client: 'OpenIT SA',
@@ -23,13 +23,14 @@ const projects = [
       'Tests unitaires et end-to-end avec Jest et Playwright',
       'Utilisation avancée des fonctionnalités d\'Angular (Signals, Resources, lazy loading, standalone components)'
     ],
-    image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f',
+    image: '',
     url: 'openit.ch/sae',
     link: '#',
     skills: ['Angular 19', 'RxJS', 'Signals', 'TailwindCSS', 'REST API', 'CI/CD', 'Jest', 'Playwright', 'Sentry']
   },
   {
     id: 2,
+    role: 'Lead technique & Architecte',
     title: 'Plateforme de Gestion des Objets Trouvés',
     subtitle: 'Automatisation de recherche',
     client: 'OpenIT SA',
@@ -43,13 +44,14 @@ const projects = [
       'Gestion complète du flux d\'identification, de stockage et de restitution des objets perdus',
       'Optimisation de la récupération des objets grâce à une interface utilisateur intuitive'
     ],
-    image: 'https://images.unsplash.com/photo-1541726260-e6b6a6a08b27',
+    image: '',
     url: 'lost.openit.ch',
     link: '#',
     skills: ['Angular 19', 'NestJS', 'Prisma', 'MongoDB', 'IA', 'RxJS', 'Python Flask', 'HuggingFace', 'GPT']
   },
   {
     id: 3,
+    role: 'Développeur',
     title: 'Application Mobile Multi-Clients',
     subtitle: 'Transports Publics',
     client: 'OpenIT SA',
@@ -66,13 +68,14 @@ const projects = [
       'Achat et gestion de titres de transport',
       'Optimisation pour performances proches des applications natives'
     ],
-    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9',
+    image: '',
     url: 'openit.ch/mobile',
     link: '#',
     skills: ['Angular 5 à 19', 'Ionic', 'Capacitor', 'NX', 'RxJS', 'Mobile', 'Swift', 'Java', 'NgRx', 'Leaflet']
   },
   {
     id: 4,
+    role: 'Développeur',
     title: 'Système de Vente et Gestion',
     subtitle: 'Titres de Transport',
     client: 'OpenIT SA',
@@ -86,16 +89,17 @@ const projects = [
       'Optimisation des processus de vente et de gestion des stocks',
       'Tests unitaires & intégration (Jest, TSMockito)'
     ],
-    image: 'https://images.unsplash.com/photo-1545987796-200677ee1011',
+    image: '',
     url: 'api.openit.ch',
     link: '#',
     skills: ['NestJS', 'MongoDB', 'GraphQL', 'REST API', 'RxJS', 'Jest', 'TSMockito', 'Batch Processing']
   },
   {
     id: 5,
+    role: 'Développeur',
     title: 'Système de Comptage Passagers',
     subtitle: 'Répartition des Revenus',
-    client: 'OpenIT SA',
+    client: 'OpenIT',
     category: 'Fullstack',
     description: 'Suivi des passagers et gestion des recettes pour opérateurs de transport. Frontend Angular & Backend Java Spring Boot. Objectif: Optimisation financière et meilleure répartition des revenus entre opérateurs.',
     details: [
@@ -104,15 +108,16 @@ const projects = [
       'Suivi en temps réel du nombre de passagers via RxJS & géolocalisation',
       'Automatisation des calculs via architecture scalable'
     ],
-    image: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e',
+    image: '',
     url: 'count.openit.ch',
     link: '#',
     skills: ['Angular 8 à 17', 'Java Spring', 'RxJS', 'Géolocalisation', 'Automatisation']
   },
   {
     id: 6,
+    role: 'Développeur',
     title: 'Applications Opérationnelles',
-    subtitle: 'Informations Voyageurs',
+    subtitle: 'Informations Voyageurs en gare',
     client: 'OpenIT SA',
     category: 'Multi-Platformes',
     description: 'Communication en temps réel avec les usagers des transports publics. Objectif: Améliorer l\'efficacité du service de transport et la qualité des informations.',
@@ -124,13 +129,14 @@ const projects = [
       'Interface optimisée pour utilisation sur tablette',
       'Suivi GPS des bus en temps réel'
     ],
-    image: 'https://images.unsplash.com/photo-1532939163844-547f958e91b4',
+    image: '',
     url: 'tracking.openit.ch',
     link: '#',
     skills: ['Angular 6 à 19', 'Ionic', 'Electron', 'Windows', 'GPS', 'Capacitor', 'Temps réel']
   },
   {
     id: 7,
+    role: 'Développeur',
     title: 'Backend de Vente',
     subtitle: 'Titres de Transport .NET',
     client: 'OpenIT SA',
@@ -142,55 +148,14 @@ const projects = [
       'APIs REST avec documentation Swagger',
       'Architecture orientée services pour une scalabilité optimale'
     ],
-    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4',
+    image: '',
     url: 'poc.openit.ch',
     link: '#',
     skills: ['.NET', 'EntityFramework', 'PostgreSQL', 'Angular 19', 'Swagger', 'REST API']
   }
 ];
 
-// Technical stack grouped by category
-const technicalStack = {
-  development: [
-    'TypeScript, JavaScript (ES5/ES6)',
-    'Angular (5 → 19)', 'RxJS', 'Signals', 'Standalone Components',
-    'NestJS', 'MongoDB', 'PostgreSQL', '.NET', 'Spring Boot', 'C#', 'Java',
-    'Mobile : Ionic, Capacitor, Swift, Java Android',
-    'Gestion d\'état : NgRx, Redux',
-    'HTML5, CSS3, GraphQL'
-  ],
-  devops: [
-    'Docker',
-    'Git, GitLab, TFS',
-    'CI/CD GitLab, automatisation des tests (Jest, Jasmine, Karma, Protractor, Playwright, TSMockito)',
-    'Monitoring et logs avancés : Sentry, Chrome Profiler',
-    'TDD & Software Craftsmanship'
-  ],
-  tools: [
-    'Jira, Confluence',
-    'Postman, Sentry',
-    'npm, yarn',
-    'VSCode, WebStorm, Visual Studio',
-    'Android Studio, Xcode',
-    'Figma, Notion'
-  ],
-  databases: [
-    'MongoDB',
-    'PostgreSQL',
-    'SQLServer',
-    'Oracle',
-    'MySQL'
-  ],
-  softSkills: [
-    'Lead technique sur projets critiques',
-    'Revue de code & Architecture',
-    'Animation d\'ateliers techniques & veille techno'
-  ]
-};
-
 const Projects = () => {
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-
   return (
     <section id="projects" className="section-padding bg-maxime-tertiary dark:bg-maxime-dark-card">
       <div className="container-padding mx-auto">
@@ -221,19 +186,22 @@ const Projects = () => {
               className={`group ${index < projects.length - 1 ? 'border-b border-maxime-primary/10 dark:border-maxime-white/10' : ''} pb-16 reveal`}
               style={{ animationDelay: `${0.1 * (index + 1)}s` }}
             >
-              <div className="flex flex-col md:flex-row gap-10">
+              <div className="flex flex-col md:flex-row sm:gap-2 lg:gap-10">
                 <div className="md:w-1/3">
                   <h3 className="text-2xl font-light text-maxime-primary dark:text-maxime-white mb-1">
                     {project.title}
                   </h3>
                   <p className="text-xl font-light text-maxime-secondary dark:text-maxime-white/90 mb-3">{project.subtitle}</p>
-                  <p className="text-maxime-secondary dark:text-maxime-white/70 mb-6">{project.client}</p>
+                  <div className="text-maxime-secondary dark:text-maxime-white/70 mb-6">
+                    <p>{project.client}</p>
+                    {project.role && (<p>Rôle sur le projet : {project.role}</p>)}
+                  </div>
                 </div>
                 
                 <div className="md:w-2/3">
                   <div className="flex flex-col space-y-6">
                     <div>
-                      <div className="text-sm inline-block px-3 py-1 bg-maxime-white/40 dark:bg-maxime-dark-bg/40 text-maxime-primary dark:text-maxime-white/90 rounded-full mb-4">
+                      <div className="text-sm inline-block px-4 py-1.5 bg-maxime-white/90 dark:bg-maxime-dark-bg/90 text-maxime-primary dark:text-maxime-white/80 rounded-full mb-4 border border-maxime-primary/10 dark:border-maxime-white/10 font-medium">
                         {project.category}
                       </div>
                       
