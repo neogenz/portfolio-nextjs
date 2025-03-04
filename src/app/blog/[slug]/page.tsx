@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, Tag } from 'lucide-react';
 import { getBlogPostBySlug, formatDate } from '@/lib/blog';
 import type { BlogPost } from '@/lib/blog';
+import Image from 'next/image';
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -105,11 +106,13 @@ export default function BlogPost() {
               </div>
               
               {post.image && (
-                <div className="w-full h-[350px] mb-10 overflow-hidden rounded-lg">
-                  <img 
+                <div className="w-full h-[350px] mb-10 overflow-hidden rounded-lg relative">
+                  <Image 
                     src={post.image} 
                     alt={post.title} 
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover"
                   />
                 </div>
               )}

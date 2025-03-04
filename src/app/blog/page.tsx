@@ -81,7 +81,7 @@ export default function Blog() {
                         {post.categories.map((category, index) => (
                           <span 
                             key={index} 
-                            className="text-xs px-2 py-1 bg-maxime-tertiary/70 dark:bg-maxime-dark-card/60 text-maxime-primary dark:text-maxime-white rounded-full"
+                            className="text-xs px-2 py-1 bg-maxime-primary/20 dark:bg-maxime-primary/30 text-maxime-primary dark:text-maxime-white rounded-full"
                           >
                             {category}
                           </span>
