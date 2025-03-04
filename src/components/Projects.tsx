@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowUpRight, ExternalLink } from 'lucide-react';
-import OptimizedImage from './ui/OptimizedImage';
+import { ArrowUpRight } from 'lucide-react';
 
 // Project data based on the detailed information
 const projects = [
@@ -47,7 +46,7 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1541726260-e6b6a6a08b27',
     url: 'lost.openit.ch',
     link: '#',
-    skills: ['Angular', 'NestJS', 'Prisma', 'MongoDB', 'IA', 'RxJS', 'Python Flask', 'HuggingFace', 'GPT']
+    skills: ['Angular 19', 'NestJS', 'Prisma', 'MongoDB', 'IA', 'RxJS', 'Python Flask', 'HuggingFace', 'GPT']
   },
   {
     id: 3,
@@ -70,7 +69,7 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9',
     url: 'openit.ch/mobile',
     link: '#',
-    skills: ['Angular', 'Ionic', 'Capacitor', 'NX', 'RxJS', 'Mobile', 'Swift', 'Java', 'NgRx', 'Leaflet']
+    skills: ['Angular 5 à 19', 'Ionic', 'Capacitor', 'NX', 'RxJS', 'Mobile', 'Swift', 'Java', 'NgRx', 'Leaflet']
   },
   {
     id: 4,
@@ -108,7 +107,7 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e',
     url: 'count.openit.ch',
     link: '#',
-    skills: ['Angular', 'Java Spring', 'RxJS', 'Géolocalisation', 'Automatisation']
+    skills: ['Angular 8 à 17', 'Java Spring', 'RxJS', 'Géolocalisation', 'Automatisation']
   },
   {
     id: 6,
@@ -128,11 +127,11 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1532939163844-547f958e91b4',
     url: 'tracking.openit.ch',
     link: '#',
-    skills: ['Angular', 'Ionic', 'Electron', 'Windows', 'GPS', 'Capacitor', 'Temps réel']
+    skills: ['Angular 6 à 19', 'Ionic', 'Electron', 'Windows', 'GPS', 'Capacitor', 'Temps réel']
   },
   {
     id: 7,
-    title: 'POC Backend de Vente',
+    title: 'Backend de Vente',
     subtitle: 'Titres de Transport .NET',
     client: 'OpenIT SA',
     category: 'Fullstack',
@@ -146,7 +145,7 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4',
     url: 'poc.openit.ch',
     link: '#',
-    skills: ['.NET', 'EntityFramework', 'PostgreSQL', 'Angular', 'Swagger', 'REST API']
+    skills: ['.NET', 'EntityFramework', 'PostgreSQL', 'Angular 19', 'Swagger', 'REST API']
   }
 ];
 
@@ -219,7 +218,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div 
               key={project.id}
-              className="group border-b border-maxime-primary/10 dark:border-maxime-white/10 pb-16 reveal"
+              className={`group ${index < projects.length - 1 ? 'border-b border-maxime-primary/10 dark:border-maxime-white/10' : ''} pb-16 reveal`}
               style={{ animationDelay: `${0.1 * (index + 1)}s` }}
             >
               <div className="flex flex-col md:flex-row gap-10">
@@ -264,40 +263,6 @@ const Projects = () => {
               </div>
             </div>
           ))}
-        </div>
-        
-        {/* Project Images */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 reveal" style={{ animationDelay: '0.6s' }}>
-          {projects.slice(0, 3).map((project, index) => (
-            <div key={project.id} className="group relative overflow-hidden rounded-lg">
-              <div className="aspect-4/3 overflow-hidden bg-maxime-white dark:bg-maxime-dark-bg rounded-lg">
-                <OptimizedImage 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-lg"
-                  sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
-                  width={600}
-                  height={450}
-                  quality={75}
-                />
-              </div>
-              
-              <div className="py-3">
-                <h3 className="text-base font-light text-maxime-primary dark:text-maxime-white">
-                  {project.title}
-                </h3>
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* Bottom Description */}
-        <div className="mt-16 flex justify-between items-start reveal" style={{ animationDelay: '0.7s' }}>
-          <p className="text-maxime-secondary dark:text-maxime-white/70 max-w-2xl">
-            De la conception d'interfaces utilisateur fluides au développement d'architectures backend robustes,
-            chaque projet a contribué à renforcer mon expertise et ma passion pour l'ingénierie logicielle.
-            Je suis constamment à la recherche de nouveaux défis techniques pour continuer à évoluer.
-          </p>
         </div>
       </div>
     </section>
