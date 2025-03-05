@@ -1,0 +1,10 @@
+---
+description: Nextjs15
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+
+- Remember than we have to use types from NextJS 15
+- Remember than we have to use practices from NextJS 15
