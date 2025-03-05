@@ -1,7 +1,4 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import { useParams, notFound } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import BlogNavigation from '@/components/BlogNavigation';
 import Footer from '@/components/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
@@ -9,69 +6,24 @@ import BlogTitle from '@/components/BlogTitle';
 import CategoryTag from '@/components/CategoryTag';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
-import { getBlogPostBySlug, formatDate } from '@/lib/blog';
-import type { BlogPost } from '@/lib/blog';
+import { getBlogPostBySlug, formatDate, getAllBlogPosts } from '@/lib/blog';
 import Image from 'next/image';
 
-export default function BlogPost() {
-  const { slug } = useParams();
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+// Générer les chemins statiques pour tous les articles
+export async function generateStaticParams() {
+  const posts = await getAllBlogPosts();
+  
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
-  // Récupérer l'article correspondant au slug
-  useEffect(() => {
-    const fetchPost = async () => {
-      if (typeof slug !== 'string') {
-        notFound();
-        return;
-      }
-
-      try {
-        const foundPost = await getBlogPostBySlug(slug);
-        
-        if (!foundPost) {
-          notFound();
-          return;
-        }
-        
-        setPost(foundPost);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Erreur lors du chargement de l\'article:', error);
-        notFound();
-      }
-    };
-
-    // Ajouter un délai artificiel pour simuler le chargement
-    const timer = setTimeout(() => {
-      fetchPost();
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, [slug]);
-
-  if (isLoading) {
-    return (
-      <SmoothScroll>
-        <div className="relative min-h-screen flex flex-col bg-maxime-white dark:bg-maxime-dark-bg">
-          <BlogNavigation />
-          <main className="pt-24 md:pt-32 flex-grow px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto w-full py-8">
-              <div className="h-8 w-1/2 bg-maxime-tertiary dark:bg-maxime-dark-card/40 rounded animate-pulse mb-4"></div>
-              <div className="h-4 w-1/4 bg-maxime-tertiary dark:bg-maxime-dark-card/40 rounded animate-pulse mb-8"></div>
-              <div className="h-64 w-full bg-maxime-tertiary dark:bg-maxime-dark-card/40 rounded animate-pulse mb-8"></div>
-              {[1, 2, 3, 4, 5].map(i => (
-                <div key={i} className="h-4 w-full bg-maxime-tertiary dark:bg-maxime-dark-card/40 rounded animate-pulse mb-3"></div>
-              ))}
-            </div>
-          </main>
-          <Footer />
-        </div>
-      </SmoothScroll>
-    );
+export default async function BlogPost({ params }: { params: { slug: string } }) {
+  const post = await getBlogPostBySlug(params.slug);
+  
+  if (!post) {
+    notFound();
   }
-
-  if (!post) return null;
 
   return (
     <SmoothScroll>

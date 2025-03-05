@@ -1,6 +1,3 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import BlogNavigation from '@/components/BlogNavigation';
 import Footer from '@/components/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
@@ -10,32 +7,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { getAllBlogPosts, formatDate } from '@/lib/blog';
-import type { BlogPost } from '@/lib/blog';
 
-export default function Blog() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Charger les articles
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const allPosts = await getAllBlogPosts();
-        setPosts(allPosts);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Erreur lors du chargement des articles:', error);
-        setIsLoading(false);
-      }
-    };
-
-    // Ajouter un délai artificiel pour simuler le chargement
-    const timer = setTimeout(() => {
-      fetchPosts();
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
+export default async function Blog() {
+  const posts = await getAllBlogPosts();
 
   return (
     <SmoothScroll>
@@ -53,61 +27,53 @@ export default function Blog() {
               </p>
             </div>
 
-            {isLoading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                {[1, 2, 3].map(i => (
-                  <div key={i} className="bg-maxime-tertiary dark:bg-maxime-dark-card/40 animate-pulse rounded-xl overflow-hidden h-[350px]"></div>
-                ))}
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                {posts.map(post => (
-                  <Link 
-                    href={`/blog/${post.slug}`} 
-                    key={post.id}
-                    className="group bg-maxime-tertiary dark:bg-maxime-dark-card/40 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 flex flex-col h-full blog-card"
-                  >
-                    <div className="h-48 bg-maxime-tertiary/50 dark:bg-maxime-dark-card/60 relative overflow-hidden">
-                      {post.image ? (
-                        <Image 
-                          src={post.image} 
-                          alt={post.title} 
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {posts.map(post => (
+                <Link 
+                  href={`/blog/${post.slug}`} 
+                  key={post.id}
+                  className="group bg-maxime-tertiary dark:bg-maxime-dark-card/40 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 flex flex-col h-full blog-card"
+                >
+                  <div className="h-48 bg-maxime-tertiary/50 dark:bg-maxime-dark-card/60 relative overflow-hidden">
+                    {post.image ? (
+                      <Image 
+                        src={post.image} 
+                        alt={post.title} 
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-maxime-tertiary/80 to-maxime-tertiary dark:from-maxime-dark-bg dark:to-maxime-dark-card"></div>
+                    )}
+                  </div>
+                  <div className="p-6 flex flex-col h-full">
+                    <div className="mb-3 flex flex-wrap gap-2">
+                      {post.categories.map((category, index) => (
+                        <CategoryTag 
+                          key={index} 
+                          category={category}
                         />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-maxime-tertiary/80 to-maxime-tertiary dark:from-maxime-dark-bg dark:to-maxime-dark-card"></div>
-                      )}
+                      ))}
                     </div>
-                    <div className="p-6 flex flex-col h-full">
-                      <div className="mb-3 flex flex-wrap gap-2">
-                        {post.categories.map((category, index) => (
-                          <CategoryTag 
-                            key={index} 
-                            category={category}
-                          />
-                        ))}
-                      </div>
-                      <h3 className="text-xl font-bold mb-3 text-maxime-primary dark:text-maxime-white group-hover:text-maxime-primary/80 dark:group-hover:text-maxime-white/80 transition-colors duration-300">
-                        {post.title}
-                      </h3>
-                      <p className="text-sm text-maxime-secondary dark:text-maxime-white/80 mb-4 flex-grow">
-                        {post.excerpt}
-                      </p>
-                      <div className="flex justify-between items-center mt-auto pt-3 border-t border-maxime-white/30 dark:border-maxime-dark-bg/30">
-                        <span className="text-xs text-maxime-secondary dark:text-maxime-white/60">
-                          {formatDate(post.date)}
-                        </span>
-                        <span className="text-maxime-primary dark:text-maxime-white flex items-center text-sm">
-                          Lire <ArrowRight className="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                        </span>
-                      </div>
+                    <h3 className="text-xl font-bold mb-3 text-maxime-primary dark:text-maxime-white group-hover:text-maxime-primary/80 dark:group-hover:text-maxime-white/80 transition-colors duration-300">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-maxime-secondary dark:text-maxime-white/80 mb-4 flex-grow">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex justify-between items-center mt-auto pt-3 border-t border-maxime-white/30 dark:border-maxime-dark-bg/30">
+                      <span className="text-xs text-maxime-secondary dark:text-maxime-white/60">
+                        {formatDate(post.date)}
+                      </span>
+                      <span className="text-maxime-primary dark:text-maxime-white flex items-center text-sm">
+                        Lire <ArrowRight className="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
                     </div>
-                  </Link>
-                ))}
-              </div>
-            )}
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </main>
         <Footer />
