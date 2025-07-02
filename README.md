@@ -1,10 +1,10 @@
 # Portfolio - Maxime De Sogus
 
-> **Showcase technique** d'un développeur fullstack passionné par les technologies modernes et les bonnes pratiques.
+> **Expérimentation technique** - Portfolio développé en 24h avec Bolt.new + Cursor pour tester les outils d'IA modernes.
 
 ## 🎯 Objectif de ce repository
 
-Ce portfolio démontre ma maîtrise des **technologies modernes** et mon approche du **clean code**. Chaque choix technique reflète une volonté d'optimisation, de maintenabilité et de performance.
+Ce portfolio est le résultat d'une **expérimentation intensive** : développer un site complet en 24 heures en utilisant **Bolt.new** puis **Cursor**. L'objectif était de tester les capacités des outils d'IA pour le développement et voir jusqu'où on peut aller rapidement avec les **technologies modernes**.
 
 ## 🏗️ Architecture & Choix techniques
 
@@ -15,17 +15,17 @@ Ce portfolio démontre ma maîtrise des **technologies modernes** et mon approch
 - **Radix UI** - *Composants accessibles et headless*
 - **TanStack Query** - *State management moderne et optimisé*
 
-### Patterns et bonnes pratiques implémentés
+### Résultats de l'expérimentation 24h
 
-#### 🏛️ Architecture Clean
+#### 🏛️ Architecture générée
 ```
 src/
 ├── app/             # App Router + API Routes
-├── components/      # Composants réutilisables
-│   └── ui/         # Design system components
-├── hooks/          # Logic métier isolée
-├── lib/            # Utilitaires purs
-└── services/       # Services externes
+├── components/      # Composants générés
+│   └── ui/         # Design system Radix
+├── hooks/          # Hooks personnalisés
+├── lib/            # Utilitaires
+└── services/       # Services intégrés
 ```
 
 #### 🔒 Sécurité & Performance
@@ -134,14 +134,17 @@ export class RateLimiter {
 - Vercel (Edge Functions)
 - Environment variables sécurisées
 
-## 💭 Philosophie de développement
+## 🤖 Retour d'expérience IA + Dev
 
-Ce portfolio reflète ma vision du développement moderne :
-- **Code lisible** avant tout
-- **Performance** sans compromis
-- **Sécurité** by design
-- **Accessibilité** inclusive
-- **Maintenabilité** long-terme
+**Bolt.new** (6h) : Prototype rapide, structure de base
+**Cursor** (18h) : Raffinement, features avancées, debugging
+
+**Lessons learned :**
+- L'IA excelle sur les **patterns connus**
+- Gain de vitesse **x10** sur le boilerplate
+- Nécessite supervision pour la **cohérence**
+- Parfait pour le **prototypage rapide**
+- Limite sur la **créativité pure**
 
 ## 📊 Métriques de qualité
 
@@ -153,6 +156,6 @@ Ce portfolio reflète ma vision du développement moderne :
 
 ---
 
-*Ce repository est un **showcase technique** démontrant ma passion pour le code de qualité et les technologies modernes.*
+*Ce repository documente une **expérimentation IA-assisted development** - de l'idée au déploiement en 24h avec les outils modernes.*
 
 **Contact** : maxime.desogus@gmail.com
