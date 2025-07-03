@@ -26,7 +26,7 @@ const Hero = () => {
     "Évangéliste Craft 🔥",
     "Enthousiaste & curieux 🧐",
     "Toujours en train de créer 🔄",
-    "Très sociable 🤝"
+    "Très sociable 🤝",
   ];
 
   // Hook pour l'effet machine à écrire
@@ -100,7 +100,7 @@ const Hero = () => {
           >
             <div>
               <h3 className="text-2xl font-light sm:text-3xl md:text-3xl lg:text-4xl">
-                +8
+                +10
               </h3>
               <p className="text-sm text-maxime-secondary dark:text-maxime-white/60">
                 Années d&apos;expérience

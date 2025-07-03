@@ -12,7 +12,7 @@ import PageLoadHandler from "@/components/PageLoadHandler";
 export const metadata: Metadata = {
   title: "Expert Angular & Développeur Fullstack Suisse",
   description:
-    "Développeur Angular expert basé en Suisse (Valais). ✓ +8 ans d'expérience ✓ Disponible Lausanne, Vaud ✓ Applications web performantes ✓ TypeScript, Next.js, React. Contactez-moi pour vos projets.",
+    "Développeur Angular expert basé en Suisse (Valais). ✓ +10 ans d'expérience ✓ Disponible Lausanne, Vaud ✓ Applications web performantes ✓ TypeScript, Next.js, React. Contactez-moi pour vos projets.",
   keywords: [
     "Expert Angular Suisse",
     "Développeur Angular Valais",
@@ -29,13 +29,13 @@ export const metadata: Metadata = {
     url: "/",
     title: "Maxime De Sogus | Expert Angular & Développeur Fullstack Suisse",
     description:
-      "Développeur Angular expert basé en Suisse (Valais). +8 ans d'expérience. Disponible Lausanne, Vaud. Applications web performantes.",
+      "Développeur Angular expert basé en Suisse (Valais). +10 ans d'expérience. Disponible Lausanne, Vaud. Applications web performantes.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Maxime De Sogus | Expert Angular & Développeur Fullstack Suisse",
     description:
-      "Développeur Angular expert basé en Suisse (Valais). +8 ans d'expérience. Disponible Lausanne, Vaud.",
+      "Développeur Angular expert basé en Suisse (Valais). +10 ans d'expérience. Disponible Lausanne, Vaud.",
     images: ["/images/optimized/og-image.webp"],
   },
   alternates: {
