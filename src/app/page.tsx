@@ -1,33 +1,53 @@
-'use client';
+import type { Metadata } from "next";
+import Navigation from "@/components/Navigation";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Experience from "@/components/Experience";
+import Projects from "@/components/Projects";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
+import PageLoadHandler from "@/components/PageLoadHandler";
 
-import { useEffect } from 'react';
-import Navigation from '@/components/Navigation';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Experience from '@/components/Experience';
-import Projects from '@/components/Projects';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
-import SmoothScroll from '@/components/SmoothScroll';
+export const metadata: Metadata = {
+  title: "Maxime De Sogus | Développeur Angular Expert Valais Suisse",
+  description:
+    "Maxime De Sogus - Développeur Angular Expert basé en Valais, Suisse. +10 ans d'expérience Angular, TypeScript, JavaScript, Ionic. Portfolio et compétences en développement web moderne. Applications performantes.",
+  keywords: [
+    "Maxime De Sogus",
+    "Développeur Angular Valais",
+    "Développeur Angular Suisse",
+    "Expert Angular Suisse romande",
+    "Développeur TypeScript Suisse",
+    "Développeur JavaScript Suisse",
+    "Développeur Ionic Suisse",
+    "Portfolio développeur Suisse",
+    "Angular developer Switzerland",
+    "+10 ans expérience Angular",
+  ],
+  openGraph: {
+    url: "/",
+    title: "Maxime De Sogus | Développeur Angular Expert Valais Suisse",
+    description:
+      "Maxime De Sogus - Développeur Angular Expert basé en Valais, Suisse. +10 ans d'expérience. Portfolio et compétences en développement web moderne.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Maxime De Sogus | Développeur Angular Expert Valais Suisse",
+    description:
+      "Maxime De Sogus - Développeur Angular Expert basé en Valais, Suisse. +10 ans d'expérience. Portfolio et compétences techniques.",
+    images: ["/images/optimized/og-image.webp"],
+  },
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
-  useEffect(() => {
-    // Initial page loading animation
-    document.body.classList.add('overflow-hidden');
-    
-    const timer = setTimeout(() => {
-      document.body.classList.remove('overflow-hidden');
-    }, 1500);
-    
-    return () => {
-      clearTimeout(timer);
-      document.body.classList.remove('overflow-hidden');
-    };
-  }, []);
-  
   return (
     <SmoothScroll>
       <div className="relative">
+        <PageLoadHandler />
         <Navigation />
         <main>
           <Hero />
