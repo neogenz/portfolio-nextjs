@@ -10,32 +10,32 @@ import SmoothScroll from "@/components/SmoothScroll";
 import PageLoadHandler from "@/components/PageLoadHandler";
 
 export const metadata: Metadata = {
-  title: "Expert Angular & Développeur Fullstack Suisse",
+  title: "Maxime De Sogus | Développeur Angular Expert Valais Suisse",
   description:
-    "Développeur Angular expert basé en Suisse (Valais). ✓ +10 ans d'expérience ✓ Disponible Lausanne, Vaud ✓ Applications web performantes ✓ TypeScript, Next.js, React. Contactez-moi pour vos projets.",
+    "Maxime De Sogus - Développeur Angular Expert basé en Valais, Suisse. +10 ans d'expérience Angular, TypeScript, JavaScript, Ionic. Portfolio et compétences en développement web moderne. Applications performantes.",
   keywords: [
-    "Expert Angular Suisse",
+    "Maxime De Sogus",
     "Développeur Angular Valais",
-    "Développeur Fullstack Lausanne",
-    "Développeur Angular Vaud",
-    "TypeScript expert Suisse",
-    "Next.js développeur Valais",
-    "React développeur Lausanne",
-    "Freelance Angular Suisse romande",
-    "Applications web Suisse",
+    "Développeur Angular Suisse",
+    "Expert Angular Suisse romande",
+    "Développeur TypeScript Suisse",
+    "Développeur JavaScript Suisse",
+    "Développeur Ionic Suisse",
+    "Portfolio développeur Suisse",
+    "Angular developer Switzerland",
     "+10 ans expérience Angular",
   ],
   openGraph: {
     url: "/",
-    title: "Maxime De Sogus | Expert Angular & Développeur Fullstack Suisse",
+    title: "Maxime De Sogus | Développeur Angular Expert Valais Suisse",
     description:
-      "Développeur Angular expert basé en Suisse (Valais). +10 ans d'expérience. Disponible Lausanne, Vaud. Applications web performantes.",
+      "Maxime De Sogus - Développeur Angular Expert basé en Valais, Suisse. +10 ans d'expérience. Portfolio et compétences en développement web moderne.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Maxime De Sogus | Expert Angular & Développeur Fullstack Suisse",
+    title: "Maxime De Sogus | Développeur Angular Expert Valais Suisse",
     description:
-      "Développeur Angular expert basé en Suisse (Valais). +10 ans d'expérience. Disponible Lausanne, Vaud.",
+      "Maxime De Sogus - Développeur Angular Expert basé en Valais, Suisse. +10 ans d'expérience. Portfolio et compétences techniques.",
     images: ["/images/optimized/og-image.webp"],
   },
   alternates: {

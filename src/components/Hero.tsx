@@ -14,11 +14,13 @@ const Hero = () => {
 
   // Séquence des textes à afficher
   const textArray = [
+    "Développeur Angular Expert 🥷",
+    "Basé en Valais, Suisse 🏔️", 
     "Développeur fullstack 💻",
-    "Ninja Angular 🥷",
+    "Spécialiste TypeScript 🔧",
+    "Développeur mobile 📱",
     "Développeur frontend 🎨",
     "Ingénieur logiciel 🧠",
-    "Développeur mobile 📱",
     "Passionné de tech ❤️‍🔥",
     "Utilisateur aguéri d'IA 🤖",
     "Développeur backend 🔐",
