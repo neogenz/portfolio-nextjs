@@ -155,12 +155,6 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:gap-24">
           <div className="reveal">
-            <span className="inline-block px-3 py-1 mb-4 text-sm bg-maxime-tertiary dark:bg-maxime-white text-maxime-primary">
-              Contact
-            </span>
-            <h2 className="section-title text-maxime-primary dark:text-maxime-white">
-              Créons ensemble quelque chose d&apos;extraordinaire
-            </h2>
             <p className="text-lg text-maxime-secondary dark:text-maxime-white/80">
               Je suis toujours ouvert à de nouveaux projets et collaborations.
               N&apos;hésitez pas à me contacter si vous avez un projet en tête

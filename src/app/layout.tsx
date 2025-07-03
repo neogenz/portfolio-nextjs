@@ -75,9 +75,6 @@ export const metadata: Metadata = {
   },
 
   // Configuration technique globale
-  verification: {
-    google: "google-site-verification=1234567890",
-  },
   robots: {
     index: true,
     follow: true,
