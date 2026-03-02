@@ -5,6 +5,47 @@ import { ArrowUpRight } from 'lucide-react';
 // Project data based on the detailed information
 const projects = [
   {
+    id: 9,
+    role: 'Lead fullstack & Product',
+    title: 'Pulpe — Application de gestion budgétaire',
+    subtitle: 'Budget Planning & Finances Personnelles',
+    client: 'Projet personnel (Suisse)',
+    category: 'Application Web + Mobile',
+    description: 'Application web et iOS de gestion budgétaire pour le marché suisse. Les utilisateurs planifient leur année financière avec des templates mensuels réutilisables, avec visibilité permanente sur ce qu\'ils peuvent dépenser et épargner.',
+    details: [
+      'Architecture monorepo Turborepo : Angular 21+ (frontend), NestJS 11+ (backend), SwiftUI (iOS), Next.js (landing)',
+      'Frontend signals-first avec Angular 21+, Material 21, Tailwind v4, pattern Signal Store (SWR, resource())',
+      'Chiffrement AES-256-GCM split-key des montants financiers (PBKDF2 client + HKDF backend) — même l\'admin ne peut pas lire les données',
+      'ApiClient centralisé avec validation Zod obligatoire sur tous les appels HTTP',
+      'Mode démo backend-first via utilisateurs Supabase éphémères (RLS, cron cleanup toutes les 6h)',
+      'Quality gate : tests unitaires Vitest, e2e Playwright, CI/CD, lint/prettier, git hooks',
+    ],
+    image: '',
+    url: 'pulpe.app',
+    link: 'https://github.com/neogenz/pulpe',
+    skills: ['Angular 21', 'NestJS', 'SwiftUI', 'Supabase', 'PostgreSQL', 'TypeScript', 'Signals', 'Zod', 'Turborepo', 'Playwright', 'Tailwind v4', 'Angular Material', 'Lefthook', 'GitHub Actions', 'Figma', 'Linear', 'Claude Code'],
+  },
+  {
+    id: 8,
+    role: 'Lead frontend',
+    title: 'Application de Gestion du Personnel',
+    subtitle: 'Planning & Gestion de flotte',
+    client: 'OpenIT SA',
+    category: 'Application Web',
+    description: 'Application web d\'administration pour gérer le planning et la flotte des chauffeurs.',
+    details: [
+      'Architecture par feature avec Angular 21+, PrimeNG et Tailwind CSS',
+      'Gestion d\'état avec RxJS et Signals, chargement optimisé des états',
+      'Mise en place de quality gate : tests unitaires Vitest, e2e Playwright, git hooks lint/prettier, CI/CD GitLab',
+      'Design et conception depuis un design system d\'entreprise sur Figma',
+      'Développement d\'un backend .NET RESTful et communication via Swagger',
+    ],
+    image: '',
+    url: '',
+    link: '#',
+    skills: ['Angular 21', '.NET', 'PrimeNG', 'TailwindCSS', 'REST API', 'MSSql', 'Signals', 'Playwright', 'Figma', 'Claude Code']
+  },
+  {
     id: 1,
     role: 'Lead technique & Architecte',
     title: 'Système d\'Aide à l\'Exploitation (SAE)',

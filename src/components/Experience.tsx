@@ -6,12 +6,28 @@ import { generateAndDownloadCV } from "@/services/CVGenerator";
 
 export const experienceData = [
   {
+    id: 5,
+    title: "Lead Fullstack & Product",
+    company: "Pulpe (Projet Personnel)",
+    period: "2025 - Présent",
+    location: "Suisse",
+    description: [
+      "Conception et développement d'une application web et iOS de gestion budgétaire pour le marché suisse — planification annuelle avec templates mensuels réutilisables.",
+      "Architecture monorepo Turborepo : Angular 21+ (frontend), NestJS 11+ (backend), SwiftUI (iOS), Next.js (landing page).",
+      "Frontend signals-first avec Angular Material 21, Tailwind v4 et pattern Signal Store (SWR, resource()).",
+      "Chiffrement AES-256-GCM split-key des montants financiers (PBKDF2 client + HKDF backend).",
+      "Mode démo backend-first via utilisateurs Supabase éphémères (RLS, cron cleanup toutes les 6h).",
+      "Quality gate : Vitest, Playwright e2e, GitHub Actions CI/CD, Lefthook lint/prettier.",
+    ],
+  },
+  {
     id: 1,
     title: "Senior Full Stack Developer",
     company: "OpenIT SA",
     period: "Octobre 2018 - Présent",
     location: "Lausanne, Suisse",
     description: [
+      "Lead frontend sur une application de gestion du personnel et de la flotte de chauffeurs — Angular 21+, PrimeNG, Tailwind CSS, backend .NET/MSSql, CI/CD GitLab.",
       "Développement et architecture d'un Système d'Aide à l'Exploitation (SAE) - Interface Angular 19 avec architecture modulaire, flux temps réel (RxJS/Signals), performance optimisée (gestion efficace des états de l'application) et monitoring avancé (Sentry).",
       "Création d'une Plateforme de Gestion des Objets Trouvés - Solution fullstack Angular/NestJS/MongoDB avec automatisation du matching via IA (GPT, HuggingFace, Flask) et optimisation des flux de recherche.",
       "Développement d'une application mobile multi-client monorepo NX (Angular/Ionic/Capacitor) avec migration progressive & régulière d'Angular 5 vers la dernière version stable, carte interactive Leaflet/RxJS et plugins natifs Swift/Java.",
