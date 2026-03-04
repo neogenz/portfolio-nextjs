@@ -20,24 +20,16 @@ const About = () => {
         {/* About Content */}
         <div className="max-w-3xl mx-auto mb-20 reveal" style={{ animationDelay: '0.2s' }}>
           <p className="text-lg mb-6 text-maxime-secondary dark:text-maxime-white/90">
-          👋 Je suis Maxime, un Marseillais expatrié en Valais 🇨🇭🏔️ depuis bientôt 10 ans, développeur dans le monde des transports publics 🚆, passionné de technologie 💻, de cuisine 🍜 et de voyages ✈️.
+            Marseillais expatrié en Valais depuis bientôt 10 ans, je construis des applications dans le monde des transports publics. En dehors du code, vous me trouverez probablement en train de perfectionner un ramen maison ou de planifier mon prochain voyage.
           </p>
           <p className="text-lg mb-6 text-maxime-secondary dark:text-maxime-white/90">
-            <span className="font-medium text-maxime-primary dark:text-maxime-white">🚀 Passion et partage</span><br />
-            Quand un sujet m'intéresse, je plonge à fond dedans. Mais je ne suis pas juste un geek enfermé dans son code 👨‍💻. J'aime partager ce que j'apprends, échanger des idées 💡 et trouver des solutions qui ont un vrai impact.
+            Quand un sujet me passionne, je creuse jusqu'au bout. C'est comme ça que je fonctionne, que ce soit pour trouver le bon équilibre d'umami dans un bouillon, pour comprendre une nouvelle techno, ou pour résoudre un problème d'architecture logicielle. Et ce que j'apprends, j'aime le partager — en pair programming, en partageant avec mon équipe, ou simplement autour d'un café.
           </p>
           <p className="text-lg mb-6 text-maxime-secondary dark:text-maxime-white/90">
-            <span className="font-medium text-maxime-primary dark:text-maxime-white">💙 Bienveillance</span><br />
-            On me décrit souvent comme quelqu'un de bienveillant et enthousiaste 🤩. J'essaie toujours d'apporter une énergie positive dans mon équipe, que ce soit en partageant mes connaissances ou en donnant un coup de main. J'aime créer un environnement positif autour de moi, que ce soit dans mon travail ou avec mes proches 💎.
+            Ce qui me motive au quotidien, c'est de bosser avec des gens que j'apprécie sur des sujets qui comptent. Je préfère un environnement où on peut se dire les choses franchement, s'entraider quand c'est tendu, et célébrer quand ça marche. C'est simple, mais c'est ce qui fait la différence.
           </p>
           <p className="text-lg mb-6 text-maxime-secondary dark:text-maxime-white/90">
-            <span className="font-medium text-maxime-primary dark:text-maxime-white">🔍 Curiosité insatiable</span><br />
-            J'adore comprendre comment les choses fonctionnent et trouver la meilleure façon de les améliorer 🛠️. Que ce soit en trouvant l'umami parfait pour un ramen maison 🍜, en planifiant un road trip efficace 🗺️, ou en optimisant mon code avec l'IA 🤖, j'aime chercher la meilleure approche.
-          </p>
-          
-          <p className="text-lg mb-6 text-maxime-secondary dark:text-maxime-white/90">
-            <span className="font-medium text-maxime-primary dark:text-maxime-white">🌍 Voyages inspirants</span><br />
-            Les voyages, c'est ce qui m'inspire et me fait rêver. M'immerger dans l'effervescence de la Silicon Valley 🌉, nager avec les dauphins à l'île Maurice 🐬, gravir le mont Batur à Bali 🌋… Chaque voyage m'apporte une nouvelle perspective. Et pour moi, impossible de voyager sans goûter à la cuisine locale 🍜 – parce qu'un bon voyage, c'est aussi (et surtout !) une bonne assiette !
+            Les voyages nourrissent tout le reste. Gravir le mont Batur à Bali au lever du soleil, nager avec les dauphins à l'île Maurice, arpenter la Silicon Valley pour sentir l'énergie du lieu — chaque destination remet les compteurs à zéro. Et impossible de voyager sans goûter à tout : un bon voyage, c'est aussi une bonne assiette.
           </p>
 
           <div className="text-center">
