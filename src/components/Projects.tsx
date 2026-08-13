@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Github } from 'lucide-react';
 
 // Project data based on the detailed information
 const projects = [
@@ -68,6 +68,26 @@ const projects = [
     url: 'openit.ch/sae',
     link: '#',
     skills: ['Angular 19', 'RxJS', 'Signals', 'TailwindCSS', 'REST API', 'CI/CD', 'Jest', 'Playwright', 'Sentry']
+  },
+  {
+    id: 10,
+    role: 'Développeur',
+    title: 'CGN — Prochains départs',
+    subtitle: 'Information voyageurs accessible par QR code',
+    client: 'CGN · OpenIT SA',
+    category: 'Application Web',
+    description: 'Application mobile-first donnant accès aux prochains départs depuis chaque embarcadère de la CGN. Les voyageurs l’ouvrent directement en scannant le QR code présent à quai.',
+    details: [
+      'Consultation des prochains départs contextualisée par embarcadère',
+      'Sélection d’une date et d’une heure pour préparer un trajet',
+      'Changement d’embarcadère depuis la même interface',
+      'Accès direct et sans installation depuis les QR codes déployés à quai',
+      'Interface responsive développée avec Angular 21',
+    ],
+    image: '',
+    url: '',
+    link: 'https://qr.cgn.ch/LAUSA0',
+    skills: ['Angular 21', 'TypeScript', 'Responsive', 'Information voyageurs'],
   },
   {
     id: 2,
@@ -196,6 +216,240 @@ const projects = [
   }
 ];
 
+interface OpenSourceProject {
+  title: string;
+  category: string;
+  description: string;
+  tags: string[];
+  featured?: boolean;
+  links: Array<{
+    label: string;
+    href: string;
+    kind: 'github' | 'external';
+  }>;
+}
+
+const openSourceProjects: OpenSourceProject[] = [
+  {
+    title: 'ziflux',
+    category: 'Librairie Angular',
+    description:
+      "Une couche de cache SWR et de mutations pour resource(), pensée avec les primitives d'Angular : Signals, invalidation ciblée, mises à jour optimistes et zéro dépendance runtime.",
+    tags: ['Angular 22+', 'TypeScript', 'Signals', '6,2 kB brotli'],
+    featured: true,
+    links: [
+      { label: 'Documentation', href: 'https://ziflux.dev', kind: 'external' },
+      { label: 'GitHub', href: 'https://github.com/neogenz/ziflux', kind: 'github' },
+    ],
+  },
+  {
+    title: 'Skills pour agents IA',
+    category: 'Agentic engineering',
+    description:
+      "Des skills réutilisables pour cadrer l'architecture Angular, concevoir des APIs NestJS et auditer la qualité du code avec des agents spécialisés.",
+    tags: ['Angular', 'NestJS', 'Agents IA'],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/neogenz/skills', kind: 'github' },
+    ],
+  },
+  {
+    title: 'Angular Routing Viewer',
+    category: 'CLI & analyse statique',
+    description:
+      "Un CLI qui analyse le routing d'un projet Angular et génère un graphe interactif autonome, sans serveur ni code exécuté dans l'application cible.",
+    tags: ['Angular', 'TypeScript', 'Nx', 'npm'],
+    links: [
+      {
+        label: 'npm',
+        href: 'https://www.npmjs.com/package/angular-routing-viewer',
+        kind: 'external',
+      },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/neogenz/angular-routing-viewer',
+        kind: 'github',
+      },
+    ],
+  },
+  {
+    title: 'Skillui',
+    category: 'Application macOS',
+    description:
+      "Une app de barre de menus qui unifie les skills installés entre Claude Code, Codex, Cursor et d'autres agents, détecte les mises à jour et les applique en un clic.",
+    tags: ['SwiftUI', 'macOS', 'Agent skills'],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/neogenz/skillui', kind: 'github' },
+    ],
+  },
+  {
+    title: 'ngx-unicode-spinners',
+    category: 'Composants Angular',
+    description:
+      "18 animations de chargement en caractères Unicode braille pour Angular, accessibles, personnalisables et sans dépendance runtime.",
+    tags: ['Angular 22+', 'TypeScript', 'A11y'],
+    links: [
+      {
+        label: 'Démo',
+        href: 'https://neogenz.github.io/ngx-unicode-spinners/',
+        kind: 'external',
+      },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/neogenz/ngx-unicode-spinners',
+        kind: 'github',
+      },
+    ],
+  },
+];
+
+type Project = (typeof projects)[number];
+
+const ExternalLink = ({
+  href,
+  label,
+  kind = 'external',
+}: {
+  href: string;
+  label: string;
+  kind?: 'github' | 'external';
+}) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noreferrer"
+    className="inline-flex items-center gap-1.5 border-b border-maxime-primary/20 pb-1 text-sm text-maxime-primary transition-colors hover:border-maxime-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-maxime-primary dark:border-maxime-white/20 dark:text-maxime-white dark:hover:border-maxime-white dark:focus-visible:outline-maxime-white"
+  >
+    {kind === 'github' && <Github className="h-3.5 w-3.5" aria-hidden="true" />}
+    {label}
+    {kind === 'external' && <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />}
+  </a>
+);
+
+const ProjectRow = ({ project, withDivider = true }: { project: Project; withDivider?: boolean }) => (
+  <article
+    className={`${withDivider ? 'border-b border-maxime-primary/10 dark:border-maxime-white/10' : ''} pb-16 reveal`}
+  >
+    <div className="flex flex-col gap-8 md:flex-row lg:gap-10">
+      <div className="md:w-1/3">
+        <h3 className="mb-1 text-2xl font-light text-maxime-primary dark:text-maxime-white">
+          {project.title}
+        </h3>
+        <p className="mb-3 text-xl font-light text-maxime-secondary dark:text-maxime-white/90">
+          {project.subtitle}
+        </p>
+        <div className="mb-6 text-maxime-secondary dark:text-maxime-white/70">
+          <p>{project.client}</p>
+          {project.role && <p>Rôle sur le projet : {project.role}</p>}
+        </div>
+
+        {project.link !== '#' && (
+          <div className="flex flex-wrap gap-4">
+            {project.url && (
+              <ExternalLink href={`https://${project.url}`} label="Voir le projet" />
+            )}
+            <ExternalLink
+              href={project.link}
+              label={project.link.includes('github.com') ? 'GitHub' : 'Voir le projet'}
+              kind={project.link.includes('github.com') ? 'github' : 'external'}
+            />
+          </div>
+        )}
+      </div>
+
+      <div className="md:w-2/3">
+        <div className="flex flex-col space-y-6">
+          <div>
+            <div className="mb-4 inline-block rounded-full border border-maxime-primary/10 bg-maxime-white/90 px-4 py-1.5 text-sm font-medium text-maxime-primary dark:border-maxime-white/10 dark:bg-maxime-dark-bg/90 dark:text-maxime-white/80">
+              {project.category}
+            </div>
+
+            <blockquote className="mb-6 border-l-2 border-maxime-primary/20 pl-4 italic text-maxime-secondary dark:border-maxime-white/20 dark:text-maxime-white/80">
+              {project.description}
+            </blockquote>
+
+            <ul className="mb-6 list-inside list-disc space-y-2 text-maxime-secondary dark:text-maxime-white/70">
+              {project.details.map((detail) => (
+                <li key={detail}>{detail}</li>
+              ))}
+            </ul>
+
+            <div className="flex flex-wrap gap-2">
+              {project.skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-full bg-maxime-white px-4 py-2 text-sm text-maxime-primary dark:bg-maxime-dark-bg dark:text-maxime-white/70"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+);
+
+const OpenSourcePortfolio = () => (
+  <div className="border-y border-maxime-primary/10 py-16 dark:border-maxime-white/10 md:py-20">
+    <div className="grid gap-12 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.75fr)] lg:gap-16">
+      <div className="reveal">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="h-2 w-2 rounded-full bg-maxime-primary dark:bg-maxime-white" />
+          <span className="text-sm uppercase tracking-widest text-maxime-secondary dark:text-maxime-white/70">
+            Open source
+          </span>
+        </div>
+        <h3 className="max-w-sm text-3xl font-light tracking-tight text-maxime-primary dark:text-maxime-white md:text-4xl">
+          Les outils qui me manquaient, publiés pour les autres.
+        </h3>
+        <p className="mt-5 max-w-sm text-maxime-secondary dark:text-maxime-white/70">
+          Des briques ciblées pour Angular et les workflows agentiques, développées à partir de problèmes rencontrés sur de vrais projets.
+        </p>
+        <div className="mt-7">
+          <ExternalLink href="https://github.com/neogenz" label="Voir tous mes dépôts" kind="github" />
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 md:gap-x-8">
+        {openSourceProjects.map((project, index) => (
+          <article
+            key={project.title}
+            className={`${project.featured ? 'md:col-span-2' : ''} group flex min-h-56 flex-col justify-between border-t border-maxime-primary/15 py-7 dark:border-maxime-white/15 reveal`}
+            style={{ animationDelay: `${0.08 * (index + 1)}s` }}
+          >
+            <div>
+              <div className="mb-5 flex items-center justify-between gap-4 text-xs uppercase tracking-[0.16em] text-maxime-secondary dark:text-maxime-white/60">
+                <span>{project.category}</span>
+                <span aria-hidden="true">0{index + 1}</span>
+              </div>
+              <h4 className={`${project.featured ? 'text-3xl' : 'text-2xl'} font-light text-maxime-primary dark:text-maxime-white`}>
+                {project.title}
+              </h4>
+              <p className={`${project.featured ? 'max-w-2xl' : ''} mt-4 text-maxime-secondary dark:text-maxime-white/75`}>
+                {project.description}
+              </p>
+            </div>
+
+            <div className="mt-8">
+              <div className="mb-5 flex flex-wrap gap-x-4 gap-y-1 text-xs uppercase tracking-wider text-maxime-secondary/80 dark:text-maxime-white/55">
+                {project.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-5">
+                {project.links.map((link) => (
+                  <ExternalLink key={link.href} {...link} />
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
 const Projects = () => {
   return (
     <section id="projects" className="section-padding bg-maxime-tertiary dark:bg-maxime-dark-card">
@@ -210,68 +464,39 @@ const Projects = () => {
             Projets Principaux
           </h2>
           <p className="text-maxime-secondary dark:text-maxime-white/70 max-w-2xl reveal" style={{ animationDelay: '0.3s' }}>
-            Au cours des dernières années, j'ai eu l'opportunité de travailler sur des projets innovants 
-            dans le domaine du transport public, collaborant avec diverses équipes pour créer des solutions 
-            techniques performantes et intuitives.
+            Des produits construits de bout en bout, des outils open source publiés quand une brique manque,
+            et une sélection de systèmes métier développés pour les transports publics.
           </p>
           <a href="#contact" className="inline-flex items-center mt-6 text-maxime-primary dark:text-maxime-white gap-2 reveal border-b border-maxime-primary/20 dark:border-maxime-white/20 pb-1 hover:border-maxime-primary dark:hover:border-maxime-white transition-all duration-300" style={{ animationDelay: '0.4s' }}>
-            Discuter d'un projet <ArrowUpRight className="w-4 h-4" />
+            Discuter d&apos;un projet <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
         
-        {/* Projects List */}
+        {/* Personal product and open-source work */}
         <div className="space-y-20">
-          {projects.map((project, index) => (
-            <div 
-              key={project.id}
-              className={`group ${index < projects.length - 1 ? 'border-b border-maxime-primary/10 dark:border-maxime-white/10' : ''} pb-16 reveal`}
-              style={{ animationDelay: `${0.1 * (index + 1)}s` }}
-            >
-              <div className="flex flex-col md:flex-row sm:gap-2 lg:gap-10">
-                <div className="md:w-1/3">
-                  <h3 className="text-2xl font-light text-maxime-primary dark:text-maxime-white mb-1">
-                    {project.title}
-                  </h3>
-                  <p className="text-xl font-light text-maxime-secondary dark:text-maxime-white/90 mb-3">{project.subtitle}</p>
-                  <div className="text-maxime-secondary dark:text-maxime-white/70 mb-6">
-                    <p>{project.client}</p>
-                    {project.role && (<p>Rôle sur le projet : {project.role}</p>)}
-                  </div>
-                </div>
-                
-                <div className="md:w-2/3">
-                  <div className="flex flex-col space-y-6">
-                    <div>
-                      <div className="text-sm inline-block px-4 py-1.5 bg-maxime-white/90 dark:bg-maxime-dark-bg/90 text-maxime-primary dark:text-maxime-white/80 rounded-full mb-4 border border-maxime-primary/10 dark:border-maxime-white/10 font-medium">
-                        {project.category}
-                      </div>
-                      
-                      <blockquote className="border-l-2 border-maxime-primary/20 dark:border-maxime-white/20 pl-4 mb-6 italic text-maxime-secondary dark:text-maxime-white/80">
-                        {project.description}
-                      </blockquote>
-                      
-                      <ul className="list-disc list-inside space-y-2 mb-6 text-maxime-secondary dark:text-maxime-white/70">
-                        {project.details.map((detail, detailIndex) => (
-                          <li key={detailIndex}>{detail}</li>
-                        ))}
-                      </ul>
-                      
-                      <div className="flex flex-wrap gap-2">
-                        {project.skills.map((skill, skillIndex) => (
-                          <span 
-                            key={skillIndex} 
-                            className="text-sm px-4 py-2 bg-maxime-white dark:bg-maxime-dark-bg text-maxime-primary dark:text-maxime-white/70 rounded-full"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <ProjectRow project={projects[0]} withDivider={false} />
+          <OpenSourcePortfolio />
+
+          <div className="pt-4">
+            <div className="mb-14 reveal">
+              <span className="text-sm uppercase tracking-widest text-maxime-secondary dark:text-maxime-white/70">
+                Projets professionnels sélectionnés
+              </span>
+              <h3 className="mt-3 text-3xl font-light tracking-tight text-maxime-primary dark:text-maxime-white md:text-4xl">
+                Concevoir des systèmes métier qui tiennent dans la durée.
+              </h3>
             </div>
-          ))}
+
+            <div className="space-y-20">
+              {projects.slice(1).map((project, index) => (
+                <ProjectRow
+                  key={project.id}
+                  project={project}
+                  withDivider={index < projects.length - 2}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
