@@ -70,6 +70,26 @@ const projects = [
     skills: ['Angular 19', 'RxJS', 'Signals', 'TailwindCSS', 'REST API', 'CI/CD', 'Jest', 'Playwright', 'Sentry']
   },
   {
+    id: 10,
+    role: 'Développeur',
+    title: 'CGN — Prochains départs',
+    subtitle: 'Information voyageurs accessible par QR code',
+    client: 'CGN · OpenIT SA',
+    category: 'Application Web',
+    description: 'Application mobile-first donnant accès aux prochains départs depuis chaque embarcadère de la CGN. Les voyageurs l’ouvrent directement en scannant le QR code présent à quai.',
+    details: [
+      'Consultation des prochains départs contextualisée par embarcadère',
+      'Sélection d’une date et d’une heure pour préparer un trajet',
+      'Changement d’embarcadère depuis la même interface',
+      'Accès direct et sans installation depuis les QR codes déployés à quai',
+      'Interface responsive développée avec Angular 21',
+    ],
+    image: '',
+    url: '',
+    link: 'https://qr.cgn.ch/LAUSA0',
+    skills: ['Angular 21', 'TypeScript', 'Responsive', 'Information voyageurs'],
+  },
+  {
     id: 2,
     role: 'Lead technique & Architecte',
     title: 'Plateforme de Gestion des Objets Trouvés',
@@ -327,7 +347,11 @@ const ProjectRow = ({ project, withDivider = true }: { project: Project; withDiv
             {project.url && (
               <ExternalLink href={`https://${project.url}`} label="Voir le projet" />
             )}
-            <ExternalLink href={project.link} label="GitHub" kind="github" />
+            <ExternalLink
+              href={project.link}
+              label={project.link.includes('github.com') ? 'GitHub' : 'Voir le projet'}
+              kind={project.link.includes('github.com') ? 'github' : 'external'}
+            />
           </div>
         )}
       </div>
