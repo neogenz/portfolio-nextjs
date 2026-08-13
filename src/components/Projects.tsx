@@ -71,7 +71,7 @@ const projects = [
   },
   {
     id: 10,
-    role: 'Développeur',
+    role: 'Lead & Architecte frontend',
     title: 'CGN — Prochains départs',
     subtitle: 'Information voyageurs accessible par QR code',
     client: 'CGN · OpenIT SA',
