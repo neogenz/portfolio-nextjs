@@ -68,6 +68,8 @@
 body {
   width: 100%;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   margin-right: 0 !important;
   padding-right: 0 !important;
 }
@@ -123,18 +125,22 @@ body {
 @layer base {
   h1 {
     line-height: var(--line-height-headings);
+    text-wrap: balance;
   }
   
   h2 {
     line-height: var(--line-height-tight);
+    text-wrap: balance;
   }
   
   h3, h4, h5, h6 {
     line-height: var(--line-height-snug);
+    text-wrap: balance;
   }
   
   p, li, blockquote {
     line-height: var(--line-height-normal);
+    text-wrap: pretty;
   }
 }
 
@@ -223,8 +229,12 @@ body {
   background-color: var(--color-maxime-primary);
   color: white;
   font-weight: 500;
-  transition-property: all;
+  transition-property: opacity, color, background-color, border-color, scale;
   transition-duration: 300ms;
+  
+  &:active {
+    scale: 0.96;
+  }
   
   &:hover {
     opacity: 0.9;
@@ -245,8 +255,12 @@ body {
   color: var(--color-maxime-primary);
   border-width: 1px;
   border-color: color-mix(in srgb, var(--color-maxime-primary) 40%, transparent);
-  transition-property: all;
+  transition-property: opacity, color, background-color, border-color, scale;
   transition-duration: 300ms;
+  
+  &:active {
+    scale: 0.96;
+  }
   
   &:hover {
     background-color: color-mix(in srgb, var(--color-maxime-primary) 5%, transparent);

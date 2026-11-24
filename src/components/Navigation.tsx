@@ -110,7 +110,7 @@ const Navigation = () => {
   return (
     <>
       <header 
-        className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+        className={`fixed w-full top-0 z-50 transition-[padding,background-color,box-shadow] duration-300 ${
           isScrolled 
             ? 'py-4 bg-white/95 dark:bg-maxime-dark-bg/95 backdrop-blur-sm shadow-sm' 
             : 'py-6 bg-transparent'
@@ -141,7 +141,7 @@ const Navigation = () => {
 
           {/* Right side items */}
           <div className="flex items-center space-x-2 md:space-x-4 flex-none">
-            <a href="#contact" className="hidden lg:flex items-center gap-1 text-sm text-maxime-primary dark:text-maxime-white border-b border-maxime-primary/20 dark:border-maxime-white/20 pb-1 hover:border-maxime-primary dark:hover:border-maxime-white transition-all duration-300">
+            <a href="#contact" className="hidden lg:flex items-center gap-1 text-sm text-maxime-primary dark:text-maxime-white border-b border-maxime-primary/20 dark:border-maxime-white/20 pb-1 hover:border-maxime-primary dark:hover:border-maxime-white transition-colors duration-300">
               Prendre rendez-vous <ArrowUpRight className="w-3 h-3" />
             </a>
             
@@ -166,7 +166,7 @@ const Navigation = () => {
               aria-label="Toggle menu"
             >
               <span 
-                className={`block w-6 h-0.5 bg-maxime-primary dark:bg-maxime-white transition-all duration-300 ease-in-out ${
+                className={`block w-6 h-0.5 bg-maxime-primary dark:bg-maxime-white transition-transform duration-300 ease-in-out ${
                   mobileMenuOpen ? 'rotate-45 translate-y-0.5' : '-translate-y-1'
                 }`}
               ></span>
@@ -176,7 +176,7 @@ const Navigation = () => {
                 }`}
               ></span>
               <span 
-                className={`block w-6 h-0.5 bg-maxime-primary dark:bg-maxime-white transition-all duration-300 ease-in-out ${
+                className={`block w-6 h-0.5 bg-maxime-primary dark:bg-maxime-white transition-transform duration-300 ease-in-out ${
                   mobileMenuOpen ? '-rotate-45 -translate-y-0.5' : 'translate-y-1'
                 }`}
               ></span>
@@ -213,7 +213,7 @@ const Navigation = () => {
       {/* Bouton de retour en haut */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 z-40 p-3 rounded-full shadow-lg bg-maxime-tertiary dark:bg-maxime-dark-card transition-all duration-300 hover:scale-110 flex items-center justify-center ${
+        className={`fixed bottom-8 right-8 z-40 p-3 rounded-full shadow-lg bg-maxime-tertiary dark:bg-maxime-dark-card transition-[translate,opacity,scale] duration-300 hover:scale-110 active:scale-[0.96] flex items-center justify-center ${
           showScrollTop ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
         }`}
         aria-label="Retour en haut"

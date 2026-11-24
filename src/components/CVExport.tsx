@@ -57,7 +57,7 @@ const CVExport = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button 
-          className="flex items-center space-x-2 px-4 py-2 rounded-md bg-maxime-tertiary dark:bg-maxime-dark-card text-maxime-primary dark:text-maxime-white transition-colors hover:bg-maxime-tertiary/70 dark:hover:bg-maxime-dark-card/70"
+          className="flex items-center space-x-2 px-4 py-2 rounded-md bg-maxime-tertiary dark:bg-maxime-dark-card text-maxime-primary dark:text-maxime-white transition-[background-color,scale] active:scale-[0.96] hover:bg-maxime-tertiary/70 dark:hover:bg-maxime-dark-card/70"
           disabled={isDownloading}
         >
           {isDownloading ? (
