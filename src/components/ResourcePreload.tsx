@@ -64,7 +64,7 @@ const ResourcePreload: FC = () => {
           href={resource.href} 
           as={resource.as} 
           crossOrigin={resource.as === 'font' ? 'anonymous' : undefined}
-          // @ts-ignore - 'importance' est un attribut valide pour l'élément link mais non reconnu par TypeScript
+          // @ts-expect-error - 'importance' est un attribut valide pour l'élément link mais non reconnu par TypeScript
           importance={resource.importance}
         />
       ))}

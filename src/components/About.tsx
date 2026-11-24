@@ -13,7 +13,7 @@ const About = () => {
             <span className="text-sm uppercase tracking-widest text-maxime-secondary dark:text-maxime-white/70">À propos</span>
           </div>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-maxime-primary dark:text-maxime-white reveal" style={{ animationDelay: '0.2s' }}>
-            L'humain derrière le code
+            L&apos;humain derrière le code
           </h2>
         </div>
 
@@ -23,13 +23,13 @@ const About = () => {
             Marseillais expatrié en Valais depuis bientôt 10 ans, je construis des applications dans le monde des transports publics. En dehors du code, vous me trouverez probablement en train de perfectionner un ramen maison ou de planifier mon prochain voyage.
           </p>
           <p className="text-lg mb-6 text-maxime-secondary dark:text-maxime-white/90">
-            Quand un sujet me passionne, je creuse jusqu'au bout. C'est comme ça que je fonctionne, que ce soit pour trouver le bon équilibre d'umami dans un bouillon, pour comprendre une nouvelle techno, ou pour résoudre un problème d'architecture logicielle. Et ce que j'apprends, j'aime le partager : en pair programming, avec mon équipe, ou simplement autour d'un café.
+            Quand un sujet me passionne, je creuse jusqu&apos;au bout. C&apos;est comme ça que je fonctionne, que ce soit pour trouver le bon équilibre d&apos;umami dans un bouillon, pour comprendre une nouvelle techno, ou pour résoudre un problème d&apos;architecture logicielle. Et ce que j&apos;apprends, j&apos;aime le partager : en pair programming, avec mon équipe, ou simplement autour d&apos;un café.
           </p>
           <p className="text-lg mb-6 text-maxime-secondary dark:text-maxime-white/90">
-            Ce qui me motive au quotidien, c'est de bosser avec des gens que j'apprécie sur des sujets qui comptent. Je préfère un environnement où on peut se dire les choses franchement, s'entraider quand c'est tendu, et célébrer quand ça marche.
+            Ce qui me motive au quotidien, c&apos;est de bosser avec des gens que j&apos;apprécie sur des sujets qui comptent. Je préfère un environnement où on peut se dire les choses franchement, s&apos;entraider quand c&apos;est tendu, et célébrer quand ça marche.
           </p>
           <p className="text-lg mb-6 text-maxime-secondary dark:text-maxime-white/90">
-            Les voyages nourrissent tout le reste. Gravir le mont Batur à Bali au lever du soleil, nager avec les dauphins à l'île Maurice, arpenter la Silicon Valley pour sentir l'énergie du lieu : chaque destination remet les compteurs à zéro. Et impossible de voyager sans goûter à tout : un bon voyage, c'est aussi une bonne assiette.
+            Les voyages nourrissent tout le reste. Gravir le mont Batur à Bali au lever du soleil, nager avec les dauphins à l&apos;île Maurice, arpenter la Silicon Valley pour sentir l&apos;énergie du lieu : chaque destination remet les compteurs à zéro. Et impossible de voyager sans goûter à tout : un bon voyage, c&apos;est aussi une bonne assiette.
           </p>
 
           <div className="text-center">
