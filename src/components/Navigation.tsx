@@ -2,69 +2,39 @@
 
 import { ArrowUp, ArrowUpRight, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
+import useMounted from '@/hooks/useMounted';
 import CVExport from './CVExport';
 
-// Hook personnalisé pour gérer le scroll et les dimensions
+const subscribeTo = (event: 'scroll' | 'resize') => (onChange: () => void) => {
+  window.addEventListener(event, onChange);
+  return () => window.removeEventListener(event, onChange);
+};
+const subscribeScroll = subscribeTo('scroll');
+const subscribeResize = subscribeTo('resize');
+
+// Position de scroll et largeur d'écran lues directement depuis window
 const useScrollAndResize = () => {
-  const [scrollState, setScrollState] = useState({
-    isScrolled: false,
-    showScrollTop: false,
-    scrollProgress: 0
-  });
-  const [isWideScreen, setIsWideScreen] = useState(false);
+  const scrollY = useSyncExternalStore(subscribeScroll, () => window.scrollY, () => 0);
+  const isWideScreen = useSyncExternalStore(subscribeResize, () => window.innerWidth > 1350, () => false);
+  const scrollHeight = typeof window === 'undefined' ? 0 : document.documentElement.scrollHeight - window.innerHeight;
 
-  // Fonction pour gérer le scroll
-  const handleScroll = useCallback(() => {
-    const currentPosition = window.scrollY;
-    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = scrollHeight > 0 ? (currentPosition / scrollHeight) * 100 : 0;
-    
-    setScrollState({
-      isScrolled: currentPosition > 50,
-      showScrollTop: currentPosition > 300,
-      scrollProgress: progress
-    });
-  }, []);
-
-  // Fonction pour gérer le redimensionnement
-  const handleResize = useCallback(() => {
-    setIsWideScreen(window.innerWidth > 1350);
-  }, []);
-
-  // Configurer les écouteurs d'événements
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Initialisation
-      handleScroll();
-      handleResize();
-      
-      // Ajouter les écouteurs
-      window.addEventListener('scroll', handleScroll);
-      window.addEventListener('resize', handleResize);
-      
-      // Nettoyage
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-        window.removeEventListener('resize', handleResize);
-      };
-    }
-  }, [handleScroll, handleResize]);
-
-  return { ...scrollState, isWideScreen };
+  return {
+    isScrolled: scrollY > 50,
+    showScrollTop: scrollY > 300,
+    scrollProgress: scrollHeight > 0 ? (scrollY / scrollHeight) * 100 : 0,
+    isWideScreen,
+  };
 };
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const { theme, setTheme } = useTheme();
   const { isScrolled, showScrollTop, scrollProgress, isWideScreen } = useScrollAndResize();
 
-  // Monter le composant
+  // Si initialement en system, définir une valeur explicite
   useEffect(() => {
-    setMounted(true);
-    
-    // Si initialement en system, définir une valeur explicite
     if (mounted && theme === 'system') {
       const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       setTheme(systemPrefersDark ? 'dark' : 'light');

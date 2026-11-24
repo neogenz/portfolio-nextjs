@@ -19,19 +19,11 @@ export default function useTypewriter({
   deletingSpeed = 50,
   pauseDelay = 1250
 }: TypewriterOptions) {
-  const [text, setText] = useState('');
+  // Premier texte affiché d'emblée, dès le rendu serveur
+  const [text, setText] = useState(() => texts[0] ?? '');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
 
-  useEffect(() => {
-    if (!texts.length) return;
-    
-    // Initialiser avec le premier texte
-    setText(texts[0]);
-    
-    // Reste de la logique...
-  }, []);
-  
   useEffect(() => {
     if (!texts.length) return;
     
@@ -44,7 +36,6 @@ export default function useTypewriter({
       // Phase de suppression
       timeout = setTimeout(() => {
         // Traiter correctement les emojis en utilisant les points de code Unicode
-        const textArray = [...fullText];
         const currentTextArray = [...text];
         currentTextArray.pop(); // Supprimer le dernier caractère (peut être un emoji complet)
         setText(currentTextArray.join(''));
