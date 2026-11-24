@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Maxime De Sogus · CV · Senior Fullstack Engineer &amp; Tech Lead</title>
+<meta name="author" content="Maxime De Sogus">
+<style>
+  /* TTF statiques : une police variable sort en Type 3 dans le PDF de Chrome */
+  @font-face { font-family: Inter; font-weight: 400; src: url("fonts/Inter-400.ttf"); }
+  @font-face { font-family: Inter; font-weight: 500; src: url("fonts/Inter-500.ttf"); }
+  @font-face { font-family: Inter; font-weight: 600; src: url("fonts/Inter-600.ttf"); }
+  @font-face { font-family: Inter; font-weight: 700; src: url("fonts/Inter-700.ttf"); }
+
+  :root {
+    --ink: #1c1f24;
+    --text: #2b3038;
+    --muted: #6b7280;
+    --navy: #1d4a7a;
+    --role: #4f7fae;
+    --rule: #e3e7ec;
+    --chip: #eef2f6;
+  }
+
+  @page {
+    size: A4;
+    margin: 11mm 13mm 14mm;
+
+    @bottom-left {
+      content: "Maxime De Sogus · Senior Fullstack Engineer & Tech Lead";
+      font: 400 7.5pt Inter, sans-serif;
+      color: #6b7280;
+    }
+
+    @bottom-right {
+      content: counter(page) " / " counter(pages);
+      font: 400 7.5pt Inter, sans-serif;
+      color: #6b7280;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Inter, sans-serif;
+    font-size: 9pt;
+    line-height: 1.36;
+    color: var(--text);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  strong { font-weight: 600; color: var(--ink); }
+
+  /* En-tête */
+  header {
+    display: flex;
+    justify-content: space-between;
+    gap: 8mm;
+    padding-bottom: 3.5mm;
+    border-bottom: 1.5px solid var(--navy);
+  }
+  h1 { font-size: 24pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--ink); }
+  .title { margin-top: 1.2mm; font-size: 12.5pt; font-weight: 500; color: var(--navy); }
+  .stack { margin-top: 0.8mm; font-size: 8.6pt; color: var(--muted); }
+  .contact { margin-top: 3mm; font-size: 8.6pt; line-height: 1.6; }
+  .contact .sep { margin: 0 1.6mm; color: #b5bcc6; }
+  .contact .permit { font-weight: 600; color: var(--navy); }
+  .contact a { border-bottom: 1px solid var(--rule); }
+  .photo {
+    flex: none;
+    width: 26mm;
+    height: 32.5mm;
+    object-fit: cover;
+    border-radius: 2mm;
+    outline: 1px solid rgb(0 0 0 / 0.1);
+    outline-offset: -1px;
+  }
+
+  /* Sections */
+  h2 {
+    margin: 4.2mm 0 2.2mm;
+    padding-bottom: 1.2mm;
+    border-bottom: 1px solid var(--rule);
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    break-after: avoid;
+  }
+  .profile { text-align: justify; }
+
+  /* Postes et projets */
+  .job { margin-top: 3mm; break-inside: avoid; }
+  .job:first-of-type { margin-top: 0; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .company { font-size: 10.5pt; font-weight: 700; color: var(--ink); }
+  .place { font-weight: 400; color: var(--muted); font-size: 9pt; }
+  .dates { flex: none; font-size: 8.6pt; color: var(--muted); }
+  .role { margin-top: 0.6mm; font-weight: 600; color: var(--navy); }
+  .chip {
+    margin-left: 1.5mm;
+    padding: 0.2mm 1.6mm;
+    border-radius: 1mm;
+    background: var(--chip);
+    color: var(--ink);
+  }
+  .intro { margin-top: 1mm; }
+
+  .project { margin-top: 2.6mm; break-inside: avoid; }
+  .project h3 { font-size: 9.3pt; font-weight: 700; color: var(--ink); break-after: avoid; }
+  .project h3 span { font-weight: 600; color: var(--role); }
+  .project .lead { margin-top: 0.4mm; color: var(--muted); }
+  h3.sub { margin-top: 2.6mm; font-size: 9.3pt; font-weight: 700; color: var(--ink); break-after: avoid; }
+
+  ul { margin-top: 1mm; list-style: none; }
+  li { position: relative; padding-left: 3.4mm; margin-top: 0.3mm; break-inside: avoid; }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0.4mm;
+    top: 0.48em;
+    width: 1.3mm;
+    height: 1.3mm;
+    border-radius: 50%;
+    background: #9db6d0;
+  }
+
+  /* Compétences */
+  .skills { display: grid; grid-template-columns: 32mm 1fr; row-gap: 0.6mm; column-gap: 4mm; }
+  .skills dt { font-weight: 600; color: var(--ink); }
+
+  /* Formation */
+  .edu { display: flex; justify-content: space-between; gap: 4mm; margin-top: 1mm; }
+  .edu .where { color: var(--muted); }
+  .edu .year { flex: none; color: var(--muted); }
+
+  .inline .sep { margin: 0 1.6mm; color: #b5bcc6; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Maxime De Sogus</h1>
+    <p class="title">Senior Fullstack Engineer &amp; Tech Lead</p>
+    <p class="stack">Angular · TypeScript · NestJS · .NET</p>
+    <p class="contact">
+      1963 Vétroz (VS), Suisse<span class="sep">·</span><span class="permit">Permis C</span><span class="sep">·</span>+41 76 498 76 31<span class="sep">·</span><a href="mailto:maxime.desogus@gmail.com">maxime.desogus@gmail.com</a><br>
+      <a href="https://www.maximedesogus.ch">maximedesogus.ch</a><span class="sep">·</span><a href="https://www.linkedin.com/in/maxime-de-sogus">linkedin.com/in/maxime-de-sogus</a><span class="sep">·</span><a href="https://github.com/neogenz">github.com/neogenz</a>
+    </p>
+  </div>
+  <img class="photo" src="photo.jpg" alt="Maxime De Sogus">
+</header>
+
+<h2>Profil</h2>
+<p class="profile">
+  Dix ans de développement fullstack, dont huit sur des applications métier critiques pour des opérateurs de transports
+  publics suisses. Spécialiste <strong>Angular et TypeScript</strong> depuis AngularJS 1.x en 2014, sans interruption jusqu'aux
+  versions actuelles. Lead technique et architecte frontend sur des plateformes temps réel multi-clients, et
+  <strong>Product Lead depuis novembre 2024</strong> : vision produit avec les clients, roadmap, user stories et backlog.
+  Pratique backend NestJS et .NET, et responsabilité de bout en bout, du cadrage du besoin à la mise en production.
+</p>
+
+<h2>Expérience professionnelle</h2>
+
+<section class="job">
+  <div class="job-head">
+    <p class="company">Moviplus OpenIT SA <span class="place">· Lausanne</span></p>
+    <p class="dates">septembre 2018 – aujourd'hui</p>
+  </div>
+  <p class="role">Développeur fullstack senior <span class="chip">Product Lead depuis novembre 2024</span></p>
+  <p class="intro">
+    Applications métier web et mobiles pour des opérateurs de transports publics. En tant que Product Lead : vision produit
+    construite avec les clients, roadmap, user stories, backlog, et rôle de point de contact principal côté client.
+  </p>
+  <ul>
+    <li>Référent UX/UI et Figma de l'équipe depuis 2025</li>
+    <li>Refonte de la documentation technique sous Astro Starlight, en remplacement d'une base Confluence de plus de
+      400 pages devenue obsolète ; production outillée par des workflows agentiques</li>
+  </ul>
+</section>
+
+<section class="project">
+  <h3>Système d'Aide à l'Exploitation (SAE) multi-clients <span>· Lead technique &amp; architecte</span></h3>
+  <p class="lead">Plateforme de supervision temps réel d'un réseau de transport, conçue depuis une page blanche et déployée chez plusieurs opérateurs.</p>
+  <ul>
+    <li>Architecture frontend modulaire par domaine métier : Angular 19 à 21+, Angular Material, Tailwind CSS</li>
+    <li>Gestion des flux temps réel avec RxJS et Signals, chargement optimisé des états</li>
+    <li>Intégration REST avec le serveur métier via Swagger</li>
+    <li>Quality gates : tests unitaires Jest, end-to-end Playwright, CI/CD GitLab et Docker, monitoring Sentry</li>
+    <li>Implémentation d'un design system Material 3</li>
+  </ul>
+</section>
+
+<section class="project">
+  <h3>Application de gestion du personnel et de la flotte <span>· Lead frontend</span></h3>
+  <p class="lead">Administration du planning et de la flotte de chauffeurs.</p>
+  <ul>
+    <li>Architecture par feature Angular 21+, PrimeNG, Tailwind CSS ; état applicatif RxJS et Signals</li>
+    <li>Développement du backend .NET REST documenté par Swagger, base SQL Server</li>
+    <li>Quality gate : tests unitaires Vitest, end-to-end Playwright, hooks lint et prettier, CI/CD GitLab</li>
+    <li>Conception des interfaces à partir du design system d'entreprise sous Figma</li>
+  </ul>
+</section>
+
+<section class="project">
+  <h3>Plateforme de gestion des objets trouvés <span>· Lead technique &amp; architecte</span></h3>
+  <p class="lead">Automatisation de la recherche et de la restitution d'objets perdus.</p>
+  <ul>
+    <li>Solution fullstack Angular, Angular Material et Tailwind CSS, avec NestJS, Prisma et MongoDB</li>
+    <li>Matching automatisé par IA et embeddings (GPT, Hugging Face, Python Flask)</li>
+    <li>Couverture complète du flux : identification, stockage, restitution</li>
+    <li>Conception et implémentation d'un design system sur mesure</li>
+  </ul>
+</section>
+
+<section class="project">
+  <h3>qr.cgn.ch, horaires des quais du Léman (CGN) <span>· Lead technique &amp; architecte</span></h3>
+  <p class="lead">Application publique responsive d'affichage des horaires, prise en charge de bout en bout. En ligne et consultable.</p>
+  <ul>
+    <li>Cadrage du besoin avec le client, maquettes Figma, architecture et développement frontend</li>
+    <li>Contrat d'API Swagger, tests, CI/CD, gestion des releases et des changelogs</li>
+  </ul>
+</section>
+
+<section class="others">
+  <h3 class="sub">Autres réalisations chez Moviplus OpenIT</h3>
+  <ul>
+    <li><strong>Application mobile multi-clients</strong> : information voyageur et vente de titres de transport. Monorepo Nx
+      (Angular, Ionic, Capacitor), migration progressive d'Angular 5 vers les versions récentes, carte temps réel Leaflet et
+      RxJS, plugins natifs Swift et Java, authentification JWT/SwissPass, état NgRx. Quality gates, tests e2e, CI/CD et
+      monitoring Sentry : <strong>-90&nbsp;% de crashs en production</strong></li>
+    <li><strong>Backend de vente de titres de transport</strong> : NestJS et MongoDB, APIs REST et GraphQL, traitement batch
+      des achats différés, tests Jest et TSMockito</li>
+    <li><strong>Système de comptage passagers</strong> : application mobile Angular/Ionic et backend Java Spring Boot, calcul
+      automatisé de la répartition des revenus entre opérateurs, géolocalisation temps réel et mode hors ligne</li>
+    <li><strong>Applications opérationnelles</strong> : tablette GPS de suivi des bus, client lourd Windows/Electron pour la
+      maintenance maritime (NestJS, SQL Server), affichage voyageurs en gares et arrêts</li>
+  </ul>
+</section>
+
+<section class="job">
+  <div class="job-head">
+    <p class="company">Sigmalis</p>
+    <p class="dates">octobre 2017 – août 2018</p>
+  </div>
+  <p class="role">Développeur fullstack</p>
+  <ul>
+    <li>Applications web et mobiles hybrides en Angular et Ionic : temps réel, notifications push, cartographie et APIs REST</li>
+    <li>Définition d'architectures multi-clients : environnements, thèmes et configurations dynamiques</li>
+  </ul>
+</section>
+
+<section class="job">
+  <div class="job-head">
+    <p class="company">CBA Informatique Libérale <span class="place">· Avignon</span></p>
+    <p class="dates">septembre 2016 – septembre 2017</p>
+  </div>
+  <p class="role">Développeur fullstack JavaScript / JEE</p>
+  <ul>
+    <li>Audit et refonte complète du frontend JavaScript d'une application servant <strong>28 000 clients</strong>, mise en
+      production réussie en janvier 2017</li>
+    <li>Conception d'une architecture JavaScript modulaire (Revealing Module, IIFE) et d'une API JEE/Hibernate
+      d'introspection PostgreSQL</li>
+    <li>Introduction de nouvelles normes de codage JavaScript au sein de l'équipe</li>
+  </ul>
+</section>
+
+<section class="job">
+  <div class="job-head">
+    <p class="company">Spir Communication <span class="place">· Aix-en-Provence</span></p>
+    <p class="dates">septembre 2014 – septembre 2016</p>
+  </div>
+  <p class="role">Apprenti ingénieur en développement web</p>
+  <ul>
+    <li>Conception d'un store d'applications internes en AngularJS : architecture orientée composants, cartographie
+      Leaflet, tests Jasmine et Protractor, intégration continue Grunt</li>
+    <li>Maintenance et évolution du site e-commerce topannonces.fr (ASP.NET MVC)</li>
+  </ul>
+</section>
+
+<h2>Projet personnel</h2>
+
+<section class="job">
+  <div class="job-head">
+    <p class="company">Pulpe <span class="place">· <a href="https://pulpe.app">pulpe.app</a></span></p>
+    <p class="dates">janvier 2025 – aujourd'hui</p>
+  </div>
+  <p class="role">Créateur, Product &amp; Lead Fullstack</p>
+  <p class="intro">
+    Application web et iOS de gestion budgétaire pour le marché suisse, fondée sur une planification annuelle et des
+    templates mensuels réutilisables.
+  </p>
+  <ul>
+    <li>Monorepo Turborepo : Angular 21+ pour le web, NestJS 11+ pour l'API, SwiftUI pour iOS, Next.js pour le site</li>
+    <li>Frontend signals-first : Angular Material 21, Tailwind CSS v4, Signal Store</li>
+    <li>Chiffrement AES-256-GCM split-key des montants, dérivation PBKDF2 côté client et HKDF côté backend</li>
+    <li>Mode démo par utilisateurs Supabase éphémères avec RLS et nettoyage planifié ; tests Vitest et Playwright, CI/CD
+      GitHub Actions</li>
+  </ul>
+</section>
+
+<h2>Compétences</h2>
+<dl class="skills">
+  <dt>Frontend</dt>
+  <dd>Angular (1.x à 21+), TypeScript, Signals, RxJS, NgRx, Angular Material, PrimeNG, Tailwind CSS</dd>
+  <dt>Backend &amp; données</dt>
+  <dd>NestJS, Node.js, .NET / C#, REST, GraphQL, Prisma, PostgreSQL, MongoDB, SQL Server, Supabase</dd>
+  <dt>Mobile &amp; monorepos</dt>
+  <dd>Ionic, Capacitor, SwiftUI, Nx, Turborepo, Leaflet, MapLibre</dd>
+  <dt>Qualité &amp; livraison</dt>
+  <dd>Vitest, Jest, Playwright, Cypress, TDD, GitLab CI/CD, GitHub Actions, Docker, Sentry</dd>
+  <dt>Produit &amp; méthode</dt>
+  <dd>Roadmap, user stories, backlog, Scrum, Figma, design systems</dd>
+  <dt>IA dans le produit</dt>
+  <dd>Embeddings et matching sémantique, intégrations GPT et Hugging Face</dd>
+  <dt>IA dans le workflow</dt>
+  <dd>Workflows agentiques, context et harness engineering ; Claude Code et Skills, Codex, AIDD, OpenCode, Hermes</dd>
+</dl>
+
+<h2>Formation</h2>
+<div class="edu">
+  <p><strong>Titre d'ingénieur en informatique</strong> <span class="where">· ESIMED, Marseille</span></p>
+  <p class="year">2017</p>
+</div>
+<div class="edu">
+  <p><strong>BTS Informatique et réseaux pour l'industrie et les services</strong> <span class="where">· Saint Jean-Baptiste de la Salle, Avignon</span></p>
+  <p class="year">2014</p>
+</div>
+
+<h2>Langues &amp; centres d'intérêt</h2>
+<p class="inline">
+  <strong>Français</strong>, langue maternelle<span class="sep">·</span><strong>Anglais</strong>, niveau B2<span class="sep">·</span>Culture
+  japonaise<span class="sep">·</span>Café de spécialité<span class="sep">·</span>Produits et agents IA
+</p>
+
+</body>
+</html>

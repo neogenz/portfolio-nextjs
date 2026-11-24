@@ -1,8 +1,5 @@
-"use client";
-
-import { useState } from "react";
 import { DownloadIcon } from "lucide-react";
-import { generateAndDownloadCV } from "@/services/CVGenerator";
+import { CV_URL } from "./CVExport";
 
 export const experienceData = [
   {
@@ -11,7 +8,6 @@ export const experienceData = [
     company: "Pulpe (Projet Personnel)",
     period: "2025 - Présent",
     location: "Suisse",
-    personalProject: true,
     description: [
       "Conception et développement d'une application web et iOS de gestion budgétaire pour le marché suisse : planification annuelle avec templates mensuels réutilisables.",
       "Architecture monorepo Turborepo : Angular 21+ (frontend), NestJS 11+ (backend), SwiftUI (iOS), Next.js (landing page).",
@@ -186,23 +182,6 @@ const techCategoriesDisplay = {
 const fullWidthCategories = ["IA agentique", "Outils"];
 
 const Experience = () => {
-  const [isDownloading, setIsDownloading] = useState(false);
-
-  const handleDownloadPDF = async () => {
-    if (isDownloading) return;
-
-    setIsDownloading(true);
-    try {
-      // Utiliser la fonction existante pour générer et télécharger le CV au format PDF
-      await generateAndDownloadCV("pdf");
-    } catch (error) {
-      console.error("Erreur lors du téléchargement du CV:", error);
-      alert("Une erreur est survenue lors de la génération du CV");
-    } finally {
-      setIsDownloading(false);
-    }
-  };
-
   return (
     <section
       id="experience"
@@ -357,23 +336,10 @@ const Experience = () => {
           </div>
 
           <div className="mt-12 text-center reveal">
-            <button
-              className="inline-flex items-center cursor-pointer button-secondary"
-              onClick={handleDownloadPDF}
-              disabled={isDownloading}
-            >
-              {isDownloading ? (
-                <>
-                  <div className="mr-2 w-4 h-4 rounded-full border-2 animate-spin border-t-transparent"></div>
-                  <span>Génération...</span>
-                </>
-              ) : (
-                <>
-                  <span>Télécharger CV</span>
-                  <DownloadIcon className="ml-2 w-4 h-4" />
-                </>
-              )}
-            </button>
+            <a href={CV_URL} download className="inline-flex items-center button-secondary">
+              <span>Télécharger CV</span>
+              <DownloadIcon className="ml-2 w-4 h-4" />
+            </a>
           </div>
         </div>
       </div>
