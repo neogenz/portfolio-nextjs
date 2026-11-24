@@ -16,6 +16,7 @@ const practices: Practice[] = [
     description:
       "Chaque changement suit le même cycle avec le framework open source AIDD : plan, implémentation, revue indépendante, vérification. Avant d'écrire une ligne, je fais challenger le plan par le skill grilling de Matt Pocock. Chaque tâche, sous-tâche et phase du développement tourne avec le modèle et le niveau de réflexion qui lui conviennent.",
     tags: ['AIDD', 'Grilling', 'Revue indépendante', 'Choix du modèle'],
+    link: { label: 'Framework AIDD', href: 'https://github.com/ai-driven-dev/framework' },
     featured: true,
   },
   {
