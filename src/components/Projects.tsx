@@ -284,6 +284,16 @@ const openSourceProjects: OpenSourceProject[] = [
     ],
   },
   {
+    title: 'Profils Claude',
+    category: 'Application macOS',
+    description:
+      "Un gestionnaire macOS natif pour passer facilement d'un compte Claude à l'autre : un profil par compte, avec ses propres dossiers Desktop et Code, son raccourci, et la configuration partagée depuis le profil personnel en option.",
+    tags: ['Swift', 'Python', 'macOS', 'Claude'],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/neogenz/claude-profiles', kind: 'github' },
+    ],
+  },
+  {
     title: 'ngx-unicode-spinners',
     category: 'Composants Angular',
     description:
