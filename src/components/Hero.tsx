@@ -89,7 +89,7 @@ const Hero = () => {
       {/* Main content */}
       <div
         ref={heroRef}
-        className="grid relative z-10 grid-cols-12 gap-4 mx-auto opacity-0 transition-[opacity,translate] duration-700 translate-y-4 container-padding md:gap-6 lg:gap-8"
+        className="grid relative z-10 grid-cols-12 gap-4 max-sm:w-full mx-auto opacity-0 transition-[opacity,translate] duration-700 translate-y-4 container-padding md:gap-6 lg:gap-8"
       >
         {/* Left column - Text content */}
         <div className="flex flex-col col-span-12 justify-center lg:col-span-7 2xl:col-span-7">
@@ -139,10 +139,11 @@ const Hero = () => {
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <p className="py-1 pl-6 mb-6 text-xl border-l-2 sm:text-2xl landscape:max-md:text-xl portrait:xs:text-xl landscape:max-md:mb-4 portrait:xs:mb-5 border-maxime-secondary portrait:xs:pl-4">
+            {/* 2 lignes réservées sous sm : le titre long passe sur 2 lignes sans décaler le bouton */}
+            <p className="py-1 pl-6 mb-6 min-h-[calc(2lh+0.5rem)] sm:min-h-0 text-xl border-l-2 sm:text-2xl landscape:max-md:text-xl portrait:xs:text-xl landscape:max-md:mb-4 portrait:xs:mb-5 border-maxime-secondary portrait:xs:pl-4">
               —{" "}
-              {/* 2 lignes réservées sous sm : le titre long passe sur 2 lignes sans décaler le bouton */}
-              <span className="relative inline-block min-w-[320px] min-h-[2lh] sm:min-h-0">
+              {/* En ligne sous sm : le tiret reste devant le texte au lieu d'être seul sur sa ligne */}
+              <span className="relative sm:inline-block sm:min-w-[320px]">
                 <span>{typewriterText}</span>
                 <span className="inline-block w-[2px] h-[1em] bg-maxime-primary dark:bg-maxime-white animate-pulse ml-0.5 align-middle"></span>
               </span>
