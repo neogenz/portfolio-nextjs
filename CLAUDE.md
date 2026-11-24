@@ -25,7 +25,6 @@ This is a **Next.js 15** portfolio site using the **App Router** architecture wi
 - **TanStack Query** for state management and data fetching
 - **next-themes** for theme switching
 - **gray-matter + remark** for markdown blog post processing
-- **jsPDF + docx** for CV generation functionality
 - **nodemailer** for contact form email handling
 - **zod** for schema validation
 - **limiter** for rate limiting functionality
@@ -43,7 +42,7 @@ This is a **Next.js 15** portfolio site using the **App Router** architecture wi
 - **Providers**: Global providers in `src/components/providers.tsx` handle TanStack Query, themes, and toast notifications
 
 #### Services & Utilities
-- **CV Generation**: `src/services/CVGenerator.ts` handles PDF/DOCX/TXT export
+- **CV**: source in `cv/cv.html`; `npm run cv:pdf` renders it with headless Chrome to `public/CV_Maxime_De_Sogus_2026.pdf`, which the « Télécharger CV » buttons link to. Regenerate and commit the PDF after any CV change
 - **Rate Limiting**: `src/lib/rate-limiter.ts` for API protection using Map-based storage
 - **Blog API**: `src/app/api/blog/[slug]/` for blog post data
 - **Contact API**: `src/app/api/contact/route.ts` with nodemailer integration and rate limiting

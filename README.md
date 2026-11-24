@@ -61,10 +61,9 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 }
 ```
 
-### 💼 CV Generator Multi-format
-- **PDF** avec jsPDF (vectoriel, optimisé)
-- **DOCX** avec docx.js (compatible Office)
-- **TXT** formaté (parsing friendly)
+### 💼 CV PDF
+- Source HTML/CSS dans `cv/cv.html`, police Inter embarquée
+- `npm run cv:pdf` génère `public/CV_Maxime_De_Sogus_2026.pdf` avec Chrome headless (A4, 2 pages, texte sélectionnable)
 
 ### 🛡️ Contact Form Sécurisé
 ```typescript
