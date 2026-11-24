@@ -103,7 +103,8 @@ const AgenticAI = () => (
             Développer avec des agents, avec méthode.
           </h2>
           <p className="max-w-2xl text-maxime-secondary dark:text-maxime-white/70">
-            Depuis un an, je développe chaque jour avec Claude Code et Codex, sur plusieurs abonnements Max et Ultra.
+            J&apos;utilise Claude Code depuis sa sortie, en février 2025. Aujourd&apos;hui, je développe chaque jour avec
+            Claude Code et Codex, sur plusieurs abonnements Max et Ultra depuis un an.
             Mon objectif : livrer du code de niveau software craft grâce à l&apos;IA. J&apos;ai passé des centaines d&apos;heures à outiller ce travail : le contexte que lisent les agents, le cadre
             dans lequel ils travaillent, la vérification de ce qu&apos;ils livrent.
           </p>
