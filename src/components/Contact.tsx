@@ -157,8 +157,8 @@ const Contact = () => {
           <div className="reveal">
             <p className="text-lg text-maxime-secondary dark:text-maxime-white/80">
               Je suis toujours ouvert à de nouveaux projets et collaborations.
-              N&apos;hésitez pas à me contacter si vous avez un projet en tête
-              ou simplement pour échanger.
+              Écrivez-moi si vous avez un projet en tête ou simplement pour
+              échanger.
             </p>
 
             <div className="mt-8">

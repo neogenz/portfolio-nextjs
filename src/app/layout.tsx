@@ -29,18 +29,18 @@ const VERCEL_URL = process.env.VERCEL_URL
 export const metadata: Metadata = {
   metadataBase: new URL(VERCEL_URL),
   title: {
-    default: "Maxime De Sogus | Développeur Angular & Fullstack en Valais Vaud Suisse",
+    default: "Maxime De Sogus | Senior Fullstack Engineer & Tech Lead · Angular, Valais",
     template: `%s | Maxime De Sogus`,
   },
   description:
-    "Maxime De Sogus - Développeur Angular Expert basé en Valais, Suisse. +10 ans d'expérience, spécialisé Angular, TypeScript, JavaScript. Portfolio et compétences en développement web moderne. Valais, Lausanne, Vaud, Suisse romande.",
+    "Maxime De Sogus, Senior Fullstack Engineer & Tech Lead basé en Valais, Suisse. Plus de 10 ans d'expérience : Angular, TypeScript, NestJS, .NET, et un workflow de développement fondé sur l'IA agentique. Valais, Lausanne, Vaud, Suisse romande.",
   keywords: [
     "Maxime De Sogus",
     "Développeur Angular Valais",
     "Développeur Angular Lausanne",
     "Développeur Angular Vaud",
     "Développeur Angular Suisse",
-    "Expert Angular Suisse romande",
+    "Tech Lead Angular Suisse romande",
     "Développeur TypeScript Suisse",
     "Développeur Frontend Suisse",
     "Développeur Fullstack Suisse",
@@ -49,7 +49,8 @@ export const metadata: Metadata = {
     "Angular developer Switzerland",
     "Développeur Sion Martigny",
     "Développeur Monthey Sierre",
-    "Angular expert Romandie",
+    "Senior Fullstack Engineer Romandie",
+    "Agentic AI engineering",
     "Portfolio développeur Suisse",
     "TypeScript",
     "JavaScript",
@@ -110,7 +111,7 @@ export const metadata: Metadata = {
         url: "/images/optimized/og-image.webp",
         width: 1200,
         height: 630,
-        alt: "Maxime De Sogus - Développeur Angular & Fullstack en Suisse",
+        alt: "Maxime De Sogus - Senior Fullstack Engineer & Tech Lead en Suisse",
       },
     ],
   },
@@ -127,9 +128,9 @@ export default function RootLayout({
     name: "Maxime De Sogus",
     url: VERCEL_URL,
     image: `${VERCEL_URL}/images/optimized/maxime.webp`,
-    jobTitle: "Développeur Angular & Fullstack",
+    jobTitle: "Senior Fullstack Engineer & Tech Lead",
     description:
-      "Maxime De Sogus - Développeur Angular Expert basé en Valais, Suisse. +10 ans d'expérience en développement Angular, TypeScript, JavaScript et Ionic. Spécialisé dans la création d'applications web modernes et performantes. Portfolio et compétences en développement frontend/fullstack. Valais, Lausanne, Vaud, Suisse romande.",
+      "Maxime De Sogus, Senior Fullstack Engineer & Tech Lead basé en Valais, Suisse. Plus de 10 ans d'expérience : Angular, TypeScript, NestJS, .NET, et un workflow de développement fondé sur l'IA agentique. Valais, Lausanne, Vaud, Suisse romande.",
     knowsAbout: [
       "Angular",
       "TypeScript",
@@ -139,6 +140,9 @@ export default function RootLayout({
       "Développement Frontend",
       "Développement Fullstack",
       "Applications mobiles hybrides",
+      "NestJS",
+      "Workflows d'IA agentique",
+      "Context engineering",
     ],
     address: {
       "@type": "PostalAddress",

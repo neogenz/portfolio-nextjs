@@ -7,7 +7,7 @@ const projects = [
   {
     id: 9,
     role: 'Lead fullstack & Product',
-    title: 'Pulpe — Application de gestion budgétaire',
+    title: 'Pulpe · Application de gestion budgétaire',
     subtitle: 'Budget Planning & Finances Personnelles',
     client: 'Projet personnel (Suisse)',
     category: 'Application Web + Mobile',
@@ -15,7 +15,7 @@ const projects = [
     details: [
       'Architecture monorepo Turborepo : Angular 21+ (frontend), NestJS 11+ (backend), SwiftUI (iOS), Next.js (landing)',
       'Frontend signals-first avec Angular 21+, Material 21, Tailwind v4, pattern Signal Store (SWR, resource())',
-      'Chiffrement AES-256-GCM split-key des montants financiers (PBKDF2 client + HKDF backend) — même l\'admin ne peut pas lire les données',
+      'Chiffrement AES-256-GCM split-key des montants financiers (PBKDF2 client + HKDF backend) : même l\'admin ne peut pas lire les données',
       'ApiClient centralisé avec validation Zod obligatoire sur tous les appels HTTP',
       'Mode démo backend-first via utilisateurs Supabase éphémères (RLS, cron cleanup toutes les 6h)',
       'Quality gate : tests unitaires Vitest, e2e Playwright, CI/CD, lint/prettier, git hooks',
@@ -52,15 +52,15 @@ const projects = [
     subtitle: 'Application d\'Administration Multi-Client',
     client: 'OpenIT SA',
     category: 'Application Web',
-    description: 'Interface de gestion en temps réel du réseau de transport. Solution multi-client avec navigation spécifique, écrans et fonctionnalités partagées ou spécifiques selon les clients, construite autour d\'un noyau commun. Objectif principal: Offrir un suivi en temps réel pour améliorer la gestion opérationnelle.',
+    description: 'Interface de gestion en temps réel du réseau de transport. Solution multi-client construite autour d\'un noyau commun, avec des écrans partagés ou propres à chaque client. Objectif principal : Offrir un suivi en temps réel pour améliorer la gestion opérationnelle.',
     details: [
       'Architecture modulaire par domaine métier permettant une grande flexibilité et personnalisation',
       'Développement from scratch d\'une interface complexe en Angular 19 avec Angular Material et TailwindCSS',
       'Gestion des flux temps réel avec RxJS et Signals',
       'Performance optimisée : grâce à un chargement efficace des données & une gestion performante des états de l\'application',
-      'Intégration REST avec un serveur C# via Swagger',
+      'Intégration REST avec le serveur métier via Swagger',
       'CI/CD automatisé avec Docker & GitLab',
-      'Monitoring des erreurs et réduction de 90% des crashs grâce à Sentry',
+      'Monitoring des erreurs avec Sentry',
       'Tests unitaires et end-to-end avec Jest et Playwright',
       'Utilisation avancée des fonctionnalités d\'Angular (Signals, Resources, lazy loading, standalone components)'
     ],
@@ -71,8 +71,8 @@ const projects = [
   },
   {
     id: 10,
-    role: 'Lead & Architecte frontend',
-    title: 'CGN — Prochains départs',
+    role: 'Lead technique & Architecte',
+    title: 'CGN · Prochains départs',
     subtitle: 'Information voyageurs accessible par QR code',
     client: 'CGN · OpenIT SA',
     category: 'Application Web',
@@ -97,7 +97,7 @@ const projects = [
     subtitle: 'Automatisation de recherche',
     client: 'OpenIT SA',
     category: 'Fullstack',
-    description: 'Automatisation de la recherche et récupération d\'objets perdus. Développement Fullstack Angular / NestJS / Prisma / MongoDB. Objectif: Réduire le coût de gestion des objets trouvés et augmenter le taux de récupération.',
+    description: 'Automatisation de la recherche et récupération d\'objets perdus. Développement Fullstack Angular / NestJS / Prisma / MongoDB. Objectif : Réduire le coût de gestion des objets trouvés et augmenter le taux de récupération.',
     details: [
       'Développement full-stack d\'une solution avec Angular/Material/Tailwind et NestJS/Prisma/MongoDB',
       'Gestion réactive des recherches et mises à jour avec RxJS',
@@ -118,7 +118,7 @@ const projects = [
     subtitle: 'Transports Publics',
     client: 'OpenIT SA',
     category: 'Application Mobile',
-    description: 'Information voyageur et gestion de titres de transport. Architecture monorepo NX avec Angular / Ionic / Capacitor. Objectif: Fournir une application performante pour les usagers des transports publics.',
+    description: 'Information voyageur et gestion de titres de transport. Architecture monorepo NX avec Angular / Ionic / Capacitor. Objectif : Fournir une application performante pour les usagers des transports publics.',
     details: [
       'Architecture monorepo NX intégrant Angular, Ionic et Capacitor',
       'Migration progressive Angular 5 → dernière version stable',
@@ -128,12 +128,13 @@ const projects = [
       'Gestion d\'état avancée avec NgRx et Redux DevTools',
       'Information en temps réel sur les horaires et perturbations',
       'Achat et gestion de titres de transport',
-      'Optimisation pour performances proches des applications natives'
+      'Optimisation pour performances proches des applications natives',
+      'Quality gates, tests e2e, CI/CD et monitoring Sentry : -90 % de crashs en production'
     ],
     image: '',
     url: 'openit.ch/mobile',
     link: '#',
-    skills: ['Angular 5 à 19', 'Ionic', 'Capacitor', 'NX', 'RxJS', 'Mobile', 'Swift', 'Java', 'NgRx', 'Leaflet']
+    skills: ['Angular 5 à 19', 'Ionic', 'Capacitor', 'NX', 'RxJS', 'Mobile', 'Swift', 'Java', 'NgRx', 'Leaflet', 'Sentry']
   },
   {
     id: 4,
@@ -142,7 +143,7 @@ const projects = [
     subtitle: 'Titres de Transport',
     client: 'OpenIT SA',
     category: 'Backend',
-    description: 'Solution de vente multi-clients avec APIs REST & GraphQL. Backend NestJS & MongoDB. Objectif: Offrir une expérience utilisateur fluide et une gestion optimisée des transactions.',
+    description: 'Solution de vente multi-clients avec APIs REST & GraphQL. Backend NestJS & MongoDB. Objectif : Offrir une expérience utilisateur fluide et une gestion optimisée des transactions.',
     details: [
       'Conception d\'un backend scalable avec NestJS et MongoDB',
       'Implémentation d\'APIs REST et GraphQL',
@@ -163,7 +164,7 @@ const projects = [
     subtitle: 'Répartition des Revenus',
     client: 'OpenIT',
     category: 'Fullstack',
-    description: 'Suivi des passagers et gestion des recettes pour opérateurs de transport. Frontend Angular & Backend Java Spring Boot. Objectif: Optimisation financière et meilleure répartition des revenus entre opérateurs.',
+    description: 'Suivi des passagers et gestion des recettes pour opérateurs de transport. Frontend Angular & Backend Java Spring Boot. Objectif : Optimisation financière et meilleure répartition des revenus entre opérateurs.',
     details: [
       'Comptage des passagers et répartition des bénéfices entre sociétés de transport',
       'Calcul automatisé de la répartition des bénéfices',
@@ -182,7 +183,7 @@ const projects = [
     subtitle: 'Informations Voyageurs en gare',
     client: 'OpenIT SA',
     category: 'Multi-Platformes',
-    description: 'Communication en temps réel avec les usagers des transports publics. Objectif: Améliorer l\'efficacité du service de transport et la qualité des informations.',
+    description: 'Communication en temps réel avec les usagers des transports publics. Objectif : Améliorer l\'efficacité du service de transport et la qualité des informations.',
     details: [
       'Application tablette pour le suivi GPS des bus en temps réel (Angular/Ionic/Capacitor)',
       'Application Windows/Electron pour maintenance maritime',
@@ -203,7 +204,7 @@ const projects = [
     subtitle: 'Titres de Transport .NET',
     client: 'OpenIT SA',
     category: 'Fullstack',
-    description: 'Système de vente centralisé pour titres de transport. Objectif: Tester la faisabilité d\'un système de vente centralisé avec .NET.',
+    description: 'Système de vente centralisé pour titres de transport. Objectif : Tester la faisabilité d\'un système de vente centralisé avec .NET.',
     details: [
       'Backend en .NET avec EntityFramework et PostgreSQL',
       'Frontend Angular avec gestion réactive des états et formulaires',
@@ -283,10 +284,20 @@ const openSourceProjects: OpenSourceProject[] = [
     ],
   },
   {
+    title: 'Profils Claude',
+    category: 'Application macOS',
+    description:
+      "Un gestionnaire macOS natif pour passer facilement d'un compte Claude à l'autre : un profil par compte, avec ses propres dossiers Desktop et Code, son raccourci, et la configuration partagée depuis le profil personnel en option.",
+    tags: ['Swift', 'Python', 'macOS', 'Claude'],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/neogenz/claude-profiles', kind: 'github' },
+    ],
+  },
+  {
     title: 'ngx-unicode-spinners',
     category: 'Composants Angular',
     description:
-      "18 animations de chargement en caractères Unicode braille pour Angular, accessibles, personnalisables et sans dépendance runtime.",
+      "18 animations de chargement en caractères Unicode braille pour Angular, accessibles et sans dépendance runtime.",
     tags: ['Angular 22+', 'TypeScript', 'A11y'],
     links: [
       {
@@ -405,7 +416,7 @@ const OpenSourcePortfolio = () => (
           Les outils qui me manquaient, publiés pour les autres.
         </h3>
         <p className="mt-5 max-w-sm text-maxime-secondary dark:text-maxime-white/70">
-          Des briques ciblées pour Angular et les workflows agentiques, développées à partir de problèmes rencontrés sur de vrais projets.
+          Des briques ciblées pour Angular et les workflows agentiques, développées à partir de problèmes rencontrés sur mes projets clients et personnels.
         </p>
         <div className="mt-7">
           <ExternalLink href="https://github.com/neogenz" label="Voir tous mes dépôts" kind="github" />
@@ -468,7 +479,7 @@ const Projects = () => {
             Des produits construits de bout en bout, des outils open source publiés quand une brique manque,
             et une sélection de systèmes métier développés pour les transports publics.
           </p>
-          <a href="#contact" className="inline-flex items-center mt-6 text-maxime-primary dark:text-maxime-white gap-2 reveal border-b border-maxime-primary/20 dark:border-maxime-white/20 pb-1 hover:border-maxime-primary dark:hover:border-maxime-white transition-all duration-300" style={{ animationDelay: '0.4s' }}>
+          <a href="#contact" className="inline-flex items-center mt-6 text-maxime-primary dark:text-maxime-white gap-2 reveal border-b border-maxime-primary/20 dark:border-maxime-white/20 pb-1 hover:border-maxime-primary dark:hover:border-maxime-white transition-colors duration-300" style={{ animationDelay: '0.4s' }}>
             Discuter d&apos;un projet <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>

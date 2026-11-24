@@ -8,15 +8,20 @@ import { saveAs } from 'file-saver';
 // Données personnelles
 const personalInfo = {
   name: "Maxime De Sogus",
-  title: "Développeur fullstack Angular & NestJS",
+  title: "Senior Fullstack Engineer & Tech Lead",
   address: "Vétroz, Valais, Suisse",
   phone: "+41 76 498 76 31",
   email: "maxime.desogus@gmail.com",
-  linkedin: "linkedin.com/in/maximedesogus"
+  linkedin: "linkedin.com/in/maxime-de-sogus"
 };
 
 // Données d'expérience (importées depuis le composant Experience)
 import { experienceData, technicalSkills } from '@/components/Experience';
+
+// Pulpe est un projet personnel : section dédiée, hors expérience professionnelle.
+// Fonctions et non constantes : Experience.tsx importe ce fichier, experienceData n'existe pas encore au chargement.
+const professionalExperience = () => experienceData.filter(job => !job.personalProject);
+const personalProjects = () => experienceData.filter(job => job.personalProject);
 
 // Données de formation
 const education = [
@@ -58,17 +63,23 @@ EXPÉRIENCE PROFESSIONNELLE
 ----------------------------
 `;
 
-  // Ajouter les expériences
-  experienceData.forEach(job => {
-    content += `\n${job.title.toUpperCase()} - ${job.company}\n`;
-    content += `${job.period}\n`;
-    
-    // Ajouter la description
-    job.description.forEach(desc => {
-      content += `• ${desc}\n`;
+  const addJobs = (jobs: typeof experienceData) => {
+    jobs.forEach(job => {
+      content += `\n${job.title.toUpperCase()} - ${job.company}\n`;
+      content += `${job.period}\n`;
+      job.description.forEach(desc => {
+        content += `• ${desc}\n`;
+      });
+      content += '\n';
     });
-    content += '\n';
-  });
+  };
+
+  addJobs(professionalExperience());
+
+  content += `PROJETS PERSONNELS
+----------------------------
+`;
+  addJobs(personalProjects());
 
   // Ajouter les compétences
   content += `COMPÉTENCES
@@ -78,6 +89,9 @@ EXPÉRIENCE PROFESSIONNELLE
   content += `• ${technicalSkills.languages.join(', ')}\n`;
   content += `• ${technicalSkills.frontend.join(', ')}\n`;
   content += `• ${technicalSkills.backend.join(', ')}\n\n`;
+
+  content += `IA agentique:\n`;
+  content += `• ${technicalSkills.agenticAi.join(', ')}\n\n`;
   
   content += `Outils et technologies:\n`;
   content += `• ${technicalSkills.tools.slice(0, 5).join(', ')}\n`;
@@ -205,7 +219,7 @@ export async function generatePDF(): Promise<Blob> {
   
   // Définir un seuil plus strict pour les sauts de page afin d'éviter les coupures de texte
   const PAGE_HEIGHT = 290;
-  const SAFE_MARGIN = 40; // Marge de sécurité pour éviter la coupure de texte
+  const SAFE_MARGIN = 22; // Garde le contenu au-dessus de la ligne de pied de page (y = 277)
   const NEW_PAGE_THRESHOLD = PAGE_HEIGHT - SAFE_MARGIN; // Seuil pour décider d'ajouter une nouvelle page
   
   // Fonction pour vérifier si une nouvelle page est nécessaire
@@ -220,6 +234,7 @@ export async function generatePDF(): Promise<Blob> {
   const addSectionTitle = (title: string, y: number): number => {
     // Vérifier si on a besoin d'une nouvelle page pour le titre de section et son contenu attendu
     checkForNewPage(15);
+    y = yPos; // checkForNewPage remet yPos en haut de page après un saut
     
     // Fond de la section
     addBackgroundRect(0, y, 210, 10, colors.tertiary);
@@ -235,10 +250,9 @@ export async function generatePDF(): Promise<Blob> {
   // Titre Expérience
   yPos = addSectionTitle("EXPÉRIENCE PROFESSIONNELLE", yPos);
   
-  // Expériences
   doc.setFontSize(12);
-  
-  experienceData.forEach(job => {
+
+  const addJobs = (jobs: typeof experienceData) => jobs.forEach(job => {
     // Vérifier si on a besoin d'une nouvelle page pour ce job
     // On estime qu'un job a besoin d'au moins 30 points + description
     checkForNewPage(30);
@@ -280,6 +294,13 @@ export async function generatePDF(): Promise<Blob> {
     
     yPos += 8; // Espace après chaque job
   });
+
+  addJobs(professionalExperience());
+
+  checkForNewPage(45);
+  yPos = addSectionTitle("PROJETS PERSONNELS", yPos);
+  doc.setFontSize(12);
+  addJobs(personalProjects());
   
   // Compétences
   yPos = addSectionTitle("COMPÉTENCES TECHNIQUES", yPos);
@@ -292,6 +313,7 @@ export async function generatePDF(): Promise<Blob> {
     
     // Vérifier si on a besoin d'une nouvelle page
     checkForNewPage(estimatedHeight);
+    y = yPos; // checkForNewPage remet yPos en haut de page après un saut
     
     // Afficher le titre et les compétences
     doc.setFont("helvetica", "bold");
@@ -305,7 +327,7 @@ export async function generatePDF(): Promise<Blob> {
     doc.setFontSize(10);
     
     doc.text(textLines, 20, y);
-    return y + textLines.length * 5 + 5;
+    return y + textLines.length * 5 + 3;
   };
   
   // Ajouter toutes les catégories de compétences sans limitation
@@ -314,6 +336,7 @@ export async function generatePDF(): Promise<Blob> {
   yPos = addSkillCategory("Technologies Backend:", technicalSkills.backend, yPos);
   yPos = addSkillCategory("Développement Mobile:", technicalSkills.mobile, yPos);
   yPos = addSkillCategory("Bases de données:", technicalSkills.databases, yPos);
+  yPos = addSkillCategory("IA agentique:", technicalSkills.agenticAi, yPos);
   yPos = addSkillCategory("Outils et environnements:", technicalSkills.tools, yPos);
   yPos = addSkillCategory("Tests et qualité:", technicalSkills.testing, yPos);
   
@@ -343,12 +366,12 @@ export async function generatePDF(): Promise<Blob> {
     doc.setFont("helvetica", "normal");
     doc.setTextColor(colors.secondary);
     doc.text(`${edu.institution}, ${edu.year}`, 20, yPos);
-    yPos += 10;
+    yPos += 8;
   });
   
   // Langues - s'assurer que la section Langues commence sur la même page que Formation si possible
   // Calculer d'abord la hauteur totale nécessaire pour la section Langues
-  const languesHeight = 15 + (languages.length * 8); // titre + tous les éléments
+  const languesHeight = 15 + (languages.length * 6); // titre + une ligne de 6 par langue, comme le rendu ci-dessous
   
   // Si la position actuelle + la hauteur des langues dépasse le seuil, nouvelle page
   if (yPos + languesHeight > NEW_PAGE_THRESHOLD) {
@@ -378,7 +401,7 @@ export async function generatePDF(): Promise<Blob> {
     doc.setFont("helvetica", "italic");
     doc.setFontSize(8);
     doc.setTextColor(colors.secondary);
-    doc.text("CV généré depuis portfolio.maximedesogus.ch", doc.internal.pageSize.width/2, doc.internal.pageSize.height - 15, { align: 'center' });
+    doc.text("CV généré depuis www.maximedesogus.ch", doc.internal.pageSize.width/2, doc.internal.pageSize.height - 15, { align: 'center' });
     doc.text(`${new Date().toLocaleDateString('fr-CH')} | Page ${pageNum}/${doc.getNumberOfPages()}`, doc.internal.pageSize.width/2, doc.internal.pageSize.height - 10, { align: 'center' });
   };
   
@@ -405,6 +428,99 @@ export async function generateDOCX(): Promise<Blob> {
     background: '#FFFFFF', // fond blanc
     border: '#E5E5E5'      // couleur de bordure légère
   };
+
+  const sectionHeading = (text: string) =>
+    new Paragraph({
+      heading: HeadingLevel.HEADING_1,
+      children: [
+        new TextRun({
+          text,
+          bold: true,
+          size: 28,
+          color: colors.primary,
+          font: "Arial",
+        }),
+      ],
+      border: {
+        bottom: {
+          color: colors.accent,
+          space: 1,
+          size: 8,
+          style: BorderStyle.SINGLE,
+        },
+      },
+      spacing: {
+        after: 200,
+      },
+      shading: {
+        type: 'clear',
+        fill: colors.tertiary,
+      },
+    });
+
+  const jobParagraphs = (jobs: typeof experienceData) =>
+    jobs.flatMap(job => [
+      new Paragraph({
+        children: [
+          new TextRun({
+            text: job.title,
+            bold: true,
+            size: 26,
+            color: colors.primary,
+            font: "Arial",
+          }),
+        ],
+        spacing: {
+          after: 80,
+        },
+      }),
+      new Paragraph({
+        children: [
+          new TextRun({
+            text: job.company,
+            size: 24,
+            color: colors.accent,
+            font: "Arial",
+          }),
+        ],
+        spacing: {
+          after: 80,
+        },
+      }),
+      new Paragraph({
+        children: [
+          new TextRun({
+            text: job.period,
+            italics: true,
+            size: 22,
+            color: colors.secondary,
+            font: "Arial",
+          }),
+        ],
+        spacing: {
+          after: 120,
+        },
+      }),
+      
+      // Ajout de toutes les descriptions sans limitation
+      ...job.description.map(desc => 
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `• ${desc}`,
+              size: 22,
+              color: colors.secondary,
+              font: "Arial",
+            }),
+          ],
+          spacing: {
+            after: 120,
+          },
+        })
+      ),
+      
+      new Paragraph({ text: "" }),
+    ]);
 
   // Création du document avec Arial comme police principale (disponible sur Mac et Windows)
   const doc = new Document({
@@ -455,7 +571,7 @@ export async function generateDOCX(): Promise<Blob> {
         new Paragraph({
           children: [
             new TextRun({
-              text: "(Image de profil disponible sur le site portfolio.maximedesogus.ch)",
+              text: "(Image de profil disponible sur le site www.maximedesogus.ch)",
               size: 20,
               italics: true,
               color: colors.secondary,
@@ -527,97 +643,11 @@ export async function generateDOCX(): Promise<Blob> {
         }),
         
         // Section Expérience
-        new Paragraph({
-          heading: HeadingLevel.HEADING_1,
-          children: [
-            new TextRun({
-              text: "EXPÉRIENCE PROFESSIONNELLE",
-              bold: true,
-              size: 28,
-              color: colors.primary,
-              font: "Arial",
-            }),
-          ],
-          border: {
-            bottom: {
-              color: colors.accent,
-              space: 1,
-              size: 8,
-              style: BorderStyle.SINGLE,
-            },
-          },
-          spacing: {
-            after: 200,
-          },
-          shading: {
-            type: 'clear',
-            fill: colors.tertiary,
-          },
-        }),
-        
-        // Expériences professionnelles
-        ...experienceData.flatMap(job => [
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: job.title,
-                bold: true,
-                size: 26,
-                color: colors.primary,
-                font: "Arial",
-              }),
-            ],
-            spacing: {
-              after: 80,
-            },
-          }),
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: job.company,
-                size: 24,
-                color: colors.accent,
-                font: "Arial",
-              }),
-            ],
-            spacing: {
-              after: 80,
-            },
-          }),
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: job.period,
-                italics: true,
-                size: 22,
-                color: colors.secondary,
-                font: "Arial",
-              }),
-            ],
-            spacing: {
-              after: 120,
-            },
-          }),
-          
-          // Ajout de toutes les descriptions sans limitation
-          ...job.description.map(desc => 
-            new Paragraph({
-              children: [
-                new TextRun({
-                  text: `• ${desc}`,
-                  size: 22,
-                  color: colors.secondary,
-                  font: "Arial",
-                }),
-              ],
-              spacing: {
-                after: 120,
-              },
-            })
-          ),
-          
-          new Paragraph({ text: "" }),
-        ]),
+        sectionHeading("EXPÉRIENCE PROFESSIONNELLE"),
+        ...jobParagraphs(professionalExperience()),
+
+        sectionHeading("PROJETS PERSONNELS"),
+        ...jobParagraphs(personalProjects()),
         
         // Section Compétences
         new Paragraph({
@@ -655,6 +685,7 @@ export async function generateDOCX(): Promise<Blob> {
           { title: "Technologies Backend:", skills: technicalSkills.backend },
           { title: "Développement Mobile:", skills: technicalSkills.mobile },
           { title: "Bases de données:", skills: technicalSkills.databases },
+          { title: "IA agentique:", skills: technicalSkills.agenticAi },
           { title: "Outils et environnements:", skills: technicalSkills.tools },
           { title: "Tests et qualité:", skills: technicalSkills.testing }
         ].flatMap(category => [
@@ -798,7 +829,7 @@ export async function generateDOCX(): Promise<Blob> {
         new Paragraph({
           children: [
             new TextRun({
-              text: "CV généré depuis portfolio.maximedesogus.ch",
+              text: "CV généré depuis www.maximedesogus.ch",
               size: 16,
               italics: true,
               color: colors.secondary,

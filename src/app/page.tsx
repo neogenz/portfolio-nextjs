@@ -3,6 +3,7 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
+import AgenticAI from "@/components/AgenticAI";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -10,14 +11,14 @@ import SmoothScroll from "@/components/SmoothScroll";
 import PageLoadHandler from "@/components/PageLoadHandler";
 
 export const metadata: Metadata = {
-  title: "Maxime De Sogus | Développeur Angular Expert Valais Suisse",
+  title: "Maxime De Sogus | Senior Fullstack Engineer & Tech Lead · Angular, Valais",
   description:
-    "Maxime De Sogus - Développeur Angular Expert basé en Valais, Suisse. +10 ans d'expérience Angular, TypeScript, JavaScript, Ionic. Portfolio et compétences en développement web moderne. Applications performantes.",
+    "Maxime De Sogus, Senior Fullstack Engineer & Tech Lead basé en Valais, Suisse. Plus de 10 ans d'expérience : Angular, TypeScript, NestJS, .NET, et un workflow de développement fondé sur l'IA agentique.",
   keywords: [
     "Maxime De Sogus",
     "Développeur Angular Valais",
     "Développeur Angular Suisse",
-    "Expert Angular Suisse romande",
+    "Tech Lead Angular Suisse romande",
     "Développeur TypeScript Suisse",
     "Développeur JavaScript Suisse",
     "Développeur Ionic Suisse",
@@ -27,15 +28,15 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     url: "/",
-    title: "Maxime De Sogus | Développeur Angular Expert Valais Suisse",
+    title: "Maxime De Sogus | Senior Fullstack Engineer & Tech Lead · Angular, Valais",
     description:
-      "Maxime De Sogus - Développeur Angular Expert basé en Valais, Suisse. +10 ans d'expérience. Portfolio et compétences en développement web moderne.",
+      "Maxime De Sogus, Senior Fullstack Engineer & Tech Lead basé en Valais, Suisse. Plus de 10 ans d'expérience : Angular, TypeScript, NestJS, .NET, et un workflow de développement fondé sur l'IA agentique.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Maxime De Sogus | Développeur Angular Expert Valais Suisse",
+    title: "Maxime De Sogus | Senior Fullstack Engineer & Tech Lead · Angular, Valais",
     description:
-      "Maxime De Sogus - Développeur Angular Expert basé en Valais, Suisse. +10 ans d'expérience. Portfolio et compétences techniques.",
+      "Maxime De Sogus, Senior Fullstack Engineer & Tech Lead basé en Valais, Suisse. Plus de 10 ans d'expérience : Angular, TypeScript, NestJS, .NET, et un workflow de développement fondé sur l'IA agentique.",
     images: ["/images/optimized/og-image.webp"],
   },
   alternates: {
@@ -53,6 +54,7 @@ export default function Home() {
           <Hero />
           <About />
           <Experience />
+          <AgenticAI />
           <Projects />
           <Contact />
         </main>

@@ -14,7 +14,7 @@ const Hero = () => {
 
   // Séquence des textes à afficher
   const textArray = [
-    "Développeur Angular Expert 🥷",
+    "Senior Fullstack Engineer & Tech Lead 🧭",
     "Basé en Valais, Suisse 🏔️", 
     "Développeur fullstack 💻",
     "Spécialiste TypeScript 🔧",
@@ -22,7 +22,8 @@ const Hero = () => {
     "Développeur frontend 🎨",
     "Ingénieur logiciel 🧠",
     "Passionné de tech ❤️‍🔥",
-    "Utilisateur aguéri d'IA 🤖",
+    "Agentic AI engineering 🤖",
+    "Context & harness engineering 🧩",
     "Développeur backend 🔐",
     "Intégrateur d'API 🔄",
     "Évangéliste Craft 🔥",
@@ -81,20 +82,20 @@ const Hero = () => {
 
       {/* Vertical text */}
       <div className="absolute right-2 xr:left-6 xr:right-auto top-16 bottom-0 flex flex-col justify-between text-xs text-maxime-secondary dark:text-maxime-white/60 tracking-widest uppercase [writing-mode:vertical-rl] rotate-180 max-h-[500px] landscape:max-md:hidden">
-        <div className="rotate-180">Expert Angular</div>
+        <div className="rotate-180">Fullstack & Tech Lead</div>
         <div className="rotate-180">Portfolio</div>
       </div>
 
       {/* Main content */}
       <div
         ref={heroRef}
-        className="grid relative z-10 grid-cols-12 gap-4 mx-auto opacity-0 transition-all duration-700 translate-y-4 container-padding md:gap-6 lg:gap-8"
+        className="grid relative z-10 grid-cols-12 gap-4 max-sm:w-full mx-auto opacity-0 transition-[opacity,translate] duration-700 translate-y-4 container-padding md:gap-6 lg:gap-8"
       >
         {/* Left column - Text content */}
         <div className="flex flex-col col-span-12 justify-center lg:col-span-7 2xl:col-span-7">
           {/* Stats */}
           <div
-            className={`stats-container flex items-start gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-6 sm:mb-7 md:mb-8 lg:mb-10 transition-all duration-1000 delay-300 ${
+            className={`stats-container flex items-start gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-6 sm:mb-7 md:mb-8 lg:mb-10 transition-[opacity,translate] duration-1000 delay-300 ${
               isLoaded
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-8"
@@ -120,7 +121,7 @@ const Hero = () => {
 
           {/* Name heading - nous rétablissons la classe name-heading pour le ciblage par style JSX */}
           <div
-            className={`name-heading mb-5 sm:mb-6 md:mb-7 landscape:max-sm:mb-3 landscape:sm:mb-4 transition-all duration-1000 delay-500 ${
+            className={`name-heading mb-5 sm:mb-6 md:mb-7 landscape:max-sm:mb-3 landscape:sm:mb-4 transition-[opacity,translate] duration-1000 delay-500 ${
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
@@ -134,14 +135,16 @@ const Hero = () => {
 
           {/* Typewriter text */}
           <div
-            className={`transition-all duration-1000 delay-800 ${
+            className={`transition-[opacity,translate] duration-1000 delay-800 ${
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <p className="py-1 pl-6 mb-6 text-xl border-l-2 sm:text-2xl landscape:max-md:text-xl portrait:xs:text-xl landscape:max-md:mb-4 portrait:xs:mb-5 border-maxime-secondary portrait:xs:pl-4">
+            {/* 2 lignes réservées sous sm : le titre long passe sur 2 lignes sans décaler le bouton */}
+            <p className="py-1 pl-6 mb-6 min-h-[calc(2lh+0.5rem)] sm:min-h-0 text-xl border-l-2 sm:text-2xl landscape:max-md:text-xl portrait:xs:text-xl landscape:max-md:mb-4 portrait:xs:mb-5 border-maxime-secondary portrait:xs:pl-4">
               —{" "}
-              <span className="relative inline-block min-w-[320px]">
-                <span className="inline-block">{typewriterText}</span>
+              {/* En ligne sous sm : le tiret reste devant le texte au lieu d'être seul sur sa ligne */}
+              <span className="relative sm:inline-block sm:min-w-[320px]">
+                <span>{typewriterText}</span>
                 <span className="inline-block w-[2px] h-[1em] bg-maxime-primary dark:bg-maxime-white animate-pulse ml-0.5 align-middle"></span>
               </span>
             </p>
@@ -149,13 +152,13 @@ const Hero = () => {
 
           {/* CTA Button */}
           <div
-            className={`mt-5 landscape:max-md:mt-3 portrait:xs:mt-4 transition-all duration-1000 delay-1000 ${
+            className={`mt-5 landscape:max-md:mt-3 portrait:xs:mt-4 transition-[opacity,translate] duration-1000 delay-1000 ${
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
             <Link
               href="#projects"
-              className="inline-block px-8 py-3 border transition duration-300 cursor-pointer outline-none landscape:max-md:px-6 landscape:max-md:py-2 landscape:max-md:text-sm border-maxime-primary dark:border-maxime-white hover:bg-maxime-primary hover:text-maxime-white dark:hover:bg-maxime-white dark:hover:text-maxime-primary focus-visible:ring-2 focus-visible:ring-maxime-primary dark:focus-visible:ring-maxime-white focus-visible:ring-offset-2"
+              className="inline-block px-8 py-3 border transition duration-300 active:scale-[0.96] cursor-pointer outline-none landscape:max-md:px-6 landscape:max-md:py-2 landscape:max-md:text-sm border-maxime-primary dark:border-maxime-white hover:bg-maxime-primary hover:text-maxime-white dark:hover:bg-maxime-white dark:hover:text-maxime-primary focus-visible:ring-2 focus-visible:ring-maxime-primary dark:focus-visible:ring-maxime-white focus-visible:ring-offset-2"
             >
               Voir mes projets
             </Link>
@@ -166,7 +169,7 @@ const Hero = () => {
         <div className="hidden justify-center items-center w-full lg:flex lg:col-span-5 2xl:col-span-5">
           <div
             ref={imageRef}
-            className={`relative flex items-center justify-center mx-auto overflow-hidden max-h-[70vh] h-auto transition-opacity duration-800 ease-in-out ${
+            className={`relative flex items-center justify-center mx-auto overflow-hidden max-h-[70vh] h-auto outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10 transition-opacity duration-800 ease-in-out ${
               showImage ? "opacity-100" : "opacity-0"
             }`}
             style={{
@@ -203,7 +206,7 @@ const Hero = () => {
       {/* Scroll indicator */}
       <button
         onClick={scrollToAbout}
-        className={`absolute bottom-6 sm:bottom-10 landscape:max-md:bottom-2 left-1/2 -translate-x-1/2 transition-all duration-1000 delay-1200 
+        className={`absolute bottom-6 sm:bottom-10 landscape:max-md:bottom-2 left-1/2 -translate-x-1/2 transition-[opacity,translate,background-color] duration-1000 delay-1200 
           flex flex-col items-center z-20 cursor-pointer
           bg-white/40 dark:bg-maxime-dark-bg/40 backdrop-blur-sm rounded-md px-3 py-1 landscape:max-md:py-0.5
           hover:bg-white/60 dark:hover:bg-maxime-dark-bg/60
