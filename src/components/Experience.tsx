@@ -157,8 +157,12 @@ export const technicalSkills = {
     "Harness engineering",
     "Claude Code & Skills",
     "Codex",
-    "Cursor",
+    "AIDD",
     "OpenCode",
+    "T3 Code",
+    "Conductor",
+    "Cursor",
+    "Hermes & OpenBot",
   ],
   testing: ["Jest", "Jasmine", "Karma", "Protractor", "Playwright", "Vitest"],
 };

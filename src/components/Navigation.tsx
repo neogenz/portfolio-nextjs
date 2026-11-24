@@ -103,6 +103,7 @@ const Navigation = () => {
   const navLinks = [
     { href: "#about", label: "À propos" },
     { href: "#experience", label: "Expérience" },
+    { href: "#agentic-ai", label: "IA" },
     { href: "#projects", label: "Projets" },
     { href: "#contact", label: "Contact" }
   ];
@@ -130,7 +131,7 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className={`hidden lg:flex items-center ${isWideScreen ? 'absolute left-1/2 transform -translate-x-1/2' : 'mx-auto'}`}>
-            <nav className="flex items-center space-x-6 lg:space-x-8">
+            <nav className="flex items-center space-x-6 2xl:space-x-8">
               {navLinks.map(link => (
                 <a key={link.href} href={link.href} className={linkStyles}>
                   {link.label}
