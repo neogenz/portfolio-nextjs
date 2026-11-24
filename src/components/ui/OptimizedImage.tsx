@@ -35,7 +35,7 @@ const OptimizedImage: FC<OptimizedImageProps> = ({
   priority = false,
   onLoad,
   style,
-  quality = 80,
+  quality = 75,
   placeholder = 'empty',
   blurDataURL,
 }) => {

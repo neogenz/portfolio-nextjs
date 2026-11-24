@@ -7,16 +7,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Development server**: `npm run dev` (uses Turbopack for faster builds)
 - **Production build**: `npm run build` (includes BUILD_DATE environment variable injection)
 - **Start production server**: `npm start`
-- **Lint code**: `npm run lint`
+- **Lint code**: `npm run lint` (ESLint 10 flat config with `eslint-config-next`; `next build` no longer lints)
 - **Type checking**: TypeScript checking is handled by Next.js build process
 - **Testing**: No test framework currently configured
 
 ## Technology Stack & Architecture
 
-This is a **Next.js 15** portfolio site using the **App Router** architecture with the following key technologies:
+This is a **Next.js 16** portfolio site using the **App Router** architecture with the following key technologies:
 
 ### Core Framework
-- **Next.js 15** with App Router (src/app directory structure)
+- **Next.js 16** with App Router (src/app directory structure), Turbopack for dev and build
 - **React 19** with TypeScript
 - **Tailwind CSS v4** for styling
 
@@ -26,7 +26,6 @@ This is a **Next.js 15** portfolio site using the **App Router** architecture wi
 - **next-themes** for theme switching
 - **gray-matter + remark** for markdown blog post processing
 - **nodemailer** for contact form email handling
-- **zod** for schema validation
 - **limiter** for rate limiting functionality
 
 ### Architecture Overview
@@ -37,7 +36,7 @@ This is a **Next.js 15** portfolio site using the **App Router** architecture wi
 - Dynamic blog routes: `/blog/[slug]` with static generation
 
 #### Component Structure
-- **UI Components**: `src/components/ui/` contains Radix-based reusable components
+- **UI Components**: `src/components/ui/` holds the few shared pieces in use (toasts, tooltip, optimized image, GitHub icon). lucide-react 1.x has no brand icons
 - **Page Components**: `src/components/` contains larger page-specific components
 - **Providers**: Global providers in `src/components/providers.tsx` handle TanStack Query, themes, and toast notifications
 
@@ -50,7 +49,7 @@ This is a **Next.js 15** portfolio site using the **App Router** architecture wi
 - **Utilities**: `src/lib/utils.ts` contains cn() for className merging and other helpers
 
 #### Styling System
-- **Custom Tailwind colors**: `maxime-primary`, `maxime-secondary`, `maxime-tertiary` defined in config
+- **Custom Tailwind colors**: `maxime-primary`, `maxime-secondary`, `maxime-tertiary` defined in the `@theme` block of `src/app/globals.css` (no tailwind.config.js)
 - **Dark mode**: Implemented with next-themes using class-based switching
 - **Responsive breakpoints**: Custom `xs` (375px) and `xr` (414px) breakpoints
 - **Animations**: Uses `tailwindcss-animate` plugin for smooth transitions
@@ -58,20 +57,21 @@ This is a **Next.js 15** portfolio site using the **App Router** architecture wi
 #### Environment & Configuration
 - **Environment Variables**: Stored in `.env.local` (gitignored)
 - **Next.js Config**: `next.config.ts` includes image optimization, cache headers, CSP policies
-- **ESLint**: Configured for Next.js 15 with build-time linting disabled
+- **ESLint**: `eslint.config.mjs` (flat config, core-web-vitals + typescript); React Compiler rules forbid synchronous setState in effects, use `useSyncExternalStore` (see `src/hooks/useMounted.ts`)
 - **TypeScript**: Strict mode enabled with Next.js integration
 
 ## Development Rules
 
-### Next.js 15 Practices
-- Use Next.js 15 types and practices
+### Next.js 16 Practices
+- Use Next.js 16 types and practices
+- `next/image` only accepts the qualities listed in `images.qualities` (next.config.ts)
 - Leverage App Router patterns for routing and layouts
 - Use server components by default, client components when needed
 
 ### Tailwind v4 Guidelines
 - Use Tailwind v4 directives and syntax
 - For gradients, use theme-defined color names rather than CSS variables directly
-- Define custom colors in theme configuration when needed
+- Define custom colors in the `@theme` block of globals.css when needed
 - Custom breakpoints: `xs` (375px) and `xr` (414px) available for mobile-first design
 - Use `cn()` utility from `src/lib/utils.ts` for conditional className merging
 
@@ -96,7 +96,7 @@ This is a **Next.js 15** portfolio site using the **App Router** architecture wi
 
 ### API & Security
 - **Rate Limiting**: Implemented in contact API using custom Map-based limiter
-- **Input Validation**: Zod schemas for form validation
+- **Input Validation**: manual checks in the contact route (required fields, email format, lengths)
 - **Email Integration**: Nodemailer configured for contact form submissions
 - **CSP Headers**: Content Security Policy configured for SVG safety
 - **Environment Security**: Sensitive data in `.env.local` (gitignored)

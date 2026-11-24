@@ -9,7 +9,7 @@ Ce portfolio est le résultat d'une **expérimentation intensive** : développer
 ## 🏗️ Architecture & Choix techniques
 
 ### Stack technique moderne
-- **Next.js 15** avec App Router - *Adoption précoce des dernières fonctionnalités*
+- **Next.js 16** avec App Router et Turbopack
 - **React 19** + TypeScript - *Type safety et développement robuste*
 - **Tailwind CSS v4** - *Design system scalable et performant*
 - **Radix UI** - *Composants accessibles et headless*
@@ -30,7 +30,7 @@ src/
 
 #### 🔒 Sécurité & Performance
 - **Rate limiting** personnalisé avec Map-based storage
-- **Validation stricte** avec Zod schemas
+- **Validation** des champs côté API (obligatoires, format email, longueurs)
 - **Images optimisées** avec Next.js Image + WebP
 - **Variables d'environnement** sécurisées (.env.local gitignored)
 - **Content Security Policy** headers
@@ -95,7 +95,7 @@ export class RateLimiter {
 
 ### Developer Experience
 - **TypeScript strict mode** activé
-- **ESLint** configuration Next.js 15
+- **ESLint** 10 en flat config (`eslint-config-next`)
 - **Git hooks** pour la qualité du code
 - **Hot reload** avec Turbopack
 
@@ -118,12 +118,12 @@ export class RateLimiter {
 ## 🧰 Stack complète
 
 **Frontend**
-- React 19, Next.js 15, TypeScript
+- React 19, Next.js 16, TypeScript
 - Tailwind CSS v4, Radix UI, Lucide Icons
 
 **Backend/Services**
 - Next.js API Routes, Nodemailer
-- Rate limiting custom, Zod validation
+- Rate limiting custom
 
 **Tooling**
 - ESLint, Vercel Analytics

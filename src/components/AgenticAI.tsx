@@ -1,4 +1,5 @@
-import { ArrowUpRight, Github } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import GithubIcon from './ui/GithubIcon';
 
 interface Practice {
   category: string;
@@ -144,7 +145,7 @@ const AgenticAI = () => (
                     rel="noreferrer"
                     className="inline-flex items-center gap-1.5 border-b border-maxime-primary/20 pb-1 text-sm text-maxime-primary transition-colors hover:border-maxime-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-maxime-primary dark:border-maxime-white/20 dark:text-maxime-white dark:hover:border-maxime-white dark:focus-visible:outline-maxime-white"
                   >
-                    <Github className="h-3.5 w-3.5" aria-hidden="true" />
+                    <GithubIcon className="h-3.5 w-3.5" />
                     {practice.link.label}
                     <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                   </a>

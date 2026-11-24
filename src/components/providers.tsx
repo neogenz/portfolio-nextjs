@@ -4,7 +4,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import useMounted from "@/hooks/useMounted";
 import { ThemeProvider } from "next-themes";
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -12,30 +13,22 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
   
   // Assurer que le composant est rendu uniquement côté client pour éviter les erreurs d'hydratation
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   
-  // Effet pour marquer le montage - pas de manipulation directe des classes DOM avec Tailwind v4
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-  
-  // Supprime/cache le contenu jusqu'à ce que le client soit prêt
-  if (!mounted) {
-    return (
-      <QueryClientProvider client={queryClient}>
-        <div style={{ visibility: 'hidden' }}>{children}</div>
-      </QueryClientProvider>
-    );
-  }
-  
+  // ThemeProvider rendu dès le serveur : son script applique le thème avant le premier affichage.
+  // Le contenu reste caché jusqu'à l'hydratation, comme avant.
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider attribute="class" enableSystem={true} defaultTheme="system">
-        <TooltipProvider>
-          {children}
-          <Toaster />
-          <Sonner />
-        </TooltipProvider>
+        {mounted ? (
+          <TooltipProvider>
+            {children}
+            <Toaster />
+            <Sonner />
+          </TooltipProvider>
+        ) : (
+          <div style={{ visibility: 'hidden' }}>{children}</div>
+        )}
       </ThemeProvider>
     </QueryClientProvider>
   );
