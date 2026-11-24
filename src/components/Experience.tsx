@@ -163,6 +163,9 @@ export const technicalSkills = {
     "Conductor",
     "Cursor",
     "Hermes & OpenBot",
+    "dev-browser",
+    "Ponytail & RTK",
+    "Impeccable",
   ],
   testing: ["Jest", "Jasmine", "Karma", "Protractor", "Playwright", "Vitest"],
 };

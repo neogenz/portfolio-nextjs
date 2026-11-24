@@ -14,8 +14,8 @@ const practices: Practice[] = [
     category: 'Méthode',
     title: 'Plan, code, revue, vérification',
     description:
-      "Chaque changement suit le même cycle avec le framework open source AIDD : plan, implémentation, revue indépendante, vérification. Avant d'écrire une ligne, je fais challenger le plan par le skill grilling de Matt Pocock.",
-    tags: ['AIDD', 'Grilling', 'Revue indépendante'],
+      "Chaque changement suit le même cycle avec le framework open source AIDD : plan, implémentation, revue indépendante, vérification. Avant d'écrire une ligne, je fais challenger le plan par le skill grilling de Matt Pocock. Chaque tâche, sous-tâche et phase du développement tourne avec le modèle et le niveau de réflexion qui lui conviennent.",
+    tags: ['AIDD', 'Grilling', 'Revue indépendante', 'Choix du modèle'],
     featured: true,
   },
   {
@@ -27,11 +27,25 @@ const practices: Practice[] = [
     link: { label: 'Mes skills', href: 'https://github.com/neogenz/skills' },
   },
   {
+    category: 'Économie de tokens',
+    title: 'Chaque token compte',
+    description:
+      "Le skill dev-browser a remplacé le computer use et le browser use : l'agent pilote le navigateur par de courts scripts, ce qui économise un maximum de tokens. Ponytail et RTK réduisent encore la consommation.",
+    tags: ['dev-browser', 'Ponytail', 'RTK'],
+  },
+  {
     category: 'Harness engineering',
     title: 'Des harness indépendants du modèle',
     description:
       "Depuis plusieurs mois, j'expérimente des harness qui fonctionnent avec n'importe quel LLM (OpenCode, T3 Code, Conductor), à côté de Claude Code et Codex. Hooks, sous-agents et objectifs longs avec /goal.",
     tags: ['OpenCode', 'T3 Code', 'Conductor', '/goal'],
+  },
+  {
+    category: 'Interfaces',
+    title: 'Des interfaces soignées, en série',
+    description:
+      "Je construis les interfaces avec les skills Make Interfaces Feel Better et Impeccable, que j'industrialise de plus en plus sur mes projets.",
+    tags: ['Make Interfaces Feel Better', 'Impeccable', 'UI'],
   },
   {
     category: 'Agents autonomes',
@@ -61,6 +75,14 @@ const practices: Practice[] = [
       "Plus de 400 pages Confluence obsolètes remplacées par une documentation Astro Starlight construite avec des workflows agentiques, régénérée avec ses captures d'écran par la CI.",
     tags: ['Astro Starlight', 'CI', 'Workflows agentiques'],
   },
+  {
+    category: 'Software factory',
+    title: 'Une software factory qui apprend',
+    description:
+      'Une boucle de correction tourne dans chaque projet : une erreur relevée en revue devient une règle, un skill ou un test. Le système qui écrit le code s\'améliore de jour en jour.',
+    tags: ['Boucle de correction', 'Software craft'],
+    featured: true,
+  },
 ];
 
 const AgenticAI = () => (
@@ -82,7 +104,7 @@ const AgenticAI = () => (
           </h2>
           <p className="max-w-2xl text-maxime-secondary dark:text-maxime-white/70">
             Depuis un an, je développe chaque jour avec Claude Code et Codex, sur plusieurs abonnements Max et Ultra.
-            J&apos;ai passé des centaines d&apos;heures à outiller ce travail : le contexte que lisent les agents, le cadre
+            Mon objectif : livrer du code de niveau software craft grâce à l&apos;IA. J&apos;ai passé des centaines d&apos;heures à outiller ce travail : le contexte que lisent les agents, le cadre
             dans lequel ils travaillent, la vérification de ce qu&apos;ils livrent.
           </p>
         </div>
@@ -97,7 +119,7 @@ const AgenticAI = () => (
               <div>
                 <div className="mb-5 flex items-center justify-between gap-4 text-xs uppercase tracking-[0.16em] text-maxime-secondary dark:text-maxime-white/60">
                   <span>{practice.category}</span>
-                  <span aria-hidden="true">0{index + 1}</span>
+                  <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 </div>
                 <h3 className={`${practice.featured ? 'text-3xl' : 'text-2xl'} font-light text-maxime-primary dark:text-maxime-white`}>
                   {practice.title}
