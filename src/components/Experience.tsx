@@ -12,7 +12,7 @@ export const experienceData = [
     period: "2025 - Présent",
     location: "Suisse",
     description: [
-      "Conception et développement d'une application web et iOS de gestion budgétaire pour le marché suisse — planification annuelle avec templates mensuels réutilisables.",
+      "Conception et développement d'une application web et iOS de gestion budgétaire pour le marché suisse : planification annuelle avec templates mensuels réutilisables.",
       "Architecture monorepo Turborepo : Angular 21+ (frontend), NestJS 11+ (backend), SwiftUI (iOS), Next.js (landing page).",
       "Frontend signals-first avec Angular Material 21, Tailwind v4 et pattern Signal Store (SWR, resource()).",
       "Chiffrement AES-256-GCM split-key des montants financiers (PBKDF2 client + HKDF backend).",
@@ -37,7 +37,7 @@ export const experienceData = [
       "Plateforme de Gestion des Objets Trouvés, en lead technique & architecte - Solution fullstack Angular/NestJS/MongoDB avec automatisation du matching via IA (GPT, HuggingFace, Flask) et optimisation des flux de recherche.",
       "Développement d'une application mobile multi-client monorepo NX (Angular/Ionic/Capacitor) avec migration progressive & régulière d'Angular 5 vers la dernière version stable, carte interactive Leaflet/RxJS et plugins natifs Swift/Java. Quality gates, tests e2e, CI/CD et monitoring Sentry : -90 % de crashs en production.",
       "Conception d'un backend de vente scalable (NestJS/MongoDB) avec APIs GraphQL/REST et système batch pour la gestion des achats différés.",
-      "Réalisation d'applications opérationnelles diverses: tablettes GPS pour chauffeurs, solution Windows/Electron pour maintenance maritime, système de comptage passagers avec répartition automatisée des bénéfices (Angular/Java Spring).",
+      "Réalisation d'applications opérationnelles diverses : tablettes GPS pour chauffeurs, solution Windows/Electron pour maintenance maritime, système de comptage passagers avec répartition automatisée des bénéfices (Angular/Java Spring).",
     ],
   },
   {
@@ -48,9 +48,9 @@ export const experienceData = [
     location: "Lausanne, Suisse",
     description: [
       "Développement d'applications mobiles hybrides (Ionic/Angular) avec fonctionnalités temps réel, notifications push et cartographie interactive.",
-      "Établissement de l'architecture technique pour projets web et mobiles hybrides, assurant robustesse et scalabilité.",
+      "Établissement de l'architecture technique des projets web et mobiles hybrides.",
       "Maintenance et évolution d'applications web Angular communicant en REST",
-      "Création de solutions pour environnements, thèmes et configurations dynamiques dans les applications.",
+      "Gestion dynamique des environnements et des thèmes dans les applications.",
       "Mise en place d'outils comme Postman et Docker pour améliorer les flux de développement.",
       "Gestion de projets multi-clients en méthodologie Agile avec cycles courts de développement.",
     ],

@@ -23,13 +23,13 @@ const About = () => {
             Marseillais expatrié en Valais depuis bientôt 10 ans, je construis des applications dans le monde des transports publics. En dehors du code, vous me trouverez probablement en train de perfectionner un ramen maison ou de planifier mon prochain voyage.
           </p>
           <p className="text-lg mb-6 text-maxime-secondary dark:text-maxime-white/90">
-            Quand un sujet me passionne, je creuse jusqu'au bout. C'est comme ça que je fonctionne, que ce soit pour trouver le bon équilibre d'umami dans un bouillon, pour comprendre une nouvelle techno, ou pour résoudre un problème d'architecture logicielle. Et ce que j'apprends, j'aime le partager — en pair programming, en partageant avec mon équipe, ou simplement autour d'un café.
+            Quand un sujet me passionne, je creuse jusqu'au bout. C'est comme ça que je fonctionne, que ce soit pour trouver le bon équilibre d'umami dans un bouillon, pour comprendre une nouvelle techno, ou pour résoudre un problème d'architecture logicielle. Et ce que j'apprends, j'aime le partager : en pair programming, avec mon équipe, ou simplement autour d'un café.
           </p>
           <p className="text-lg mb-6 text-maxime-secondary dark:text-maxime-white/90">
-            Ce qui me motive au quotidien, c'est de bosser avec des gens que j'apprécie sur des sujets qui comptent. Je préfère un environnement où on peut se dire les choses franchement, s'entraider quand c'est tendu, et célébrer quand ça marche. C'est simple, mais c'est ce qui fait la différence.
+            Ce qui me motive au quotidien, c'est de bosser avec des gens que j'apprécie sur des sujets qui comptent. Je préfère un environnement où on peut se dire les choses franchement, s'entraider quand c'est tendu, et célébrer quand ça marche.
           </p>
           <p className="text-lg mb-6 text-maxime-secondary dark:text-maxime-white/90">
-            Les voyages nourrissent tout le reste. Gravir le mont Batur à Bali au lever du soleil, nager avec les dauphins à l'île Maurice, arpenter la Silicon Valley pour sentir l'énergie du lieu — chaque destination remet les compteurs à zéro. Et impossible de voyager sans goûter à tout : un bon voyage, c'est aussi une bonne assiette.
+            Les voyages nourrissent tout le reste. Gravir le mont Batur à Bali au lever du soleil, nager avec les dauphins à l'île Maurice, arpenter la Silicon Valley pour sentir l'énergie du lieu : chaque destination remet les compteurs à zéro. Et impossible de voyager sans goûter à tout : un bon voyage, c'est aussi une bonne assiette.
           </p>
 
           <div className="text-center">
