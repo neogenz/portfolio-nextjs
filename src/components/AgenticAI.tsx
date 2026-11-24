@@ -103,15 +103,11 @@ const AgenticAI = () => (
           <h2 className="mb-6 text-5xl font-light tracking-tight text-maxime-primary dark:text-maxime-white md:text-6xl">
             Développer avec des agents, avec méthode.
           </h2>
-          <p className="mb-6 max-w-2xl text-xl text-maxime-primary dark:text-maxime-white/90">
-            Je suis convaincu que mon métier va changer en profondeur dans les dix prochaines années. Depuis plus de deux
-            ans et demi, je travaille donc énormément avec l&apos;IA et je fais évoluer mes méthodes.
-          </p>
-          <p className="max-w-2xl text-maxime-secondary dark:text-maxime-white/70">
-            J&apos;utilise Claude Code depuis sa sortie, en février 2025. Aujourd&apos;hui, je développe chaque jour avec
-            Claude Code et Codex, sur plusieurs abonnements Max et Ultra depuis un an.
-            Mon objectif : livrer du code de niveau software craft grâce à l&apos;IA. J&apos;ai passé des centaines d&apos;heures à outiller ce travail : le contexte que lisent les agents, le cadre
-            dans lequel ils travaillent, la vérification de ce qu&apos;ils livrent.
+          <p className="max-w-2xl text-lg text-maxime-secondary dark:text-maxime-white/70">
+            Je suis convaincu que mon métier va changer en profondeur dans les dix prochaines années, et je m&apos;y
+            prépare depuis plus de deux ans et demi. J&apos;utilise Claude Code depuis sa sortie en février 2025 et je
+            développe chaque jour avec lui et Codex, sur plusieurs abonnements Max et Ultra. Mon objectif&nbsp;: livrer du code
+            de niveau software craft grâce à l&apos;IA.
           </p>
         </div>
 
