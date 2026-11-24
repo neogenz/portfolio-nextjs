@@ -11,6 +11,7 @@ export const experienceData = [
     company: "Pulpe (Projet Personnel)",
     period: "2025 - Présent",
     location: "Suisse",
+    personalProject: true,
     description: [
       "Conception et développement d'une application web et iOS de gestion budgétaire pour le marché suisse : planification annuelle avec templates mensuels réutilisables.",
       "Architecture monorepo Turborepo : Angular 21+ (frontend), NestJS 11+ (backend), SwiftUI (iOS), Next.js (landing page).",
