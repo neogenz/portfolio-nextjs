@@ -8,11 +8,11 @@ import { saveAs } from 'file-saver';
 // Données personnelles
 const personalInfo = {
   name: "Maxime De Sogus",
-  title: "Développeur fullstack Angular & NestJS",
+  title: "Senior Fullstack Engineer & Tech Lead",
   address: "Vétroz, Valais, Suisse",
   phone: "+41 76 498 76 31",
   email: "maxime.desogus@gmail.com",
-  linkedin: "linkedin.com/in/maximedesogus"
+  linkedin: "linkedin.com/in/maxime-de-sogus"
 };
 
 // Données d'expérience (importées depuis le composant Experience)
@@ -78,6 +78,9 @@ EXPÉRIENCE PROFESSIONNELLE
   content += `• ${technicalSkills.languages.join(', ')}\n`;
   content += `• ${technicalSkills.frontend.join(', ')}\n`;
   content += `• ${technicalSkills.backend.join(', ')}\n\n`;
+
+  content += `IA agentique:\n`;
+  content += `• ${technicalSkills.agenticAi.join(', ')}\n\n`;
   
   content += `Outils et technologies:\n`;
   content += `• ${technicalSkills.tools.slice(0, 5).join(', ')}\n`;
@@ -314,6 +317,7 @@ export async function generatePDF(): Promise<Blob> {
   yPos = addSkillCategory("Technologies Backend:", technicalSkills.backend, yPos);
   yPos = addSkillCategory("Développement Mobile:", technicalSkills.mobile, yPos);
   yPos = addSkillCategory("Bases de données:", technicalSkills.databases, yPos);
+  yPos = addSkillCategory("IA agentique:", technicalSkills.agenticAi, yPos);
   yPos = addSkillCategory("Outils et environnements:", technicalSkills.tools, yPos);
   yPos = addSkillCategory("Tests et qualité:", technicalSkills.testing, yPos);
   
@@ -378,7 +382,7 @@ export async function generatePDF(): Promise<Blob> {
     doc.setFont("helvetica", "italic");
     doc.setFontSize(8);
     doc.setTextColor(colors.secondary);
-    doc.text("CV généré depuis portfolio.maximedesogus.ch", doc.internal.pageSize.width/2, doc.internal.pageSize.height - 15, { align: 'center' });
+    doc.text("CV généré depuis www.maximedesogus.ch", doc.internal.pageSize.width/2, doc.internal.pageSize.height - 15, { align: 'center' });
     doc.text(`${new Date().toLocaleDateString('fr-CH')} | Page ${pageNum}/${doc.getNumberOfPages()}`, doc.internal.pageSize.width/2, doc.internal.pageSize.height - 10, { align: 'center' });
   };
   
@@ -455,7 +459,7 @@ export async function generateDOCX(): Promise<Blob> {
         new Paragraph({
           children: [
             new TextRun({
-              text: "(Image de profil disponible sur le site portfolio.maximedesogus.ch)",
+              text: "(Image de profil disponible sur le site www.maximedesogus.ch)",
               size: 20,
               italics: true,
               color: colors.secondary,
@@ -655,6 +659,7 @@ export async function generateDOCX(): Promise<Blob> {
           { title: "Technologies Backend:", skills: technicalSkills.backend },
           { title: "Développement Mobile:", skills: technicalSkills.mobile },
           { title: "Bases de données:", skills: technicalSkills.databases },
+          { title: "IA agentique:", skills: technicalSkills.agenticAi },
           { title: "Outils et environnements:", skills: technicalSkills.tools },
           { title: "Tests et qualité:", skills: technicalSkills.testing }
         ].flatMap(category => [
@@ -798,7 +803,7 @@ export async function generateDOCX(): Promise<Blob> {
         new Paragraph({
           children: [
             new TextRun({
-              text: "CV généré depuis portfolio.maximedesogus.ch",
+              text: "CV généré depuis www.maximedesogus.ch",
               size: 16,
               italics: true,
               color: colors.secondary,

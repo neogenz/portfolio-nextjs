@@ -60,7 +60,7 @@ const projects = [
       'Performance optimisée : grâce à un chargement efficace des données & une gestion performante des états de l\'application',
       'Intégration REST avec un serveur C# via Swagger',
       'CI/CD automatisé avec Docker & GitLab',
-      'Monitoring des erreurs et réduction de 90% des crashs grâce à Sentry',
+      'Monitoring des erreurs avec Sentry',
       'Tests unitaires et end-to-end avec Jest et Playwright',
       'Utilisation avancée des fonctionnalités d\'Angular (Signals, Resources, lazy loading, standalone components)'
     ],
@@ -71,7 +71,7 @@ const projects = [
   },
   {
     id: 10,
-    role: 'Lead & Architecte frontend',
+    role: 'Lead technique & Architecte',
     title: 'CGN — Prochains départs',
     subtitle: 'Information voyageurs accessible par QR code',
     client: 'CGN · OpenIT SA',
@@ -128,12 +128,13 @@ const projects = [
       'Gestion d\'état avancée avec NgRx et Redux DevTools',
       'Information en temps réel sur les horaires et perturbations',
       'Achat et gestion de titres de transport',
-      'Optimisation pour performances proches des applications natives'
+      'Optimisation pour performances proches des applications natives',
+      'Quality gates, tests e2e, CI/CD et monitoring Sentry : -90 % de crashs en production'
     ],
     image: '',
     url: 'openit.ch/mobile',
     link: '#',
-    skills: ['Angular 5 à 19', 'Ionic', 'Capacitor', 'NX', 'RxJS', 'Mobile', 'Swift', 'Java', 'NgRx', 'Leaflet']
+    skills: ['Angular 5 à 19', 'Ionic', 'Capacitor', 'NX', 'RxJS', 'Mobile', 'Swift', 'Java', 'NgRx', 'Leaflet', 'Sentry']
   },
   {
     id: 4,
@@ -468,7 +469,7 @@ const Projects = () => {
             Des produits construits de bout en bout, des outils open source publiés quand une brique manque,
             et une sélection de systèmes métier développés pour les transports publics.
           </p>
-          <a href="#contact" className="inline-flex items-center mt-6 text-maxime-primary dark:text-maxime-white gap-2 reveal border-b border-maxime-primary/20 dark:border-maxime-white/20 pb-1 hover:border-maxime-primary dark:hover:border-maxime-white transition-all duration-300" style={{ animationDelay: '0.4s' }}>
+          <a href="#contact" className="inline-flex items-center mt-6 text-maxime-primary dark:text-maxime-white gap-2 reveal border-b border-maxime-primary/20 dark:border-maxime-white/20 pb-1 hover:border-maxime-primary dark:hover:border-maxime-white transition-colors duration-300" style={{ animationDelay: '0.4s' }}>
             Discuter d&apos;un projet <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>

@@ -22,15 +22,20 @@ export const experienceData = [
   },
   {
     id: 1,
-    title: "Senior Full Stack Developer",
+    title: "Senior Full Stack Developer & Product Lead",
     company: "OpenIT SA",
-    period: "Octobre 2018 - Présent",
+    period: "Septembre 2018 - Présent",
     location: "Lausanne, Suisse",
     description: [
-      "Lead frontend sur une application de gestion du personnel et de la flotte de chauffeurs — Angular 21+, PrimeNG, Tailwind CSS, backend .NET/MSSql, CI/CD GitLab.",
-      "Développement et architecture d'un Système d'Aide à l'Exploitation (SAE) - Interface Angular 19 avec architecture modulaire, flux temps réel (RxJS/Signals), performance optimisée (gestion efficace des états de l'application) et monitoring avancé (Sentry).",
-      "Création d'une Plateforme de Gestion des Objets Trouvés - Solution fullstack Angular/NestJS/MongoDB avec automatisation du matching via IA (GPT, HuggingFace, Flask) et optimisation des flux de recherche.",
-      "Développement d'une application mobile multi-client monorepo NX (Angular/Ionic/Capacitor) avec migration progressive & régulière d'Angular 5 vers la dernière version stable, carte interactive Leaflet/RxJS et plugins natifs Swift/Java.",
+      "Product Lead depuis novembre 2024 : vision produit avec les clients, roadmap, user stories, backlog, interlocuteur principal du client.",
+      "Référent UX/UI et Figma de l'équipe depuis mi-2025.",
+      "Conception d'une architecture Angular modulaire par domaine métier, devenue le standard de l'équipe sur ses projets Angular ; formation de l'équipe à cette architecture.",
+      "Remplacement de plus de 400 pages Confluence obsolètes par une documentation Astro Starlight construite avec des workflows agentiques, régénérée avec ses captures d'écran par la CI.",
+      "Application de gestion du personnel et de la flotte de chauffeurs, en lead frontend : Angular 21+, PrimeNG, Tailwind CSS, backend .NET/MSSql, CI/CD GitLab.",
+      "Système d'Aide à l'Exploitation (SAE) multi-client, en lead technique & architecte - Interface Angular 19 développée from scratch avec architecture modulaire par domaine, flux temps réel (RxJS/Signals), performance optimisée (gestion efficace des états de l'application) et quality gates.",
+      "Application CGN « Prochains départs » (qr.cgn.ch), en lead technique & architecte - du besoin client et des maquettes Figma jusqu'à l'architecture, au frontend Angular, au contrat d'API Swagger, aux tests et à la CI/CD.",
+      "Plateforme de Gestion des Objets Trouvés, en lead technique & architecte - Solution fullstack Angular/NestJS/MongoDB avec automatisation du matching via IA (GPT, HuggingFace, Flask) et optimisation des flux de recherche.",
+      "Développement d'une application mobile multi-client monorepo NX (Angular/Ionic/Capacitor) avec migration progressive & régulière d'Angular 5 vers la dernière version stable, carte interactive Leaflet/RxJS et plugins natifs Swift/Java. Quality gates, tests e2e, CI/CD et monitoring Sentry : -90 % de crashs en production.",
       "Conception d'un backend de vente scalable (NestJS/MongoDB) avec APIs GraphQL/REST et système batch pour la gestion des achats différés.",
       "Réalisation d'applications opérationnelles diverses: tablettes GPS pour chauffeurs, solution Windows/Electron pour maintenance maritime, système de comptage passagers avec répartition automatisée des bénéfices (Angular/Java Spring).",
     ],
@@ -39,7 +44,7 @@ export const experienceData = [
     id: 2,
     title: "Full Stack Developer",
     company: "Sigmalis",
-    period: "Octobre 2017 - Octobre 2018",
+    period: "Octobre 2017 - Août 2018",
     location: "Lausanne, Suisse",
     description: [
       "Développement d'applications mobiles hybrides (Ionic/Angular) avec fonctionnalités temps réel, notifications push et cartographie interactive.",
@@ -89,8 +94,8 @@ export const technicalSkills = {
     "TypeScript",
     "JavaScript",
     "HTML5/CSS3/SCSS",
-    "C# (intermédaire)",
-    "Java (intermédaire)",
+    "C# / .NET (junior, actuel)",
+    "Java (junior)",
   ],
   frontend: [
     "Angular (1.x à latest)",
@@ -137,16 +142,23 @@ export const technicalSkills = {
     "Xcode",
     "Figma",
     "Notion",
-    "Arc",
-    "Warp",
-    "Cursor",
+    "Dia",
+    "Ghostty",
     "n8n",
-    "GPT, Claude, Gemini, DeepSeek, Gemini CLI",
+    "GPT, Claude, Gemini, DeepSeek",
     "NotebookLM",
     "Perplexity",
-    "Claude Code",
     "Gemini CLI",
     "Superwhisper",
+  ],
+  agenticAi: [
+    "Workflows agentiques",
+    "Context engineering",
+    "Harness engineering",
+    "Claude Code & Skills",
+    "Codex",
+    "Cursor",
+    "OpenCode",
   ],
   testing: ["Jest", "Jasmine", "Karma", "Protractor", "Playwright", "Vitest"],
 };
@@ -158,8 +170,12 @@ const techCategoriesDisplay = {
   Backend: technicalSkills.backend,
   "Bases de données": technicalSkills.databases,
   Mobile: technicalSkills.mobile,
+  "IA agentique": technicalSkills.agenticAi,
   Outils: [...technicalSkills.tools, ...technicalSkills.testing],
 };
+
+// Catégories affichées sur toute la largeur, sous la grille
+const fullWidthCategories = ["IA agentique", "Outils"];
 
 const Experience = () => {
   const [isDownloading, setIsDownloading] = useState(false);
@@ -277,7 +293,7 @@ const Experience = () => {
               {/* Catégories principales en 5 colonnes */}
               <div className="grid grid-cols-1 gap-6 mb-10 md:grid-cols-3 lg:grid-cols-5">
                 {Object.entries(techCategoriesDisplay)
-                  .filter(([category]) => category !== "Outils")
+                  .filter(([category]) => !fullWidthCategories.includes(category))
                   .map(([category, technologies], categoryIndex) => (
                     <div
                       key={category}
@@ -305,11 +321,11 @@ const Experience = () => {
 
               {/* Outils en dernière section, sur toute la largeur */}
               {Object.entries(techCategoriesDisplay)
-                .filter(([category]) => category === "Outils")
+                .filter(([category]) => fullWidthCategories.includes(category))
                 .map(([category, technologies]) => (
                   <div
                     key={category}
-                    className="reveal"
+                    className="mb-10 last:mb-0 reveal"
                     style={{ animationDelay: "0.4s" }}
                   >
                     <div className="flex flex-col">
