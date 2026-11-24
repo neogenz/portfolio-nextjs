@@ -58,7 +58,7 @@ const projects = [
       'Développement from scratch d\'une interface complexe en Angular 19 avec Angular Material et TailwindCSS',
       'Gestion des flux temps réel avec RxJS et Signals',
       'Performance optimisée : grâce à un chargement efficace des données & une gestion performante des états de l\'application',
-      'Intégration REST avec un serveur C# via Swagger',
+      'Intégration REST avec le serveur métier via Swagger',
       'CI/CD automatisé avec Docker & GitLab',
       'Monitoring des erreurs avec Sentry',
       'Tests unitaires et end-to-end avec Jest et Playwright',
