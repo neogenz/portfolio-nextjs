@@ -16,9 +16,8 @@ interface Resource {
 const ResourcePreload: FC = () => {
   // Liste des ressources à précharger
   const criticalResources: Resource[] = [
-    // Images critiques
-    { href: '/images/optimized/maxime.webp', as: 'image', importance: 'high' },
-    
+    // Photo du hero : déjà préchargée par next/image (priority)
+
     // Polices utilisées sur la page d'accueil
     { href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap', as: 'style', importance: 'high' },
     
