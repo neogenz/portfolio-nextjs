@@ -42,6 +42,8 @@ This is a **Next.js 16** portfolio site using the **App Router** architecture wi
 
 #### Services & Utilities
 - **CV**: source in `cv/cv.html`; `npm run cv:pdf` renders it with headless Chrome to `public/CV_Maxime_De_Sogus_2026.pdf`, which the « Télécharger CV » buttons link to. Regenerate and commit the PDF after any CV change
+- **Share image & icons**: `brand/build.sh` renders `brand/og.html` to `src/app/opengraph-image.jpg`, and `src/app/icon.svg` / `brand/icon-square.svg` to the favicon, Apple and PWA icons (headless Chrome + ImageMagick). Rerun and commit after changing the hero photo, the title or the monogram
+- **Site URL**: `SITE_URL` in `src/lib/seo-config.ts` feeds metadataBase, canonical, robots and sitemap. Never derive it from `VERCEL_URL` (deployment URLs sit behind Vercel login)
 - **Rate Limiting**: `src/lib/rate-limiter.ts` for API protection using Map-based storage
 - **Blog API**: `src/app/api/blog/[slug]/` for blog post data
 - **Contact API**: `src/app/api/contact/route.ts` with nodemailer integration and rate limiting

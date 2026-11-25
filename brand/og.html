@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Image de partage</title>
+<style>
+  @font-face { font-family: Inter; font-weight: 400; src: url("../cv/fonts/Inter-400.ttf"); }
+  @font-face { font-family: Inter; font-weight: 500; src: url("../cv/fonts/Inter-500.ttf"); }
+  html, body { margin: 0; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    display: flex; background: #222; color: #fff;
+    font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased;
+  }
+  .text { flex: 1; padding: 64px 0 56px 72px; display: flex; flex-direction: column; }
+  .label { font-size: 18px; letter-spacing: 0.2em; text-transform: uppercase; color: #b8b8b8; display: flex; align-items: center; gap: 14px; }
+  .label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+  h1 { margin: auto 0 0; font-weight: 400; font-size: 104px; line-height: 1; letter-spacing: -0.03em; }
+  h1 span { display: block; color: #7b7b7b; }
+  .role { margin: 36px 0 0; font-size: 34px; font-weight: 500; letter-spacing: -0.01em; }
+  .stack { margin: 12px 0 0; font-size: 26px; color: #b8b8b8; }
+  .site { margin: auto 0 0; font-size: 22px; color: #b8b8b8; }
+  .site strong { color: #fff; font-weight: 500; }
+  img { width: 440px; height: 630px; object-fit: cover; object-position: 50% 20%; }
+</style>
+</head>
+<body>
+  <div class="text">
+    <div class="label">Portfolio</div>
+    <h1>Maxime <span>De Sogus</span></h1>
+    <p class="role">Senior Fullstack Engineer &amp; Tech Lead</p>
+    <p class="stack">Angular · TypeScript · NestJS · .NET</p>
+    <p class="site"><strong>maximedesogus.ch</strong> · Valais, Suisse</p>
+  </div>
+  <img src="../public/images/optimized/maxime-2026.webp" alt="">
+</body>
+</html>
