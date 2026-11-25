@@ -14,6 +14,7 @@ interface OptimizedImageProps {
   quality?: number;
   placeholder?: 'blur' | 'empty';
   blurDataURL?: string;
+  unoptimized?: boolean;
 }
 
 /**
@@ -38,6 +39,7 @@ const OptimizedImage: FC<OptimizedImageProps> = ({
   quality = 75,
   placeholder = 'empty',
   blurDataURL,
+  unoptimized = false,
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -74,6 +76,7 @@ const OptimizedImage: FC<OptimizedImageProps> = ({
         priority={priority}
         placeholder={placeholder}
         blurDataURL={blurDataURL}
+        unoptimized={unoptimized}
       />
     </div>
   );

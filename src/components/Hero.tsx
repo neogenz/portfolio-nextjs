@@ -169,7 +169,7 @@ const Hero = () => {
         <div className="hidden justify-center items-center w-full lg:flex lg:col-span-5 2xl:col-span-5">
           <div
             ref={imageRef}
-            className={`relative flex items-center justify-center mx-auto overflow-hidden max-h-[70vh] h-auto outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10 transition-opacity duration-800 ease-in-out ${
+            className={`relative flex items-center justify-center mx-auto overflow-hidden max-w-[450px] max-h-[70vh] h-auto outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10 transition-opacity duration-800 ease-in-out ${
               showImage ? "opacity-100" : "opacity-0"
             }`}
             style={{
@@ -178,9 +178,6 @@ const Hero = () => {
               WebkitBackfaceVisibility: "hidden",
             }}
           >
-            {/* Overlay gradient - optimisé pour Tailwind v4 avec tous les niveaux de dégradé explicites */}
-            <div className="absolute inset-0 z-10 bg-gradient-to-b to-transparent mix-blend-multiply from-maxime-tertiary/80 via-maxime-tertiary/40 dark:from-maxime-dark-bg/80 dark:via-maxime-dark-bg/40 dark:to-transparent"></div>
-
             {/* Profile image */}
             <OptimizedImage
               src="/images/optimized/maxime-2026.webp"
@@ -188,11 +185,11 @@ const Hero = () => {
               width={1122}
               height={1402}
               priority={true}
+              // Servie telle quelle : le réencodage AVIF de Next lissait les détails du visage
+              unoptimized
               className="w-full h-full object-cover object-center object-[50%_15%]"
               placeholder="blur"
               blurDataURL="data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoQABQAPu1iqU2ppaOiMAgBMB2JaQAD4ckhi2X8FFikBToAAP3d2re/1repXEctZw8VWGmZjVvXjjHVS5vBpoAKJklCAQQl3G7J97sKU3+ZAeu8E0/2jtF6mAAAAA=="
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 450px"
-              quality={90}
               style={{
                 // Fix pour Safari - propriétés non disponibles en Tailwind
                 transform: "none",
