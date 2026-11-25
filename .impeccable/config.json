@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-11-24T18:27:37.849Z",
+        "reason": "Existing site identity font; Maxime's brief for this pass (relayed by the parent session): polish only, keep layout and identity, no redesign"
+      },
+      {
+        "rule": "overused-font",
+        "value": "arial",
+        "createdAt": "2026-11-24T21:12:52.000Z",
+        "reason": "Inline style of the contact notification email (src/app/api/contact/route.ts): email clients need a web-safe font, not a site design choice"
+      }
+    ]
+  }
+}
