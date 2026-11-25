@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "@/components/providers";
 import ResourcePreload from "@/components/ResourcePreload";
 import { Analytics } from "@vercel/analytics/next";
+import { SITE_URL } from "@/lib/seo-config";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,12 +23,8 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-const VERCEL_URL = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(VERCEL_URL),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Maxime De Sogus | Senior Fullstack Engineer & Tech Lead · Angular, Valais",
     template: `%s | Maxime De Sogus`,
@@ -57,7 +54,7 @@ export const metadata: Metadata = {
     "Angular",
     "Ionic",
   ],
-  authors: [{ name: "Maxime De Sogus", url: VERCEL_URL }],
+  authors: [{ name: "Maxime De Sogus", url: SITE_URL }],
   creator: "Maxime De Sogus",
   publisher: "Maxime De Sogus",
 
@@ -68,18 +65,6 @@ export const metadata: Metadata = {
     title: "Maxime De Sogus - Portfolio",
   },
 
-  // Icons pour PWA et applications mobiles
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icons/icon-512x512.png", sizes: "512x512", type: "image/png" },
-    ],
-    apple: [
-      { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
-  },
 
   // Configuration technique globale
   robots: {
@@ -101,19 +86,11 @@ export const metadata: Metadata = {
     url: true,
   },
 
-  // OpenGraph de base - sera override par page.tsx pour la page d'accueil
+  // Image de partage et icônes : fichiers opengraph-image, icon, apple-icon et favicon de src/app (sources dans brand/)
   openGraph: {
     type: "website",
     locale: "fr_CH",
     siteName: "Maxime De Sogus - Portfolio",
-    images: [
-      {
-        url: "/images/optimized/og-image.webp",
-        width: 1200,
-        height: 630,
-        alt: "Maxime De Sogus - Senior Fullstack Engineer & Tech Lead en Suisse",
-      },
-    ],
   },
 };
 
@@ -126,8 +103,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Maxime De Sogus",
-    url: VERCEL_URL,
-    image: `${VERCEL_URL}/images/optimized/maxime.webp`,
+    url: SITE_URL,
+    image: `${SITE_URL}/images/optimized/maxime-2026.webp`,
     jobTitle: "Senior Fullstack Engineer & Tech Lead",
     description:
       "Maxime De Sogus, Senior Fullstack Engineer & Tech Lead basé en Valais, Suisse. Plus de 10 ans d'expérience : Angular, TypeScript, NestJS, .NET, et un workflow de développement fondé sur l'IA agentique. Valais, Lausanne, Vaud, Suisse romande.",

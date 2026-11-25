@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     "+10 ans expérience Angular",
   ],
   openGraph: {
+    type: "website",
+    locale: "fr_CH",
+    siteName: "Maxime De Sogus - Portfolio",
     url: "/",
     title: "Maxime De Sogus | Senior Fullstack Engineer & Tech Lead · Angular, Valais",
     description:
@@ -37,7 +40,6 @@ export const metadata: Metadata = {
     title: "Maxime De Sogus | Senior Fullstack Engineer & Tech Lead · Angular, Valais",
     description:
       "Maxime De Sogus, Senior Fullstack Engineer & Tech Lead basé en Valais, Suisse. Plus de 10 ans d'expérience : Angular, TypeScript, NestJS, .NET, et un workflow de développement fondé sur l'IA agentique.",
-    images: ["/images/optimized/og-image.webp"],
   },
   alternates: {
     canonical: "/",

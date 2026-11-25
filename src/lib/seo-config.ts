@@ -1,3 +1,6 @@
+// Domaine public du site : base des URLs canoniques, Open Graph, robots et sitemap
+export const SITE_URL = "https://www.maximedesogus.ch";
+
 // Configuration SEO centralisée pour les dates de modification
 export const seoConfig = {
   // Dates de dernière modification des sections principales

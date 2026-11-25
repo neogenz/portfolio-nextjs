@@ -1,18 +1,5 @@
 import { MetadataRoute } from "next";
-import { seoConfig, getBuildDate } from "@/lib/seo-config";
-
-// Configuration du domaine de base selon l'environnement
-const getBaseUrl = () => {
-  // En production, utiliser le domaine principal
-  if (process.env.NODE_ENV === "production") {
-    return "https://maximedesogus.ch";
-  }
-
-  // En développement, utiliser Vercel URL ou localhost
-  return process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000";
-};
+import { seoConfig, getBuildDate, SITE_URL } from "@/lib/seo-config";
 
 /**
  * Récupère la date de modification la plus récente parmi toutes les dates de contenu et la date de build.
@@ -29,7 +16,7 @@ const getMostRecentDate = (buildDate: Date): Date => {
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = getBaseUrl();
+  const baseUrl = SITE_URL;
   const buildDate = getBuildDate();
   const mostRecentDate = getMostRecentDate(buildDate);
 

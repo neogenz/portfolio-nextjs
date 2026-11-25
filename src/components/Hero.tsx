@@ -183,14 +183,14 @@ const Hero = () => {
 
             {/* Profile image */}
             <OptimizedImage
-              src="/images/optimized/maxime.webp"
+              src="/images/optimized/maxime-2026.webp"
               alt="Maxime De Sogus"
-              width={1143}
-              height={1432}
+              width={1122}
+              height={1402}
               priority={true}
               className="w-full h-full object-cover object-center object-[50%_15%]"
               placeholder="blur"
-              blurDataURL="data:image/webp;base64,UklGRhYBAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSE4AAAARL0AmYJrNQpJsux//938UEVEDHpKcTaoK3AP2oLqqBdgD5gEAAMxujQc8GjyYcQCjvv/Mf87VZWC5/r9B1G4eIDOHiP4PAFZQOCBMAAAAcAIAnQEqEAAQAAJAOCWwAnS6MEQn56eg/+FiA/AD3zK3w1X6YMKWV37N42XyctFbbZpIoM+6ufZPGbIYTgA3pHnnXWfbvH8yDZOJF7OvLGzfFxZ8Wj9oiUV1GupuJQFxE3PdmQU8P2Xg10cUjUvxkuimqgAALOqGIOEvKJQX7+GdYIyqDAAA"
+              blurDataURL="data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoQABQAPu1iqU2ppaOiMAgBMB2JaQAD4ckhi2X8FFikBToAAP3d2re/1repXEctZw8VWGmZjVvXjjHVS5vBpoAKJklCAQQl3G7J97sKU3+ZAeu8E0/2jtF6mAAAAA=="
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 450px"
               quality={90}
               style={{
