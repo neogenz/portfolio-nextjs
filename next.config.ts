@@ -4,8 +4,6 @@ const nextConfig: NextConfig = {
   // Configuration de l'optimisation d'images
   images: {
     formats: ['image/avif', 'image/webp'],
-    // Next 16 n'accepte plus que 75 par défaut ; la photo du hero demande 90
-    qualities: [75, 90],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
     remotePatterns: [
