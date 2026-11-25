@@ -3,21 +3,6 @@ import { CV_URL } from "./CVExport";
 
 export const experienceData = [
   {
-    id: 5,
-    title: "Lead Fullstack & Product",
-    company: "Pulpe (Projet Personnel)",
-    period: "2025 - Présent",
-    location: "Suisse",
-    description: [
-      "Conception et développement d'une application web et iOS de gestion budgétaire pour le marché suisse : planification annuelle avec templates mensuels réutilisables.",
-      "Architecture monorepo Turborepo : Angular 21+ (frontend), NestJS 11+ (backend), SwiftUI (iOS), Next.js (landing page).",
-      "Frontend signals-first avec Angular Material 21, Tailwind v4 et pattern Signal Store (SWR, resource()).",
-      "Chiffrement AES-256-GCM split-key des montants financiers (PBKDF2 client + HKDF backend).",
-      "Mode démo backend-first via utilisateurs Supabase éphémères (RLS, cron cleanup toutes les 6h).",
-      "Quality gate : Vitest, Playwright e2e, GitHub Actions CI/CD, Lefthook lint/prettier.",
-    ],
-  },
-  {
     id: 1,
     title: "Senior Full Stack Developer & Product Lead",
     company: "OpenIT SA",
