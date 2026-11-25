@@ -104,7 +104,7 @@ export default function RootLayout({
     "@type": "Person",
     name: "Maxime De Sogus",
     url: SITE_URL,
-    image: `${SITE_URL}/images/optimized/maxime-2026.webp`,
+    image: `${SITE_URL}/images/optimized/maxime-2026-dark.webp`,
     jobTitle: "Senior Fullstack Engineer & Tech Lead",
     description:
       "Maxime De Sogus, Senior Fullstack Engineer & Tech Lead basé en Valais, Suisse. Plus de 10 ans d'expérience : Angular, TypeScript, NestJS, .NET, et un workflow de développement fondé sur l'IA agentique. Valais, Lausanne, Vaud, Suisse romande.",

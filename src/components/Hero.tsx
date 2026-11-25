@@ -178,24 +178,37 @@ const Hero = () => {
               WebkitBackfaceVisibility: "hidden",
             }}
           >
-            {/* Profile image */}
+            {/* Photo du hero : pull noir en thème sombre, pull blanc en thème clair (même cadrage, fondu au changement de thème).
+                Servies telles quelles : le réencodage AVIF de Next lissait les détails du visage */}
             <OptimizedImage
-              src="/images/optimized/maxime-2026.webp"
+              src="/images/optimized/maxime-2026-dark.webp"
               alt="Maxime De Sogus"
               width={1122}
               height={1402}
               priority={true}
-              // Servie telle quelle : le réencodage AVIF de Next lissait les détails du visage
               unoptimized
               className="w-full h-full object-cover object-center object-[50%_15%]"
               placeholder="blur"
-              blurDataURL="data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoQABQAPu1iqU2ppaOiMAgBMB2JaQAD4ckhi2X8FFikBToAAP3d2re/1repXEctZw8VWGmZjVvXjjHVS5vBpoAKJklCAQQl3G7J97sKU3+ZAeu8E0/2jtF6mAAAAA=="
+              blurDataURL="data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoQABQAPu1iqU2ppaQiMAgBMB2JaQAD4ckhi2X8FFikBToAAP3d2re/1repXEctZw8VWGmZjVvXjjHVS5vBpoAKJklCAQQl3G7J97sKU3+ZAeu8E0/2jtF6mAAAAA=="
               style={{
                 // Fix pour Safari - propriétés non disponibles en Tailwind
                 transform: "none",
                 WebkitTransform: "none",
               }}
             />
+            <div className="absolute inset-0 transition-opacity duration-700 ease-out dark:opacity-0">
+              <OptimizedImage
+                src="/images/optimized/maxime-2026-light.webp"
+                alt=""
+                width={1122}
+                height={1402}
+                priority={true}
+                unoptimized
+                className="w-full h-full object-cover object-center object-[50%_15%]"
+                placeholder="blur"
+                blurDataURL="data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADQAwCdASoQABQAPu1iqU2ppaOiMAgBMB2JaQAAQy2jg1RW1P0txsAA/sV/+SmvC+Ac+KwUmdSEDKJ4elGkwTpj3kygB7WXjnJzJapUQiGKpwSxkr/reVror5qr9IQhhLYAAA=="
+              />
+            </div>
           </div>
         </div>
       </div>
